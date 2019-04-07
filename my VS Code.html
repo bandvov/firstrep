@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/> 
+  <title>test</title>
+
+</head>
+
+<body>
+  <div>
+    <input type="button" onclick="count_rabbits()" value="рахувати кролів" /><br><br>
+    <form action="#" method="POST">
+      <fieldset style="border:2px solid red; width: 350px">
+        <legend>Autentification</legend>
+      
+
+      Login <input type="text" name="login" value="Ведіть логін" autocomplete="off"><br>
+      Password <input type="password" name="psw" value="" minlength="5">
+      <input type="submit" value="Vidislaty"></fieldset>
+    </form>
+  </div>
+  <br>
+  <form>
+    <div id="elem" style="width: 375px; height: 130px; border: 2px solid; margin: 10px 0px">
+    </div>
+  </form>
+  <input id="elem1" type="button" value="Нажми меня"/>
+  <!-- 
+  <progress value="70" max="100">
+    загружено на <span id="value">70</span>^%
+  </progress> -->
+  <br/>
+  <form>
+  <input type="checkbox" id="one" onchange="fun()">
+ </form>
+<!--  
+ First Name: <input type="text" id="fname" value="Donald">
+<br><br>
+ Convert to upper case
+ <input type="checkbox" onclick="if(this.checked){myFunction()}">
+  -->
+ <input type="radio" name="rad1" value="5"/>1
+ <input type="radio" name="rad1" value="51"/>2
+ <input type="radio" name="rad1" value="52"/>3
+ <button onclick="fun1()" value="pereviryty">check</button>
+ 
+ <select name="menu" id="myselect" onchange="fun2()">
+   <option value="">apple</option>
+   <option value="">plum</option>
+   <option value="">orange</option>
+   <option value="">nut</option>
+</select>
+<br>
+<br>
+
+<br>введи число
+<input type="text" id="t1" value="введи число"  autocomplete="off">
+введи степень
+<input type="text" id="t2" value="введи число"  autocomplete="off">
+Результат
+<input type="text" id="t3" value=""><hr>
+<p id="p"></p>
+<button onclick="res()">submit</button>
+
+
+ <script src="script.js"</script>
+  <script>
+    // domImplementationTest();
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>test</title>
+</head>
+
+<body>
+  <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+  <div id="veryfirst">
+    <div class="maink">
+      <p>Калькулятор витрат</p>
+      <div class='inp'>
+        <label>Ваш бюджет на місяць?</label>
+        <input type="number" id="money" />
+      </div>
+
+      <div class='inp'>
+        <label>Введіть дату</label>
+        <input type="date" id="time" />
+      </div>
+      <div class='inp'>
+        <label> Введіть обовязкову витрату 1 </label>
+        <input type="text" id="expAsk1">
+      </div>
+
+      <div class='inp'>
+        <label>скільки вона коштує? </label>
+        <input type="number" id="expAns1" value="4">
+      </div>
+      <div class='inp'>
+        <label>Введіть обовязкову витрату 2</label>
+        <input type="text" id="expAsk2" />
+      </div>
+      <div class='inp'>
+        <label for="expAns2">скільки вона коштує?</label>
+        <input type="number" id="expAns2" value="5" />
+      </div>
+
+      <hr>
+      <div class='inp'>
+        <input type="number" id="result" />
+      </div>
+      <div class='inp'>
+        <input type='button' id="res" onclick="res1()" value='Рузультат'>
+        <input type='button' id="res2" value='Рузультат'>
+        <input type='button' id="res3" value='Рузультат'>
+      </div>
+      <p id="result1">0</p>
+    </div>
+    <div class="sec">
+      <form name='formname' oninput="x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)">
+        введіть число
+        <input class='secinp1' type="number" id="a" value='3'>
+        <input class='secinp2' type="number" id="b" value='3'>
+        <input class='secinp2' type="range" id="c" value='43'>100<br>
+        <output id="x" for="a b"></output>
+      </form>
+    </div>
+
+    <!-- 000000000000000000000000000000000000000000000000 -->
+    <!-- <div class="sec">
+      <form action="/action_page.php" id="numform" oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+        <input type="range" id="a" name="a" value="50">100
+        +<input type="number" id="b" name="b" value="50">
+        <input type="submit">
+      </form>
+
+      <output form="numform" name="x" for="a b"></output>
+    </div> -->
+    <!-- 0000000000000000000000000000000000 -->
+  </div>
+  <footer class="footer container">
+    <nav class="footer-social">
+      <div>
+        <a tabindex="1" href="#" alt="twitter" class="footer-social-item footer-social-item-twitter" target="_blank"
+          rel="nofollow">Twitter</a>
+        <a tabindex="1" href="#" alt="instagram" class="footer-social-item footer-social-item-instagram" target="_blank"
+          rel="nofollow">Instagtam</a>
+        <a tabindex="1" href="#" alt="facebook" class="footer-social-item footer-social-item-facebook" target="_blank"
+          rel="nofollow">Facebook</a>
+        <a tabindex="1" href="#" alt="vk" class="footer-social-item footer-social-item-vk" target="_blank"
+          rel="nofollow">VK</a>
+      </div>
+    </nav>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+</body>
+
+
+</html>

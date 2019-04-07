@@ -1,0 +1,122 @@
+body{
+    background:white;
+    font-family: Arial;
+    padding: 20px;
+}
+*{
+    box-sizing: border-box;
+}
+form{
+    max-width: 450px;
+    margin: o auto;
+}
+form div{
+    position: relative;
+    background: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.first {
+   float: left;
+   margin: 650px 0px 0px 2%;
+   max-width: 30%;
+   height: 300px;
+}
+p{
+    margin: 130px 0px 0px 0px;
+}
+.second{
+  float: left;
+  margin: 650px 0px 0px 2%;  
+  max-width: 30%;
+  height: 300px;
+}
+.third {
+    float: left;
+    margin: 650px 0px 0px 2%;
+    max-width: 30%;    
+    height: 300px;
+    text-align: center;
+}
+.first img{
+    float: left;
+    margin: 0px auto;
+    padding: -0px 0px 10px 0px;     
+}
+.second img{
+    float: left;
+    margin: 0px auto;
+    padding: -0px 0px 10px 0px;     
+}
+.third img{
+    float: left;
+    margin: 0px auto;
+    padding: -0px 0px 10px 0px;     
+}
+table1{
+    margin: 2px 0 0 0 0;
+    border: 2px; 
+}
+.header-social-block {
+	float: right;
+	margin-top: 20px;
+	width: 30%;
+}
+.social-links {
+	margin-top: 0px;
+	float: right;
+}
+.social-links ul li {
+	margin: 11px 11px 0 0;
+	float: left;
+}
+.social-links ul li a {
+	border: 1px solid #eee;
+	color: #eee;
+	display: block;
+	font-size: 14px;
+	height: 30px;
+	line-height: 27px;
+	text-align: center;
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	width: 30px;
+}
+.social-links ul li a i {
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.social-links ul li a[href*="facebook.com"]:hover {
+	background-color: #3B5998;
+	color: #FFF;
+}
+.social-links ul li a[href*="twitter.com"]:hover {
+	background-color: #33CCFF;
+	color: #FFF;
+}
+.social-links ul li a[href*="pinterest.com"]:hover {
+	background-color: #CB2027;
+	color: #FFF;
+}
+.social-links ul li a[href*="dribbble.com"]:hover {
+	background-color: #F26798;
+	color: #FFF;
+}
+.social-links ul li a[href*="instagram.com"]:hover {
+	background-color: #8E6051;
+	color: #FFF;
+}
+.social-links ul li a[href*="flickr.com"]:hover {
+	background-color: #0063DB;
+	color: #FFF;
+}
+.social-links ul li a[href*="plus.google.com"]:hover {
+	background-color: #DF4B38;
+	color: #FFF;
+}

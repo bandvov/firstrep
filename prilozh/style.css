@@ -1,0 +1,187 @@
+body {
+	font-family: Montserrat, sans-serif;
+	background-color: rgb(244, 253, 253);
+}
+#veryfirst{
+	width: 90%;
+	padding-left: 400px;
+	float: left;
+
+
+}
+.maink{
+	float: left;
+	display: block;
+	padding: 6px 5px;
+	width: 490px;
+	background-color: white;
+	margin: 1px auto;
+	border: 1px solid #F26798;
+
+	line-height: 40px;
+}
+
+.inp:hover {
+background-color: rgb(238, 243, 245);
+}
+.inp {	
+	display: block;		
+	margin: 1px auto;
+	height: 45px;
+	padding: 4px 1px;
+	clear: both;
+	text-align: left;
+	border: none;
+	
+}
+
+input[type=button] {
+     background-color: blue; 
+	width: 32%;
+	background-color: rgb(49, 145, 255);
+	border: none;
+	margin: 4px auto;
+	color: white;
+	padding: 0px 0px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+
+}
+
+input[type=button]:hover {
+	width: 32%;
+	background-color: rgb(37, 119, 13);
+	border: none;
+	color: white;
+	padding: 0px 0px;
+	margin: 4px auto;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+input[type=text],input[type=number],input[type=date] {
+	float: right;
+	width: 50%;
+	height: 25px;
+	padding-left: 4px;
+	margin: 5px auto;
+	border: 2px solid bisque;
+	border-radius: 4px;
+	background-color: #f1f1f1;
+	box-shadow: 2px 2px 2px 0px rgb(189, 194, 189);
+	line-height: 25px;
+}
+
+input[type=text]:hover,input[type=number]:hover,input[type=date]:hover {
+	float: right;
+	width: 50%;
+	height: 25px;
+	padding-left: 4px;
+	margin: 5px auto;
+	border: 2px solid rgb(59, 250, 65);
+	border-radius: 4px;
+	background-color: #ffffff;
+	box-shadow: 2px 2px 2px 0px rgb(189, 194, 189);
+	line-height: 25px;
+}
+
+label {
+	float: left;
+	padding-right: 10px;
+}
+.maink p {
+	text-align: center;
+	font-size: 30px;
+}
+
+#result {
+	border: 2px double rgb(59, 250, 65);
+}
+
+.sec{
+	clear: both;
+	float: left;
+	display: block;
+	padding: 6px 5px;
+	width: 490px;
+	background-color: white;
+	margin: 0px auto;
+	border: 1px solid rgba(168, 103, 242, 0.897);
+	font-family: 'Montserrat', sans-serif;
+	line-height: 40px;
+}
+
+/*
+.social-links {
+	margin-top: 0px;
+	float: right;
+}
+
+.social-links ul li {
+	margin: 11px 11px 0 0;
+	float: left;
+}
+/* 
+.social-links ul li a {
+	border: 1px solid #eee; 
+color: #eee;
+display: block;
+font-size: 14px;
+height: 30px;
+line-height: 27px;
+text-align: center;
+-webkit-transform: rotate(-45deg);
+-moz-transform: rotate(-45deg);
+-o-transform: rotate(-45deg);
+-ms-transform: rotate(-45deg);
+transform: rotate(-45deg);
+width: 30px;
+}
+
+
+/* 
+.social-links ul li a i {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.social-links ul li a[href*="facebook.com"]:hover {
+	background-color: #3B5998;
+	color: #FFF;
+}
+
+.social-links ul li a[href*="twitter.com"]:hover {
+	background-color: #33CCFF;
+	color: #FFF;
+}
+
+.social-links ul li a[href*="pinterest.com"]:hover {
+	background-color: #CB2027;
+	color: #FFF;
+}
+
+.social-links ul li a[href*="dribbble.com"]:hover {
+	background-color: #F26798;
+	color: #FFF;
+}
+
+.social-links ul li a[href*="instagram.com"]:hover {
+	background-color: #8E6051;
+	color: #FFF;
+}
+
+.social-links ul li a[href*="flickr.com"]:hover {
+	background-color: #0063DB;
+	color: #FFF;
+}
+
+.social-links ul li a[href*="plus.google.com"]:hover {
+	background-color: #DF4B38;
+	color: #FFF;
+} */
