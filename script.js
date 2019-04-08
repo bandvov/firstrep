@@ -202,8 +202,8 @@ elem1.addEventListener('click', function (){
 
 
 function fun(){
-  var chkb = document.getElementById('one');
-  if (chkb.checked){
+  var chkd = document.getElementById('one');
+  if (chkd.checked){
     alert('Vybrano');
   } else {
     alert ('ne Vybrano');
@@ -215,7 +215,7 @@ function myFunction() {
 }
 // -----------------------------------------------------------------
 function fun1(){
-var rad1 = document.getElementsByName('rad1'); 
+var rad1 = document.getElementsByName('rad1');
   for(var i=0;i<rad1.length;i++){
     if(rad1[i].checked){
       alert('Vybrano '+i+' element');
@@ -224,7 +224,7 @@ var rad1 = document.getElementsByName('rad1');
 }
 function fun2(){
     var sel = document.getElementById('myselect').selectedIndex;
-    var options = document.getElementById('myselect').options;  
+    var options = document.getElementById('myselect').options;
     alert('Vybrano ' +options[sel].text);
 }
 
@@ -239,16 +239,6 @@ function fun2(){
 //   counter++;
 //   document.write('<br>' + counter);
 // } while (counter < 10);
-// 0----------------------------------------------------
+// // 0----------------------------------------------------
 
- 
-function res() {
- var t1 = document.getElementById('t1').value;
-  var t1 = parseInt(t1);
-  var t2 = document.getElementById('t2').value;
-  var t2 = parseInt(t2);
-  document.getElementById('t3');
-  result = t1 + t2;
-  document.getElementById('t3').value = result;
-}
 
