@@ -12,32 +12,32 @@ body {
 .maink{
 	float: left;
 	display: block;
-	padding: 6px 5px;
+	padding: 1px 5px;
 	width: 490px;
 	background-color: white;
 	margin: 1px auto;
 	border: 1px solid #F26798;
 
-	line-height: 40px;
+	line-height: 30px;
 }
 
 .inp:hover {
 background-color: rgb(238, 243, 245);
 }
-.inp {	
-	display: block;		
+.inp {
+	display: block;
 	margin: 1px auto;
 	height: 45px;
 	padding: 4px 1px;
 	clear: both;
 	text-align: left;
 	border: none;
-	
+
 }
 
-input[type=button] {
-     background-color: blue; 
-	width: 32%;
+input[type=button],input[type=reset] {
+
+	width: 24%;
 	background-color: rgb(49, 145, 255);
 	border: none;
 	margin: 4px auto;
@@ -50,12 +50,12 @@ input[type=button] {
 
 }
 
-input[type=button]:hover {
-	width: 32%;
+input[type=button]:hover,input[type=reset]:hover  {
+	width: 24%;
 	background-color: rgb(37, 119, 13);
 	border: none;
 	color: white;
-	padding: 0px 0px;
+	padding: 0 0;
 	margin: 4px auto;
 	text-align: center;
 	text-decoration: none;
@@ -71,7 +71,7 @@ input[type=text],input[type=number],input[type=date] {
 	border: 2px solid bisque;
 	border-radius: 4px;
 	background-color: #f1f1f1;
-	box-shadow: 2px 2px 2px 0px rgb(189, 194, 189);
+	box-shadow: 2px 2px 2px 0 rgb(189, 194, 189);
 	line-height: 25px;
 }
 
@@ -84,7 +84,7 @@ input[type=text]:hover,input[type=number]:hover,input[type=date]:hover {
 	border: 2px solid rgb(59, 250, 65);
 	border-radius: 4px;
 	background-color: #ffffff;
-	box-shadow: 2px 2px 2px 0px rgb(189, 194, 189);
+	box-shadow: 2px 2px 2px 0 rgb(189, 194, 189);
 	line-height: 25px;
 }
 

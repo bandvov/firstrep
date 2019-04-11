@@ -1,3 +1,4 @@
+'use strict';
 // var nicknames = ['di', 'boo', 'punkeye'];
 // nicknames.size=3;
 // for (var nickname of nicknames) {
@@ -316,4 +317,32 @@ var Friend = function (mood) {
     }
     let FriendMood = prompt('Type friend mood(nice/bad)');
     let David = new Friend(FriendMood);
-    David(talk);
+    David.talk();
+
+    // var wizardNames = source.map(function (it) {
+      // return it.wizard.name; 
+    // });
+    var double = function (value) { 
+      if (double == isNaN) { 
+        return NaN; 
+      } 
+     
+      return value * 2; 
+    }; 
+     
+    console.log(double(0)); 
+    console.log(double(2)); 
+    console.log(double(5)); 
+    
+
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+    // ctx.fillStyle = 'blue';
+    // ctx.fillRect(0,0,300,100);
+
+    var gradient = ctx.createLinearGradient(0,0,300,100);
+    gradient.addColorStop(0,'green');
+    gradient.addColorStop(1,'rgba(0,255,0,0)');
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,300,100);

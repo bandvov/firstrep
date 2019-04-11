@@ -23,46 +23,49 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
   <div id="veryfirst">
+    <form id="firstform">
     <div class="maink">
       <p>Калькулятор витрат</p>
-      <div class='inp'>
-        <label>Ваш бюджет на місяць?</label>
-        <input type="number" id="money" />
-      </div>
+        <div class='inp'>
+          <label>Ваш бюджет на місяць?</label>
+          <input type="number" id="money" />
+        </div>
 
-      <div class='inp'>
-        <label>Введіть дату</label>
-        <input type="date" id="time" />
-      </div>
-      <div class='inp'>
-        <label> Введіть обовязкову витрату 1 </label>
-        <input type="text" id="expAsk1">
-      </div>
+        <div class='inp'>
+          <label>Введіть дату</label>
+          <input type="date" id="time" />
+        </div>
+        <div class='inp'>
+          <label> Введіть обовязкову витрату 1 </label>
+          <input type="text" id="expAsk1">
+        </div>
 
-      <div class='inp'>
-        <label>скільки вона коштує? </label>
-        <input type="number" id="expAns1" value="4">
-      </div>
-      <div class='inp'>
-        <label>Введіть обовязкову витрату 2</label>
-        <input type="text" id="expAsk2" />
-      </div>
-      <div class='inp'>
-        <label for="expAns2">скільки вона коштує?</label>
-        <input type="number" id="expAns2" value="5" />
-      </div>
+        <div class='inp'>
+          <label>скільки вона коштує? </label>
+          <input type="number" id="expAns1" value="4">
+        </div>
+        <div class='inp'>
+          <label>Введіть обовязкову витрату 2</label>
+          <input type="text" id="expAsk2" />
+        </div>
+        <div class='inp'>
+          <label for="expAns2">скільки вона коштує?</label>
+          <input type="number" id="expAns2" value="5" />
+        </div>
 
-      <hr>
-      <div class='inp'>
-        <input type="number" id="result" />
+        <hr>
+        <div class='inp'>
+          <input type="number" id="result" readonly />
+        </div>
+        <div class='inp'>
+          <input type='button' id="res" onclick="res1()" value='Рузультат'>
+          <input type='button' id="res2" value='Рузультат'>
+          <input type='button' id="res3" value='Рузультат'>
+          <input type="reset" value="Скинути">
+        </div>
+        <p id="result1">0</p>
       </div>
-      <div class='inp'>
-        <input type='button' id="res" onclick="res1()" value='Рузультат'>
-        <input type='button' id="res2" value='Рузультат'>
-        <input type='button' id="res3" value='Рузультат'>
-      </div>
-      <p id="result1">0</p>
-    </div>
+    </form>
     <div class="sec">
       <form name='formname' oninput="x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)">
         введіть число

@@ -10,13 +10,54 @@
     <title>test</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
   </head>
   <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <!-- <video controls width="500">
+<source src="Как создать сайт с нуля на шаблоне TemplateMonster.mp4">
+    </video><br>   -->
+    <p>Song On Fire </p>
+    <div> 
+    <audio controls > 
+      <source src ="03. Song On Fire.mp3" ></audio><br>
+  </div>
+  <p >After The Rain </p>
+  <div> 
+    <audio controls > 
+      <source src ="05. After The Rain.mp3" autoplay></audio><br>
+  </div>
+  <p >For The River</p>
+  <div> 
+    <audio controls > 
+      <source src ="06. For The River.mp3" autoplay></audio><br>
+  </div>
+  <form id="robby">
+    <input type="button" onclick="alert(document.forms[0].id);" value="robby's form" />
+  </form>
+  
+  <form id="dave">
+    <input type="button" onclick="alert(document.forms[1].id);" value="dave's form" />
+  </form>
+  
+  <form id="paul">
+    <input type="button" onclick="alert(document.forms[2].id);" value="paul's form" />
+  </form>
+
+ 
+    <input type="number" list="price" placeholder="введіть число" >
+    <datalist id="price">
+      <option value="10">
+      <option value="20">
+      <option value="30">
+      <option value="40">
+    </datalist><br>
     
+    <canvas id="canvas">
+
+    </canvas>
     <script src="second.js" ></script>
   </body>
 </html>
