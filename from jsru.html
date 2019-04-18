@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Test DOM Implementation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+function domImplementationTest() {
+  var featureArray = ['HTML', 'XML', 'Core', 'Views',
+            'StyleSheets', 'CSS', 'CSS2', 'Events',
+            'UIEvents', 'MouseEvents', 'HTMLEvents',
+            'MutationEvents', 'Range', 'Traversal'];
+  var versionArray = ['1.0', '2.0', '3.0'];
+  var i;
+  var j;
+  if (document.implementation && document.implementation.hasFeature){
+    document.write('<table border="1" cellpadding="2" style="border-collapse:collapse;">');
+      
+    // header of table 
+    document.write('<tr>');
+    document.write('<td>' + 'Підтримка доповнення ' + '</td>')
+    for (j = 0; j < versionArray.length; j++) {
+      document.write('<td>'+ 'версія ' + versionArray[j] + '</td>');
+    }
+    document.write('</tr>');
+
+    // content of table
+    for (i = 0; i < featureArray.length; i++){
+      document.write('<tr>');
+      document.write('<td>' + featureArray[i] + '</td>');
+
+      for (j = 0; j < versionArray.length; j++) {
+        var res = document.implementation.hasFeature(featureArray[i], versionArray[j]);
+        document.write('<td style="background-color:' + (res ? 'blue' : 'red') + '; color:green;">'+ res + '</td>');
+      }
+      
+      document.write('</tr>');
+    }
+    
+    document.write('</table>');
+  }
+}
+</script>
+</head>
+<body>
+<h1>Перевірка доповнень DOM</h1>
+
+<script>
+  domImplementationTest();
+</script>
+
+</body>
+</html>
