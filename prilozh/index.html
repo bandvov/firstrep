@@ -9,6 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel='stylesheet' href="style.css">
@@ -23,13 +24,15 @@
         <![endif]-->
   <div id="veryfirst">
     <form id="firstform">
-      <div class="maink">
-        <p>Калькулятор витрат</p>
+    <div class="maink">
+      <p>Калькулятор витрат</p>
         <div class='inp'>
-
+          
           Ваш бюджет на місяць?
           <input type="number" id="money" />
+        
         </div>
+
         <div class='inp'>
           <label>Введіть дату</label>
           <input type="date" id="time" />
@@ -57,13 +60,13 @@
           <input type="number" id="result" readonly />
         </div>
         <div class='inp'>
-          <input type='button' id="res" onclick="res1()" value='Результат'>
-          <input type='button' id="res2" value='Результат'>
-          <input type='button' id="res3" value='Результат'>
+          <input type='button' id="res" onclick="res1()" value='Рузультат'>
+          <input type='button' id="res2" value='Рузультат'>
+          <input type='button' id="res3" value='Рузультат'>
           <input type="reset" value="Скинути">
         </div>
         <p id="result1">0</p>
-
+      
       </div>
     </form>
     <div class="sec">
@@ -74,12 +77,8 @@
         <input class='secinp2' type="range" id="c" value='43'>100<br>
         <output id="x" for="a b"></output>
       </form>
-      <fieldset>
-        <legend>Здесь пишем название </legend>
-        Сюда помещаем содержание (картинку, форму или другой контент)
-      </fieldset>
     </div>
-
+    
     <!-- 000000000000000000000000000000000000000000000000 -->
     <!-- <div class="sec">
       <form action="/action_page.php" id="numform" oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
@@ -92,7 +91,11 @@
     </div> -->
     <!-- 0000000000000000000000000000000000 -->
   </div>
-
+  <fieldset>
+      <legend>Здесь пишем название изображения или формы</legend>
+      Сюда помещаем содержание (картинку, форму или другой контент)
+      </fieldset>
+     
   <footer class="footer container">
     <nav class="footer-social">
       <div>

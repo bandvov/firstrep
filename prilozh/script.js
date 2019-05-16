@@ -65,7 +65,7 @@ function factorial(x) {
   }
   return x * factorial(x - 1);
 }
-document.write('<br> факторіал ' + x + '=' + factorial(x));
+document.write('<br> факторіал ' + input + '=' + factorial(input));
 
 
 
