@@ -836,10 +836,10 @@ console.log(t);
 
 var arr = [4, 2.3, -42, 3.9, 2.5, 2];
 // запис в масив тільки цілих парних чисел
-var squaredIntegers = []; 
-arr.map(function(num) {
-	while(num % 2 == 0){
-    return squaredIntegers.push(Math.pow(num,2));
+var squaredIntegers = [];
+arr.map(function (num) {
+  while (num % 2 == 0) {
+    return squaredIntegers.push(Math.pow(num, 2));
   }
 });
 console.log(squaredIntegers);
@@ -862,7 +862,8 @@ var maximus = Math.max(...arr);
 // console.log(maximus);
 
 document.querySelector('#in').oninput = function () {
-  var offset = 5, i, out, str;
+  var offset = 5,
+    i, out, str;
   out = '';
   str = this.value;
   for (i = 0; i < str.length; i++) {
@@ -889,37 +890,37 @@ document.querySelector('#in').oninput = function () {
 // }
 // countDown();
 
-const keyboard = [49, 50, 51, 52, 53, 54, 55, 56, 57, 48,  113, 119, 101, 114, 116, 121, 117, 105, 111, 112,  97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 122, 120, 99, 118, 98, 110, 109, 44, 46];
- 
+const keyboard = [49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 122, 120, 99, 118, 98, 110, 109, 44, 46];
+
 function init() {
-var out = '';
-for (var i = 0; i < keyboard.length; i++) {
-  if (i === 10 || i === 20 || i === 30) {
-    out += '<div class="clearfix"></div>';
+  var out = '';
+  for (var i = 0; i < keyboard.length; i++) {
+    if (i === 10 || i === 20 || i === 30) {
+      out += '<div class="clearfix"></div>';
+    }
+    out += '<div class="keyb" data="' + keyboard[i] + '">' + String.fromCharCode(keyboard[i]) + '</div>';
   }
-  out += '<div class="keyb" data="' + keyboard[i] +'">' + String.fromCharCode(keyboard[i]) + '</div>';
-}
-document.querySelector('#keyboard').innerHTML = out;
+  document.querySelector('#keyboard').innerHTML = out;
 }
 
 init();
 
-document.onkeypress = function(event){
-  document.querySelectorAll(".keyb").forEach(function(element){
-    element.classList.remove('active');
-  }); 
-  document.querySelector('.keyb[data="'+ event.keyCode +'"]').classList.add('active');
-}
-document.onclick = function(event){
-  document.querySelectorAll(".keyb").forEach(function(element){
+document.onkeypress = function (event) {
+  document.querySelectorAll(".keyb").forEach(function (element) {
     element.classList.remove('active');
   });
-    var target = event.target;
+  document.querySelector('.keyb[data="' + event.keyCode + '"]').classList.add('active');
+}
+document.onclick = function (event) {
+  document.querySelectorAll(".keyb").forEach(function (element) {
+    element.classList.remove('active');
+  });
+  var target = event.target;
   console.log(event.target);
- if (target.className == 'keyb' ) {
-target.classList.add('active');
- }
- }
+  if (target.className == 'keyb') {
+    target.classList.add('active');
+  }
+}
 
 
 var arr = [1, 2, 3, 4, 5, 6];
@@ -1082,20 +1083,20 @@ document.querySelector('.alerting').onclick = function () {
   // btn.id = "hidbtn";
   // btn.innerHTML = 'hide';
   // document.body.insertAdjacentElement("afterbegin", btn);
-var span = document.createElement('span');
-span.innerHTML = '&times';
-span.id = "spanhide";
-document.querySelector('.newalert').appendChild(span);
+  var span = document.createElement('span');
+  span.innerHTML = '&times';
+  span.id = "spanhide";
+  document.querySelector('.newalert').appendChild(span);
 
-  document.querySelector('#spanhide').onclick = function() {
+  document.querySelector('#spanhide').onclick = function () {
     document.querySelector('.newalert').remove();
     document.querySelector('.alert').remove();
     document.querySelector('.alert1').remove();
     document.querySelector('#hidbtn').remove();
   }
 };
- 
- 
+
+
 
 
 
@@ -1142,8 +1143,8 @@ console.log(workersLookup(workers, name, surname, prop));
 
 function loopw(arr, name) {
   return arr.find((arr) => arr.name === name).skills;
-
 }
+
 var loopedName = loopw(workers, 'Alex');
 console.log(loopedName);
 
@@ -1165,31 +1166,71 @@ var foo = objArray.map((a) => a.foo);
 
 console.log(foo);
 
-document.querySelector('.menu').onclick = function() {
-this.classList.toggle('open');
+document.querySelector('.menu').onclick = function () {
+  this.classList.toggle('open');
 }
 
-
-
-
-document.getElementById('nav').onmouseover= function(event) {
+document.querySelector('#nav').onmouseover = function (event) {
   var target = event.target;
-  console.log(target);
-  if (target.className == 'menu-item') {
-    var s=target.getElementsByClassName('submenu');
+  if (target.className == "menu-item") {
+    var s = target.querySelectorAll(".submenu");
+    console.log(s);
     closeMenu();
-    s[0].style.display='block';
+    s[0].style.display = "block";
   }
 }
+document.onmousemove = function (event) {
+  if (event.target.className != "menu-item" && event.target.className != "submenu" && event.target.className != 'link') {
+    closeMenu();
+  }
+}
+
 function closeMenu() {
-  var subm =  document.querySelectorAll('.submenu');
-  for (var i = 0; i < subm.length; i++) {
-    subm[i].style = 'none';
+  var submenu = document.querySelectorAll('.submenu');
+  for (var i = 0; i < submenu.length; i++) {
+    submenu[i].style.display = "none";
   }
 }
-document.onmouseover= function(event) {
-var target = event.target;
-  if (target.className !== 'menu-item' && target.className !== 'submenu'&& target.className !== 'link') {
-    closeMenu();
+
+var text = '{ "employees" : [' +
+  '{ "name":"John" , "lastName":"Doe" },' +
+  '{ "firstName":"Anna" , "lastName":"Smith" },' +
+  '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+
+var plo = JSON.parse(text);
+console.log(plo);
+
+function findLongestWordLength(str) {
+  var arr = str.split(' ');
+  var arrs = [];
+  for (var i = 0; i < arr.length; i++) {
+    arrs.push(arr[i].length);
+    arrs.sort();
+    console.log(arrs);
   }
+  var last = arrs[arrs.length - 1];
+
+  return last;
 }
+
+findLongestWordLength("What if we try a super-long word such as otorhinolaryngology");
+
+function repeatStringNumTimes(str, num) {
+  // repeat after me
+  let accumStr= '';
+  for (var i = 0;i < num; i++) {
+  accumStr += str;  
+}
+return accumStr;
+}
+
+
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  if (str.length <= num) {
+ return str;
+}else {
+  return str.slice(0, num > 3 ? num : num) + '...';
+}
+}
+console.log(truncateString('A-', 1));
