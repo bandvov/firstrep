@@ -1,4 +1,5 @@
 'use strict';
+
 // var nicknames = ['di', 'boo', 'punkeye'];
 // nicknames.size=3;
 // for (var nickname of nicknames) {
@@ -665,24 +666,6 @@ function count() {
 setInterval(count, 60000);
 
 
-
-
-var a = 51;
-
-switch (a) {
-  case 3:
-    alert('Маловато');
-    break;
-  case 4:
-    alert('В точку!');
-    break;
-  case 5:
-    alert('Перебор');
-    break;
-  default:
-    alert('Я таких значений не знаю');
-}
-
 // var data = [{a : true, b : false}, {a : false, b : true}];
 // var result = false;
 // var sample;
@@ -890,37 +873,37 @@ document.querySelector('#in').oninput = function () {
 // }
 // countDown();
 
-const keyboard = [49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 122, 120, 99, 118, 98, 110, 109, 44, 46];
+// const keyboard = [49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 122, 120, 99, 118, 98, 110, 109, 44, 46];
 
-function init() {
-  var out = '';
-  for (var i = 0; i < keyboard.length; i++) {
-    if (i === 10 || i === 20 || i === 30) {
-      out += '<div class="clearfix"></div>';
-    }
-    out += '<div class="keyb" data="' + keyboard[i] + '">' + String.fromCharCode(keyboard[i]) + '</div>';
-  }
-  document.querySelector('#keyboard').innerHTML = out;
-}
+// function init() {
+//   var out = '';
+//   for (var i = 0; i < keyboard.length; i++) {
+//     if (i % 10 === 0) {
+//       out += '<div class="clearfix"></div>';
+//     }
+//     out += '<div class="keyb" data="' + keyboard[i] + '">' + String.fromCharCode(keyboard[i]) + '</div>';
+//   }
+//   document.querySelector('#keyboard').innerHTML = out;
+// }
 
-init();
+// init();
 
-document.onkeypress = function (event) {
-  document.querySelectorAll(".keyb").forEach(function (element) {
-    element.classList.remove('active');
-  });
-  document.querySelector('.keyb[data="' + event.keyCode + '"]').classList.add('active');
-}
-document.onclick = function (event) {
-  document.querySelectorAll(".keyb").forEach(function (element) {
-    element.classList.remove('active');
-  });
-  var target = event.target;
-  console.log(event.target);
-  if (target.className == 'keyb') {
-    target.classList.add('active');
-  }
-}
+// document.onkeypress = function (event) {
+//   document.querySelectorAll(".keyb").forEach(function (element) {
+//     element.classList.remove('active');
+//   });
+//   document.querySelector('.keyb[data="' + event.keyCode + '"]').classList.add('active');
+// }
+// document.onclick = function (event) {
+//   document.querySelectorAll(".keyb").forEach(function (element) {
+//     element.classList.remove('active');
+//   });
+//   var target = event.target;
+//   console.log(event.target);
+//   if (target.className == 'keyb') {
+//     target.classList.add('active');
+//   }
+// }
 
 
 var arr = [1, 2, 3, 4, 5, 6];
@@ -1074,15 +1057,14 @@ console.log(reslt);
 
 
 var modalMessage = 'THIS IS A NEW ATTEMPT';
-document.querySelector('.alerting').onclick = function () {
+document.querySelector('.alerting').addEventListener('click', newAttempt, false);
+
+function newAttempt() {
   var div = document.createElement('div');
   div.className = 'newalert';
   div.innerHTML = modalMessage;
   document.body.insertAdjacentElement("afterbegin", div);
-  // var btn = document.createElement('button');
-  // btn.id = "hidbtn";
-  // btn.innerHTML = 'hide';
-  // document.body.insertAdjacentElement("afterbegin", btn);
+
   var span = document.createElement('span');
   span.innerHTML = '&times';
   span.id = "spanhide";
@@ -1092,9 +1074,13 @@ document.querySelector('.alerting').onclick = function () {
     document.querySelector('.newalert').remove();
     document.querySelector('.alert').remove();
     document.querySelector('.alert1').remove();
-    document.querySelector('#hidbtn').remove();
-  }
-};
+    // document.querySelector('.alerting').remove();
+
+  };
+  document.querySelector('.alerting').removeEventListener('click', newAttempt);
+
+}
+
 
 
 
@@ -1165,35 +1151,34 @@ document.querySelector('.menu').onclick = function () {
   this.classList.toggle('open');
 }
 
-document.querySelector('#nav').onmouseover = function (event) {
-  var target = event.target;
+document.querySelector('#nav').onmouseover = function (e) {
+  var target = e.target;
   if (target.className == "menu-item") {
-    var s = target.querySelectorAll(".submenu");
-    console.log(s);
     closeMenu();
+    var s = target.querySelectorAll('.submenu');
     s[0].style.display = "block";
   }
 }
-document.onmousemove = function (event) {
-  if (event.target.className != "menu-item" && event.target.className != "submenu" && event.target.className != 'link') {
+window.addEventListener('mousemove', function (e) {
+  var target = e.target;
+  if (target.className !== "menu-item" && target.className !== "submenu" && target.className !== "link") {
     closeMenu();
   }
-}
+}, false);
 
 function closeMenu() {
-  var submenu = document.querySelectorAll('.submenu');
-  for (var i = 0; i < submenu.length; i++) {
-    submenu[i].style.display = "none";
+  var i, s;
+  s = document.querySelectorAll('.submenu');
+  for (i = 0; i < s.length; i++) {
+    s[i].style.display = "none";
   }
 }
-
 var text = '{ "employees" : [' +
   '{ "name":"John" , "lastName":"Doe" },' +
   '{ "firstName":"Anna" , "lastName":"Smith" },' +
   '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
 
 var plo = JSON.parse(text);
-console.log(plo);
 
 function findLongestWordLength(str) {
   var arr = str.split(' ');
@@ -1201,7 +1186,6 @@ function findLongestWordLength(str) {
   for (var i = 0; i < arr.length; i++) {
     arrs.push(arr[i].length);
     arrs.sort();
-    console.log(arrs);
   }
   var last = arrs[arrs.length - 1];
 
@@ -1243,17 +1227,305 @@ function frankenSplice(arr1, arr2, n) {
   return arb;
 }
 
-console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+// console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+
+// document.querySelector('div')[2].onclick = function() {
+//  this.innerHTML = "this is this";
+//  console.log(this);
+// }
 
 
-function getIndexToIns(arr, num) {
-  // Find my place in this sorted array.
-for (var i in arr) {
-  if (arr[i] >= num){
-    return i;
+var elements = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+var str = 211554;
+var regex = /(0+)/g;
+
+function gap(str, regex) {
+
+  var res = str.toString(2).match(regex).sort();
+  return res[res.length - 1].length;
+}
+console.log(gap(str, regex));
+
+
+console.log(parseInt('010101' & '0010001', 2));
+
+
+document.querySelectorAll('.order').forEach(function (elem) {
+  elem.onclick = orderFunction;
+});
+
+function orderFunction() {
+  // var target =event.target;
+  var speed = document.querySelector('.order[value="speed"]');
+  var cheap = document.querySelector('.order[value="cheap"]');
+  var quality = document.querySelector('.order[value="quality"]');
+
+  if (this.value == "speed" && quality.checked) {
+    cheap.checked = false;
+    return true;
+
+  }
+  if (this.value == "speed" && cheap.checked) {
+    quality.checked = false;
+    return true;
+  }
+  if (this.value == "cheap" && quality.checked) {
+    speed.checked = false;
+    return true;
+  }
+  if (this.value == "cheap" && speed.checked) {
+    quality.checked = false;
+    return true;
+  }
+  if (this.value == "quality" && speed.checked) {
+    cheap.checked = false;
+    return true;
+  }
+
+  if (this.value == "quality" && cheap.checked) {
+    speed.checked = false;
+    return true;
+  }
+
+}
+var slideIndex = 1;
+
+function showSlide(n) {
+  var x = document.querySelectorAll('.mySlide');
+  var dots = document.querySelectorAll('.dot');
+  if (n < 1) {
+    slideIndex = x.length;
+  }
+  if (n > x.length) {
+    slideIndex = 1;
+  }
+  x.forEach((elem) => {
+    elem.style.display = "none";
+  });
+  for (var i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace("dotactive", " ");
+  }
+  x[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " dotactive";
+}
+showSlide(slideIndex);
+
+function prevSlide(n) {
+  showSlide(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlide(slideIndex = n);
+}
+
+// ============розрахунок GDP=============
+var x = 112;
+
+function gdp(z, n) {
+  for (var i = 0; i < n; i++) {
+    z += z * 0.12;
+  }
+  return z;
+}
+console.log(gdp(126, 10));
+
+// ===========================================
+document.querySelector('#myIndex').addEventListener('input', function () {
+  var val = this.value;
+  var li = document.querySelectorAll('#myUl li');
+  for (var i = 0; i < li.length; i++) {
+    var textValue = li[i].innerText || li[i].textContent;
+    if (textValue.toLowerCase().search(val) == -1) {
+      li[i].style.display = "none";
+    } else {
+      li[i].style.display = "block";
+      li[i].innerHTML = insertMark(textValue, textValue.toLowerCase().search(val), val.length);
+    }
+  }
+}, false);
+
+function insertMark(str, pos, len) {
+  return str.slice(0, pos) + '<mark>' + str.slice(pos, pos + len) + '</mark>' + str.slice(pos + len);
+}
+// ============filter input==============
+window.addEventListener('load', init2, false);
+
+function init2() {
+  var inputs = document.querySelectorAll('p input');
+  for (var i = 0; i < inputs.length; i++) {
+    var x = inputs[i];
+    if (x.type != "text") continue;
+    if (x.dataset.charsAllowed == undefined) continue;
+    x.addEventListener('keypress', keyFilter, false);
   }
 }
-  return arr.length;
+
+function keyFilter(e) {
+  if (!e) e = window.event;
+  if (e.charCode == 0 || e.charCode < 32) return true;
+  var allowedText = e.target.dataset.charsAllowed;
+  var element = e.target.dataset.messageId;
+  var symbol = String.fromCharCode(e.charCode).toLowerCase();
+  if (allowedText.search(symbol) == -1) {
+    if (element) {
+      element = document.getElementById(element);
+      element.style.visibility = "visible";
+    }
+    e.preventDefault();
+    return false;
+  } else {
+    if (element) {
+      element = document.getElementById(element);
+      element.style.visibility = "hidden";
+    }
+    return true;
+  }
+}
+// ==============================element drag==========
+
+window.addEventListener('load', function () {
+  init3('elem');
+  init3('elem2');
+  init3('elem3');
+});
+
+
+function init3(id) {
+  id = document.getElementById(id);
+  id.addEventListener('mousedown', function (e) {
+    drag(this, e);
+  });
 }
 
-console.log(getIndexToIns([40, 60], 80));
+function drag(elementToDrag, e) {
+  var startX = e.clientX;
+  var startY = e.clientY;
+  var origX = elementToDrag.offsetLeft;
+  var origY = elementToDrag.offsetTop;
+  var deltaX = startX - origX;
+  var deltaY = startY - origY;
+  document.addEventListener('mousemove', moveHandler, true);
+  document.addEventListener('mouseup', upHandler, true);
+
+  function moveHandler(e) {
+    if (!e) e = window.event;
+    elementToDrag.style.left = (e.clientX - deltaX) + "px";
+    elementToDrag.style.top = (e.clientY - deltaY) + "px";
+  }
+
+  function upHandler(e) {
+    if (!e) e = window.event;
+    document.removeEventListener('mousemove', moveHandler, true);
+    document.removeEventListener('mouseup', upHandler, true);
+  }
+}
+// ==================================================
+
+window.addEventListener('load', function () {
+  for (var i = 0; i < document.forms[0].elements.length; i++) {
+    document.forms[0].elements[i].onchange = function () {
+      document.querySelector('#formout').innerHTML = "зміна сталася в " + this.name;
+    }
+  }
+});
+
+// ====================DRAG & DROP==================
+window.addEventListener('load', function () {
+  var i;
+  var shirt = document.querySelector('#shirt');
+  var pants = document.querySelector('#pants');
+  var boots = document.querySelector('#boots');
+  var target = document.querySelector('#target');
+  var price = document.querySelector('#summ span');
+  price.innerHTML = 0;
+  var arr = [];
+  arr.push(shirt, pants, boots);
+  for (i = 0; i < arr.length; i++) {
+    arr[i].addEventListener('dragstart', function (evt) {
+      this.style.border = "4px solid orange";
+      evt.dataTransfer.effectAllowed = "move";
+      evt.dataTransfer.setData('text', this.id);
+    }, false);
+    arr[i].addEventListener('dragend', function () {
+      this.style.border = "4px solid white";
+    }, false);
+  }
+  target.addEventListener('dragenter', function () {
+    this.style.backgroundColor = "lightgreen";
+  }, false);
+  target.addEventListener('dragenter', function () {
+    this.style.backgroundColor = "lightgreen";
+  }, false);
+  target.addEventListener('dragleave', function () {
+    this.style.backgroundColor = "purple";
+  }, false);
+  target.addEventListener('dragover', function (evt) {
+    if (evt.preventDefault) evt.preventDefault();
+    return false;
+  }, false);
+  target.addEventListener('drop', function (evt) {
+    if (evt.preventDefault) evt.preventDefault();
+    if (evt.stopPropagation) evt.stopPropagation();
+    var id = evt.dataTransfer.getData('text');
+    var elem = document.getElementById(id);
+    this.appendChild(elem);
+    price.innerHTML = +(price.innerHTML) + +(elem.dataset.price);
+  }, false);
+});
+
+// ============================================
+
+window.addEventListener('load', function () {
+
+  document.querySelector('#start').onclick = startWatch;
+  document.querySelector('#stop').onclick = stopWatch;
+});
+var watchId;
+
+function startWatch() {
+  watchId = navigator.geolocation.watchPosition(updatePosition, handleError, {
+    maximumAge: 0,
+    timeout: 3000
+  });
+}
+
+function stopWatch() {
+  navigator.geolocation.clearWatch(watchId);
+}
+
+function updatePosition(e) {
+  function $(id) {
+    return document.getElementById(id);
+  }
+  $('latitude').innerHTML = e.coords.latitude;
+  $('longitude').innerHTML = e.coords.longitude;
+  $('accuracy').innerHTML = e.coords.accuracy;
+}
+
+function handleError(e) {
+  console.log(e);
+  switch (e.code) {
+    case 0:
+      updateStatus('Виникла помилка при спробі встановити місцезнаходження' + e.message);
+      break;
+    case 1:
+      updateStatus('Користувач заборонив отримувати дані геолокації');
+      break;
+    case 2:
+      updateStatus('Браузеру не вдалося встановити місцезнаходження ' + e.message);
+      console.log(e);
+      break;
+    case 3:
+      updateStatus('Закінчився час очікування');
+  }
+
+  function updateStatus(message) {
+    document.querySelector('#status').innerHTML = message;
+  }
+}
