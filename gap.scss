@@ -82,3 +82,27 @@ div#tabdiv {
 
 }
 
+.accordion {
+    padding: 15px;
+    background-color: #eee;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.accordion:hover {
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.panel {
+    transition: 0.4s;
+    padding: 0 18px;
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
