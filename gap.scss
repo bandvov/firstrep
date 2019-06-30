@@ -55,4 +55,30 @@ div#tabdiv {
 
     }
 
-  
+    >div#Tokyo {
+        background-color: blue;
+
+    }
+
+    >div#Rome {
+        background-color: green;
+    }
+}
+
+.tabcontent {
+    margin: 0 auto;
+    color: white;
+
+}
+
+.tabcontent h3 {
+    margin: 0 auto;
+}
+
+
+
+.tabs input {
+    border: none;
+
+}
+

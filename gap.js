@@ -47,3 +47,28 @@ function sortDesc(sortType) {
   }
 }
 
+window.addEventListener('load', function () {
+  document.querySelector('#Londonbtn').onclick = function () {
+    openCity('London', this, 'red');
+  }
+  document.querySelector('#Tokyobtn').onclick = function () {
+    openCity('Tokyo', this, 'blue');
+  }
+  document.querySelector('#Romebtn').onclick = function () {
+    openCity('Rome', this, 'green');
+  }
+
+  function openCity(cityName, elem, color) {
+    let tabcontent = document.querySelectorAll('.tabcontent');
+    for (let i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    let tablinks = document.querySelectorAll('.tablink');
+    for (let i = 0; i < tablinks.length; i++) {
+      tablinks[i].style.backgroundColor = "";
+    }
+    elem.style.backgroundColor = color;
+    document.getElementById(cityName).style.display = 'block';
+  }
+  document.querySelector('#Londonbtn').click();
+}, false);
