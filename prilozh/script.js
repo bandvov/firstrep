@@ -36,10 +36,10 @@ res2.onclick = function () {
 
 };
 
-// alert(0 || null || 2 && 3 || 4);
+alert(0 || null || 2 && 3 || 4);
 
-// a = [1, 2, 3]; b = [1, 2, 3]; 
-// alert(a == b); 
+a = [1, 2, 3]; b = [1, 2, 3]; 
+alert(a == b); 
 
 // var a = 0 || "" || 2 || undefined || true || falsе;
 // alert(a);

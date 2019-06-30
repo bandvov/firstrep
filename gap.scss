@@ -1,0 +1,58 @@
+$green: red;
+
+#nav {
+    padding: 10px 10px;
+    border-top: 1px solid salmon;
+    margin: 77px 0 0 0;
+    border-bottom: 1px solid black;
+
+}
+
+#nav button {
+    padding: 6px 6px;
+}
+
+.goods_wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 400px 400px;
+    grid-auto-rows: 400px;
+    grid-gap: 5px 5px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+div.goods_card {
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+    content: inherit;
+
+}
+
+div.goods_card {
+    >img {
+        padding: 5px;
+        align-self: auto;
+       max-width: 90%;
+       box-sizing: border-box;
+    }
+
+}
+
+div#tabdiv {
+    border: 1px double $green;
+
+    >div.tabs input {
+        padding: 4px;
+        outline: none;
+
+    }
+
+    >div#London {
+        background-color: $green;
+
+
+    }
+
+  

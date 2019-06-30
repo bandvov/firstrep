@@ -1,5 +1,6 @@
 'use strict';
 
+
 // var nicknames = ['di', 'boo', 'punkeye'];
 // nicknames.size=3;
 // for (var nickname of nicknames) {
@@ -1357,21 +1358,23 @@ function insertMark(str, pos, len) {
 window.addEventListener('load', init2, false);
 
 function init2() {
-  var inputs = document.querySelectorAll('p input');
-  for (var i = 0; i < inputs.length; i++) {
-    var x = inputs[i];
-    if (x.type != "text") continue;
+  let inputs = document.querySelectorAll('p input');
+  for (let i = 0; i < inputs.length; i++) {
+    let x = inputs[i];
+    if (x.type !== "text") continue;
     if (x.dataset.charsAllowed == undefined) continue;
-    x.addEventListener('keypress', keyFilter, false);
+    x.addEventListener('keypress', keyfilter, false);
   }
 }
 
-function keyFilter(e) {
+function keyfilter(e) {
   if (!e) e = window.event;
   if (e.charCode == 0 || e.charCode < 32) return true;
-  var allowedText = e.target.dataset.charsAllowed;
-  var element = e.target.dataset.messageId;
-  var symbol = String.fromCharCode(e.charCode).toLowerCase();
+  let allowedText = e.target.dataset.charsAllowed,
+    element = e.target.dataset.messageId,
+    symbol = String.fromCharCode(e.charCode);
+  console.log(element);
+  console.log(symbol);
   if (allowedText.search(symbol) == -1) {
     if (element) {
       element = document.getElementById(element);
@@ -1381,6 +1384,7 @@ function keyFilter(e) {
     return false;
   } else {
     if (element) {
+
       element = document.getElementById(element);
       element.style.visibility = "hidden";
     }
@@ -1437,69 +1441,68 @@ window.addEventListener('load', function () {
 
 // ====================DRAG & DROP==================
 window.addEventListener('load', function () {
-  var i;
-  var shirt = document.querySelector('#shirt');
-  var pants = document.querySelector('#pants');
-  var boots = document.querySelector('#boots');
-  var target = document.querySelector('#target');
-  var price = document.querySelector('#summ span');
-  price.innerHTML = 0;
+  function $(id) {
+    return document.getElementById(id);
+  }
+  var shirt = $('shirt');
+  var pants = $('pants');
+  var boots = $('boots');
+  var target = $('target');
+  var summ = document.querySelector('#summ span');
+  summ.innerHTML = 0;
   var arr = [];
   arr.push(shirt, pants, boots);
-  for (i = 0; i < arr.length; i++) {
-    arr[i].addEventListener('dragstart', function (evt) {
-      this.style.border = "4px solid orange";
-      evt.dataTransfer.effectAllowed = "move";
-      evt.dataTransfer.setData('text', this.id);
+  for (var i = 0; i < arr.length; i++) {
+    arr[i].addEventListener('dragstart', function (e) {
+      this.style.border = '2px dashed darkorange';
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text', this.id);
     }, false);
     arr[i].addEventListener('dragend', function () {
-      this.style.border = "4px solid white";
+      this.style.border = "";
     }, false);
   }
   target.addEventListener('dragenter', function () {
-    this.style.backgroundColor = "lightgreen";
-  }, false);
-  target.addEventListener('dragenter', function () {
-    this.style.backgroundColor = "lightgreen";
+    this.style.backgroundColor = "green";
   }, false);
   target.addEventListener('dragleave', function () {
-    this.style.backgroundColor = "purple";
+    this.style.backgroundColor = "orange";
   }, false);
-  target.addEventListener('dragover', function (evt) {
-    if (evt.preventDefault) evt.preventDefault();
+  target.addEventListener('dragover', function (e) {
+    if (e.preventDefault) e.preventDefault();
     return false;
   }, false);
-  target.addEventListener('drop', function (evt) {
-    if (evt.preventDefault) evt.preventDefault();
-    if (evt.stopPropagation) evt.stopPropagation();
-    var id = evt.dataTransfer.getData('text');
+  target.addEventListener('drop', function (e) {
+    if (e.preventDefault) e.preventDefault();
+    if (e.stopPropagation) e.stopPropagation();
+    var id = e.dataTransfer.getData("text");
     var elem = document.getElementById(id);
     this.appendChild(elem);
-    price.innerHTML = +(price.innerHTML) + +(elem.dataset.price);
+    summ.innerHTML = +(summ.innerHTML) + +(elem.dataset.price);
+
   }, false);
-});
-
-// ============================================
-
+}, false);
+// =======================GEOLOCATION=====================
 window.addEventListener('load', function () {
+  document.querySelector('#start').addEventListener('click', watchPos, false);
+}, false);
+document.querySelector('#stop').addEventListener('click', stopWatchPos, false);
 
-  document.querySelector('#start').onclick = startWatch;
-  document.querySelector('#stop').onclick = stopWatch;
-});
 var watchId;
 
-function startWatch() {
+function watchPos() {
   watchId = navigator.geolocation.watchPosition(updatePosition, handleError, {
     maximumAge: 0,
-    timeout: 3000
+    timeout: 70000
   });
 }
 
-function stopWatch() {
+function stopWatchPos() {
   navigator.geolocation.clearWatch(watchId);
 }
 
 function updatePosition(e) {
+
   function $(id) {
     return document.getElementById(id);
   }
@@ -1509,23 +1512,186 @@ function updatePosition(e) {
 }
 
 function handleError(e) {
-  console.log(e);
   switch (e.code) {
     case 0:
-      updateStatus('Виникла помилка при спробі встановити місцезнаходження' + e.message);
+      updateStatus('Error ocured');
       break;
     case 1:
-      updateStatus('Користувач заборонив отримувати дані геолокації');
+      updateStatus('користувач заборонив отримувати дані геолокації');
       break;
     case 2:
-      updateStatus('Браузеру не вдалося встановити місцезнаходження ' + e.message);
-      console.log(e);
+      updateStatus('неможливо отримати дані геолокації');
       break;
     case 3:
-      updateStatus('Закінчився час очікування');
-  }
-
-  function updateStatus(message) {
-    document.querySelector('#status').innerHTML = message;
+      updateStatus('перевищкно час очікування');
   }
 }
+
+function updateStatus(message) {
+  document.querySelector('#status').innerHTML = message;
+}
+// ================tooltip constructor========
+function Tooltip() {
+  this.tooltip = document.createElement('div');
+  this.tooltip.className = "tooltip";
+  this.tooltip.style.display = "none";
+  this.tooltip.style.position = "absolute";
+}
+Tooltip.prototype.show = function (text, x, y) {
+  this.tooltip.style.display = "block";
+  this.tooltip.style.left = x + 'px';
+  this.tooltip.style.top = y + 'px';
+  this.tooltip.innerHTML = text;
+  if (this.tooltip.parentNode != document.body) {
+    document.body.appendChild(this.tooltip);
+  }
+
+}
+Tooltip.prototype.hide = function () {
+  this.tooltip.style.display = "none";
+}
+var t = new Tooltip();
+window.addEventListener('load', function () {
+
+  document.querySelector('#map').onmousemove = function (e) {
+    t.show('this is tooltip', e.clientX + 20, e.clientY + 20);
+  };
+  document.querySelector('#map').onmouseleave = function () {
+    t.hide();
+  }
+}, false);
+// ==================================
+
+window.addEventListener('load', function () {
+  let saveStor = document.querySelector('#savestor');
+  let getStor = document.querySelector('#getstor');
+  let text = document.querySelector('#stor input');
+  let clearstor = document.querySelector('#clearstor');
+  saveStor.onclick = function () {
+    localStorage.setItem(text.name, text.value);
+
+  }
+  getStor.onclick = function () {
+    alert(localStorage.getItem(text.name));
+  }
+  clearstor.onclick = function () {
+    localStorage.removeItem(text.value);
+  }
+}, false);
+// =========================
+document.querySelector('#clearstor').addEventListener('click', function () {
+  localStorage.clear();
+  showStorageContent();
+}, false);
+
+function showStorageContent() {
+  document.querySelector('#cont').innerHTML = "local storage length " + localStorage.length + '<br>';
+  document.querySelector('#cont').innerHTML += ' all keys in localstorage' + '<br>';
+  for (var i = 0; i < localStorage.length; i++) {
+    document.querySelector('#cont').innerHTML += localStorage.getItem(localStorage.key(i)) + '<br>';
+  }
+}
+showStorageContent();
+// =========================================
+window.addEventListener('load', function () {
+  let keyinp = document.querySelector('#keyinp');
+  let keyvalueinp = document.querySelector('#keyvalueinp');
+  let savetostr = document.querySelector('#savetostr');
+  let readfromstr = document.querySelector('#readfromstr');
+  let removefromstr = document.querySelector('#removefromstr');
+  savetostr.onclick = function () {
+    localStorage.setItem(keyinp.value, keyvalueinp.value);
+  }
+  readfromstr.onclick = function () {
+    alert(localStorage.getItem(keyinp.value));
+  }
+  removefromstr.onclick = function () {
+    localStorage.removeItem(keyinp.value);
+  }
+}, false);
+// =========================
+window.addEventListener('storage', function (e) {
+
+  var message = 'key: ' + e.key + '<br>';
+  message += 'new value : ' + e.newValue + '<br>';
+  message += 'old value : ' + e.oldValue + '<br>';
+  message += 'storage area: ' + e.storageArea + '<br>';
+  var x = document.querySelector('#storageout');
+  x.innerHTML = message;
+}, true);
+
+// ===============================
+window.addEventListener('load', function () {
+  let item = localStorage.getItem('load_counter');
+  if (item == null) {
+    item = 0;
+  }
+  item++;
+  localStorage.setItem('load_counter', item);
+  document.querySelector('#loadcount').innerHTML = 'your page was visited ' + item + '<times>';
+}, false);
+// ====================
+window.addEventListener('load', function () {
+  function $(id) {
+    return document.getElementById(id);
+  }
+  init();
+
+  function init() {
+    let clname = $('clname');
+    let clemail = $('clemail');
+    let model = $('model');
+    document.forms.client.onsubmit = function (e) {
+      if (clname.value == "" && clname.value == undefined || clemail.value == '' || model.value == '') {
+        e.preventDefault();
+      } else {
+        let newCustomer = {};
+        newCustomer.id = Math.floor(Math.random() * 300);
+        newCustomer.name = $('clname').value;
+        newCustomer.email = $('clemail').value;
+        newCustomer.model = $('model').value;
+        newCustomer.date = new Date();
+        localStorage.setItem(newCustomer.id, JSON.stringify(newCustomer));
+        let key, value;
+        for (let i = 0; i < localStorage.length; i++) {
+          key = localStorage.key(i);
+          value = localStorage.getItem(key);
+          if (JSON.parse(value.date) <   new Date() * 1000 * 60 ^ 60 * 24 * 7) {
+            localStorage.removeItem(key);
+          }
+        }
+      }
+    }
+  }
+}, false);
+// =======================================================
+
+window.addEventListener('load', function () {
+  function $(id) {
+    return document.getElementById(id);
+  }
+  let audio = $('player');
+
+  $('play').onclick = function () {
+    audio.play();
+  }
+  $('pause').onclick = function () {
+    audio.pause();
+    if (audio.currentTime > 5) {
+      audio.pause();
+      alert('this is demo, for more register');
+      $('play').setAttribute('disabled', "disabled");
+      $('mute+').setAttribute('disabled', "disabled");
+      $('mute-').setAttribute('disabled', "disabled");
+    }
+  }
+  $('mute+').onclick = function () {
+    audio.volume += 0.1;
+    ;
+  }
+  $('mute-').onclick = function () {
+    audio.volume -= 0.1;
+  }
+
+});
+// =========================video

@@ -1,0 +1,225 @@
+#nav {
+  padding: 10px 10px;
+  border-top: 1px solid salmon;
+  margin: 77px 0 0 0;
+  border-bottom: 1px solid black;
+}
+
+#nav button {
+  padding: 6px 6px;
+}
+
+.goods_wrap {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  -ms-grid-rows: 400px 400px;
+      grid-template-rows: 400px 400px;
+  grid-auto-rows: 400px;
+  grid-gap: 5px 5px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+div.goods_card {
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
+  content: inherit;
+}
+
+div.goods_card > img {
+  padding: 5px;
+  -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
+      align-self: auto;
+  max-width: 90%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+div#tabdiv {
+  border: 1px double red;
+}
+
+div#tabdiv > div.tabs input {
+  padding: 4px;
+  outline: none;
+}
+
+div#tabdiv > div#London {
+  background-color: red;
+}
+
+div#tabdiv > div#Tokyo {
+  background-color: blue;
+}
+
+div#tabdiv > div#Rome {
+  background-color: green;
+}
+
+.tabcontent {
+  margin: 0 auto;
+  color: white;
+}
+
+.tabcontent h3 {
+  margin: 0 auto;
+}
+
+.tabs input {
+  border: none;
+}
+
+.accordion {
+  padding: 15px;
+  background-color: #eee;
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.accordion:hover {
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.panel {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  padding: 0 18px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.topnav {
+  background-color: #838383;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  height: 47px;
+  line-height: 47px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a.icon {
+  padding: 10px 10px;
+  display: none;
+  width: 47px;
+  height: 47px;
+}
+
+.icon span {
+  position: relative;
+  top: 20px;
+  left: 10px;
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: white;
+}
+
+.icon span::before,
+.icon span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  width: 30px;
+  height: 4px;
+  background-color: #fdfdfd;
+}
+
+.icon span::after {
+  top: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive a.icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    -webkit-transition: 1s;
+    transition: 1s;
+  }
+}
+
+.active {
+  background-color: lawngreen;
+  color: black;
+}
+
+a.active {
+  background-color: lawngreen;
+  color: black;
+}
+
+.valid {
+  background-color: lawngreen;
+}
+
+.invalid {
+  background-color: pink;
+}
+
+.sticky {
+  position: fixed;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+div.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  grid-gap: 5px 5px;
+}
+
+.container div {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+}
+
+.left {
+  background-color: red;
+}
+
+.right {
+  background-color: red;
+}
+/*# sourceMappingURL=gap.css.map */
