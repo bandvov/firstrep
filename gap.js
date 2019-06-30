@@ -82,3 +82,18 @@ window.addEventListener('load', function () {
     }, false);
   }
 }, false);
+// ============================
+window.addEventListener('load', function () {
+  document.querySelector('.icon').onclick = function () {
+    document.querySelector('#myTopnav').classList.toggle('responsive');
+  }
+  let menuitems = document.querySelectorAll('#menuitems a');
+  for (let i = 0; i < menuitems.length; i++) {
+    menuitems[i].addEventListener('click', function () {
+      let current = document.querySelectorAll('.active');
+      current[0].classList.remove('active');
+      this.classList.add('active');
+    }, false);
+
+  }
+}, false);

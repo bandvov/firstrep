@@ -98,4 +98,90 @@ div#tabdiv > div#Rome {
 .show {
   display: block;
 }
+
+.topnav {
+  background-color: #838383;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  height: 47px;
+  line-height: 47px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a.icon {
+  padding: 10px 10px;
+  display: none;
+  width: 47px;
+  height: 47px;
+}
+
+.icon span {
+  position: relative;
+  top: 20px;
+  left: 10px;
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: white;
+}
+
+.icon span::before,
+.icon span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  width: 30px;
+  height: 4px;
+  background-color: #fdfdfd;
+}
+
+.icon span::after {
+  top: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive a.icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    -webkit-transition: 1s;
+    transition: 1s;
+  }
+}
+
+.active {
+  background-color: lawngreen;
+  color: black;
+}
+
+a.active {
+  background-color: lawngreen;
+  color: black;
+}
 /*# sourceMappingURL=gap.css.map */
