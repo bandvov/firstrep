@@ -1,0 +1,82 @@
+.photo-section {
+    width: $size-width*12;
+    flex: auto;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: $position;
+
+    :nth-child(1) {
+        background-image: url(../img/1.jpg);
+        flex: 1 1 60%;
+    }
+
+    :nth-child(2) {
+        background-image: url(../img/2.jpg);
+        flex: 1 1 100/3+vh;
+    }
+
+    :nth-child(3) {
+        background-image: url(../img/3.jpg);
+        flex: 1 1 100/3+vh;
+    }
+
+    :nth-child(4) {
+        background-image: url(../img/4.jpg);
+        flex: 1 1 100/3+vh;
+    }
+
+    :nth-child(5) {
+        background-image: url(../img/5.png);
+        flex: 1 1 100/3+vh;
+    }
+
+    :nth-child(6) {
+        background-image: url(../img/6.png);
+        flex: 1 1 100/3+vh;
+    }
+
+    :nth-child(7) {
+        background-image: url(../img/7.jpg);
+        flex: 3 1 100/2+vh;
+    }
+
+    :nth-child(8) {
+        background-image: url(../img/8.jpg);
+        flex: 3 1 100/2+vh;
+    }
+}
+
+.photo-item {
+    justify-content: $position;
+    height: $size-width/3+vh;
+    min-width: $size-width/2+vh;
+    background-size: cover;
+    text-align: $position;
+    align-items: $position;
+    margin: $size-main $size-main;
+    position: relative;
+
+    &:hover {
+        &::before {
+            opacity: 0;
+        }
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom:0;
+        background-color: lighten($color-grey, 4%);
+        opacity: 0.5;
+        transition: 0.3s;
+    }
+
+    span {
+        position: absolute;
+        font-size: $size-main*4;
+        background-image: none;
+    }
+}

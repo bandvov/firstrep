@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Login page</h1>
+    <div>
+        <table>
+            <tr>
+                <td>Name</td>
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+        <input type="button" value="Log in!" id="btn">
+        <input type="button" value="Log out!" id="btn1">
+
+    </div>
+    <p></p>
+    <p></p>
+    <script>
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET','/all');
+            xhr.send();
+            xhr.onload = function() {
+                document.querySelectorAll('p')[0].innerHTML = this.responseText;
+            }
+            let btn = document.querySelector('#btn');
+            btn.onclick = function () {
+                let inputs = document.querySelectorAll('input');
+                let user = {
+                    username: inputs[0].value,
+                    password: inputs[1].value
+                }
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST','/login');
+                xhr.setRequestHeader('Content-Type','application/json');
+                xhr.send(JSON.stringify(user));
+                xhr.onload = function() {
+                    document.querySelectorAll('p')[1].innerHTML = this.responseText;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

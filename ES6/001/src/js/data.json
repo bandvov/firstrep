@@ -1,0 +1,19 @@
+[{
+        "alex": {
+            "age": 25,
+            "country": "UK"
+        }
+    },
+    {
+        "akito": {
+            "age": 21,
+            "coyntry": "Japam"
+        }
+    },
+    {
+        "mario": {
+            "age": 33,
+            "country": "Italy"
+        }
+    }
+]

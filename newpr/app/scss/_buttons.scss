@@ -1,0 +1,46 @@
+.btn {
+   display: inline-block;
+    min-width: $size-main*10;
+    border: none;
+    color: lighten($color: $color-dark, $amount: 100%);
+    text-decoration: none;
+    padding: $size-main*1.5 $size-main*2;
+    font-size: $size-main*2;
+    letter-spacing: $size-main*0.4;
+    border-radius: $size-main*2;
+    text-align: $position;
+    font-family: $font-family-main;
+    margin-left: $size-main ;
+    opacity: 0.9;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    outline: none;
+
+    &-html {
+        background-color: $color-red;
+        box-shadow: 3px 3px 7px darken($color-red, 2.4%);
+
+        &:hover {
+            background-color: darken($color-red, 14%);
+        }
+    }
+
+    &-css {
+        background-color: $color-blue;
+        box-shadow: 3px 3px 7px darken($color-blue, 2.4%);
+
+        &:hover {
+            background-color: darken($color-blue, 14%);
+
+        }
+    }
+
+    &-js {
+        background-color: $color-orange;
+        box-shadow: 3px 3px 7px darken($color-orange,  2.4%);
+        &:hover{
+            background-color: darken($color-orange, 14%);
+            
+        }
+    }
+}

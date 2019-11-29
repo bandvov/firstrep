@@ -1,0 +1,44 @@
+.container {
+    max-width: 100%;
+    margin: auto;
+    padding: $zero-size $size-main*2;
+    justify-content: center;
+    flex: 0 0 120px;
+}
+
+.form-section {
+    padding: $size-main*2 $zero-size;
+    background-color: darken($color-grey, 20%);
+    
+    form {
+        flex: auto;
+        justify-content: $position;
+        flex-wrap: wrap;
+
+        padding: {
+            left: $size-main*1.5;
+            right: $size-main*1.5;
+        }
+
+        div {
+            margin: $size-main*2;
+      
+            }
+        }
+    }
+
+input{
+    border:none;
+    padding: $size-main*1.5;
+    font-family:$font-family-secondary;
+    font-style: italic;
+    background-color: lighten($color-grey, 7%);
+    transition: background-color 0.4s ease;
+    &:focus{
+        background-color: lighten($color-grey,40%);
+    }
+}
+        button {
+            font-size: $size-main*1.4;
+            width: $size-width;
+        }

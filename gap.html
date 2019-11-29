@@ -1,159 +1,531 @@
-</<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
+  <!--<![endif]-->
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GAP</title>
-  <meta name="description" content="gap">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./gap.css">
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="gap" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./gap.css" />
+    <link rel="import" href="list.html" onerror="error(e)" id="import-list" />
+    <title>GAP</title>
+  </head>
 
-<body>
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
     <![endif]-->
-  <div id="nav">
-    <button id='sort-asc'>Cina vverh</button>
-    <button id='sort-desc'>Cina vnyz</button>
-    <button id='sort-rating'>Po rating</button>
-  </div>
-
-  <div class="goods_wrap">
-    <div class="goods_card" data-price="310" data-rating="10">
-      <img src="images/3.jpg" alt="Монітор 27" MSI SE2416H Silver-Black">
-      <h3>Монітор 27" MSI SE2416H Silver-Black</h3>
-      <p>310 usd</p>
-      <button class="buy">Купити</button>
-    </div>
-    <div class="goods_card" data-price="150" data-rating="3">
-      <img src="images/1.jpg" alt="">
-      <h3>Монітор 23.5" Samsung Curved</h3>
-      <p>150 usd</p>
-      <button class="buy">Купити</button>
+    <div id="nav">
+      <button id="sort-asc">Cina vverh</button>
+      <button id="sort-desc">Cina vnyz</button>
+      <button id="sort-rating">Po rating</button>
     </div>
 
-    <div class="goods_card" data-price="110" data-rating="3">
-      <img src="images/2.jpg" alt="">
-      <h3>Монітор 24" Dell SE2416H Silver-Black</h3>
-      <p>110 usd</p>
-      <button class="buy">Купити</button>
+    <div class="goods_wrap">
+      <div class="goods_card" data-price="310" data-rating="10">
+        <img src="images/3.jpg" alt="Монітор 27" MSI SE2416H Silver-Black">
+        <h3>Монітор 27" MSI SE2416H Silver-Black</h3>
+        <p>310 usd</p>
+        <button class="buy">Купити</button>
+      </div>
+      <div class="goods_card" data-price="150" data-rating="3">
+        <img src="images/1.jpg" alt="" />
+        <h3>Монітор 23.5" Samsung Curved</h3>
+        <p>150 usd</p>
+        <button class="buy">Купити</button>
+      </div>
+
+      <div class="goods_card" data-price="110" data-rating="3">
+        <img src="images/2.jpg" alt="" />
+        <h3>Монітор 24" Dell SE2416H Silver-Black</h3>
+        <p>110 usd</p>
+        <button class="buy">Купити</button>
+      </div>
+
+      <div class="goods_card" data-price="168" data-rating="3">
+        <img src="images/4.jpg" alt="" />
+        <h3>Монітор 23.8" LG 24MK600M</h3>
+        <p>168 usd</p>
+        <button class="buy">Купити</button>
+      </div>
+
+      <div class="goods_card" data-price="138" data-rating="3">
+        <img src="images/5.jpg" alt="" />
+        <h3>Монітор 24" Samsung S24D300HS</h3>
+        <p>138 usd</p>
+        <button class="buy">Купити</button>
+      </div>
+
+      <div class="goods_card" data-price="82" data-rating="9">
+        <img src="images/6.jpg" alt="" />
+        <h3>Монітор 18.5" Acer V196HQLAb</h3>
+        <p>82 usd</p>
+        <button class="buy">Купити</button>
+      </div>
+
+      <div class="goods_card" data-price="220" data-rating="8">
+        <img src="images/7.jpg" alt="" />
+        <h3>Монітор 24" Asus VG248QZ</h3>
+        <p>220 usd</p>
+        <button class="buy">Купити</button>
+      </div>
+    </div>
+    <!-- =========================================== -->
+    <div id="tabdiv">
+      <div class="tabs">
+        <input
+          type="button"
+          class="tablink"
+          id="londonbtn"
+          value="london"
+        /><input
+          type="button"
+          class="tablink"
+          id="Tokyobtn"
+          value="Tokyo"
+        /><input type="button" class="tablink" id="Romebtn" value="Rome" />
+      </div>
+      <div id="London" class="tabcontent">
+        <h3>london</h3>
+        <p>
+          consequuntur suscipit tempora animi rem quae, similique ab voluptates
+          odio corrupti ipsam atque. Fugit voluptate culpa perferendis corrupti
+          officiis quidem veniam, iusto rem sapiente. Doloribus, obcaecati
+          voluptatibus. Sapiente! Quos distinctio voluptatum harum culpa, beatae
+          iusto quis qui earum? Mollitia ducimus nam nobis ea, eveniet, adipisci
+          molestias hic, expedita natus quam quia eum? Repudiandae dolore
+          voluptatem repellat natus nihil! Nobis tempore voluptates asperiores
+          necessitatibus et nemo ipsam dolores provident doloribus inventore
+          quaerat quidem consequuntur molestias, quas, mollitia pariatur
+          aspernatur? Recusandae omnis iusto totam possimus tempora quisquam
+          quae expedita pariatur. Obcaecati tempore enim sed modi ratione,
+          optio, molestias iusto quis quas tempora facere sint dignissimos aut
+          vero, illo doloremque inventore nesciunt ad ipsum minima cumque nulla.
+          Ea facere est consequuntur!
+        </p>
+      </div>
+      <div id="Tokyo" class="tabcontent">
+        <h3>Tokio</h3>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, ad
+          architecto aliquid facere aperiam obcaecati repellat unde vitae nisi
+          cupiditate nemo vel similique, exercitationem nostrum consequuntur
+          pariatur placeat id aspernatur! Consectetur molestiae consequuntur
+          suscipit olores provident doloribus inventore quaerat quidem
+          consequuntur molestias, quas, mollitia pariatur aspernatur? Recusandae
+          omnis iusto totam possimus tempora quisquam quae expedita pariatur.
+          Obcaecati tempore enim sed modi ratione, optio, molestias iusto quis
+          quas tempora facere sint dignissimos aut vero, illo doloremque
+          inventore nesciunt ad ipsum minima cumque nulla. Ea facere est
+          consequuntur!
+        </p>
+      </div>
+      <div id="Rome" class="tabcontent">
+        <h3>Rome</h3>
+        <p>
+          Loreet consectetur adipisicing elit. Quaerat, ad architecto aliquid
+          facere aperiam obcaecati repellat unde vitae nisi cupiditate nemo vel
+          similique, exercitationem nostrum consequuntur pariatur placeat id
+          aspernatur! Consectetur molestiae conseus et nemo ipsam dolores
+          provident doloribus inventore quaerat quidem consequuntur molestias,
+          quas, mollitia pariatur aspernatur? Recusandae omnis iusto totam
+          possimus tempora quisquam quae expedita pariatur. Obcaecati tempore
+          end modi ratione, optio, molestiquas tempora facere sint dignissimos
+          aut vero, illo doloremque inventore nesciunt ad ipsum minima cumque
+          nulla. Ea facere est consequuntur!
+        </p>
+      </div>
     </div>
 
-    <div class="goods_card" data-price="168" data-rating="3">
-      <img src="images/4.jpg" alt="">
-      <h3>Монітор 23.8" LG 24MK600M</h3>
-      <p>168 usd</p>
-      <button class="buy">Купити</button>
-    </div>
-
-    <div class="goods_card" data-price="138" data-rating="3">
-      <img src="images/5.jpg" alt="">
-      <h3>Монітор 24" Samsung S24D300HS</h3>
-      <p>138 usd</p>
-      <button class="buy">Купити</button>
-    </div>
-
-    <div class="goods_card" data-price="82" data-rating="9">
-      <img src="images/6.jpg" alt="">
-      <h3>Монітор 18.5" Acer V196HQLAb</h3>
-      <p>82 usd</p>
-      <button class="buy">Купити</button>
-    </div>
-
-    <div class="goods_card" data-price="220" data-rating="8">
-      <img src="images/7.jpg" alt="">
-      <h3>Монітор 24" Asus VG248QZ </h3>
-      <p>220 usd</p>
-      <button class="buy">Купити</button>
-    </div>
-  </div>
-  <!-- =========================================== -->
-  <div id="tabdiv">
-    <div class="tabs">
-      <input type="button" class="tablink" id="londonbtn" value="london"><input type="button" class="tablink"
-        id="Tokyobtn" value="Tokyo"><input type="button" class="tablink" id="Romebtn" value="Rome">
-    </div>
-    <div id="London" class="tabcontent">
-      <h3>london</h3>
-      <p> consequuntur suscipit tempora animi rem quae, similique ab voluptates odio corrupti ipsam atque. Fugit
-        voluptate culpa perferendis corrupti officiis quidem veniam, iusto rem sapiente. Doloribus, obcaecati
-        voluptatibus. Sapiente!
-        Quos distinctio voluptatum harum culpa, beatae iusto quis qui earum? Mollitia ducimus nam nobis ea, eveniet,
-        adipisci molestias hic, expedita natus quam quia eum? Repudiandae dolore voluptatem repellat natus nihil!
-        Nobis tempore voluptates asperiores necessitatibus et nemo ipsam dolores provident doloribus inventore quaerat
-        quidem consequuntur molestias, quas, mollitia pariatur aspernatur? Recusandae omnis iusto totam possimus tempora
-        quisquam quae expedita pariatur.
-        Obcaecati tempore enim sed modi ratione, optio, molestias iusto quis quas tempora facere sint dignissimos aut
-        vero, illo doloremque inventore nesciunt ad ipsum minima cumque nulla. Ea facere est consequuntur!
+    ​
+    <button class="accordion">Section 1</button>
+    <div class="panel">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
       </p>
     </div>
-    <div id="Tokyo" class="tabcontent">
-      <h3>Tokio</h3>
-      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, ad architecto aliquid facere aperiam
-        obcaecati repellat unde vitae nisi cupiditate nemo vel similique, exercitationem nostrum consequuntur pariatur
-        placeat id aspernatur!
-        Consectetur molestiae consequuntur suscipit olores provident doloribus inventore quaerat quidem consequuntur
-        molestias, quas, mollitia pariatur aspernatur? Recusandae omnis iusto totam possimus tempora quisquam quae
-        expedita pariatur.
-        Obcaecati tempore enim sed modi ratione, optio, molestias iusto quis quas tempora facere sint dignissimos aut
-        vero, illo doloremque inventore nesciunt ad ipsum minima cumque nulla. Ea facere est consequuntur!
+
+    <button class="accordion">Section 2</button>
+    <div class="panel">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
       </p>
     </div>
-    <div id="Rome" class="tabcontent">
-      <h3>Rome</h3>
-      <p> Loreet consectetur adipisicing elit. Quaerat, ad architecto aliquid facere aperiam obcaecati repellat unde
-        vitae nisi cupiditate nemo vel similique, exercitationem nostrum consequuntur pariatur placeat id aspernatur!
-        Consectetur molestiae conseus et nemo ipsam dolores provident doloribus inventore quaerat quidem consequuntur
-        molestias, quas, mollitia pariatur aspernatur? Recusandae omnis iusto totam possimus tempora quisquam quae
-        expedita pariatur.
-        Obcaecati tempore end modi ratione, optio, molestiquas tempora facere sint dignissimos aut vero, illo doloremque
-        inventore nesciunt ad ipsum minima cumque nulla. Ea facere est consequuntur!
+
+    <button class="accordion">Section 3</button>
+    <div class="panel">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
       </p>
     </div>
-  </div>
+    <!-- =========================responsive nav======== -->
 
-  ​
-  <button class="accordion">Section 1</button>
-  <div class="panel">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</p>
-  </div>
-
-  <button class="accordion">Section 2</button>
-  <div class="panel">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</p>
-  </div>
-
-  <button class="accordion">Section 3</button>
-  <div class="panel">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</p>
-  </div>
-  <!-- =========================responsive nav======== -->
-
-  <div class="topnav" id="myTopnav">
-    <div id="menuitems">
-      <a href="http://google.com" class="active">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
+    <div class="topnav" id="myTopnav">
+      <div id="menuitems">
+        <a href="http://google.com" class="active">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+      </div>
+      <a href="javascript:void(0);" class="icon">
+        <span></span>
+      </a>
     </div>
-    <a href="javascript:void(0);" class="icon">
-      <span></span>
-    </a>
-  </div>
-  <script src="/gap.js"></script>
-</body>
+    <!-- =============== -->
+    <div class="container">
+      <div>1</div>
+      <div>2</div>
+      <div>
+        3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+        odio placeat quo necessitatibus in. Tempore iure eaque debitis veniam
+        labore quos eligendi sed, dolorum in sapiente repellendus, rerum,
+        molestiae vitae? Accusantium quod facilis delectus nihil et iste,
+        placeat ratione aspernatur quos, alias nostrum tempora soluta fuga
+        commodi odio magnam a cum similique cumque esse? Neque deserunt quisquam
+        molestias veritatis recusandae! Error dolor veniam eum, officia at ullam
+        vel ipsum aliquam, fugit placeat nostrum voluptatum nemo, sint
+        reprehenderit cupiditate asperiores culpa perferendis. Eos, perferendis
+        officia aliquid aspernatur exercitationem quam error sint! Libero
+        beatae, sunt sed alias sequi, ad molestias a dolores impedit magnam
+        laborum, eaque qui at ea. Eveniet aut blanditiis libero, tempore
+        pariatur ad fugit dolor ipsum error doloribus nulla Accusantium quod
+        facilis delectus nihil et iste, placeat ratione aspernatur quos, alias
+        nostrum tempora soluta fuga commodi odio magnam a cum similique cumque
+        esse? Neque deserunt quisquam molestias veritatis recusandae! Error
+        dolor veniam eum, officia at ullam vel ipsum aliquam, fugit placeat
+        nostrum voluptatum nemo, sint reprehenderit cupiditate asperiores culpa
+        perferendis. Eos, perferendis officia aliquid aspernatur exercitationem
+        quam error sint! Libero beatae, sunt sed alias sequi, ad molestias a
+        dolores impedit magnam laborum, eaque qui at ea. Eveniet aut blanditiis
+        libero, tempore pariatur ad fugit dolor ipsum error doloribus nulla
+        Accusantium quod facilis delectus nihil et iste, placeat ratione
+        aspernatur quos, alias nostrum tempora soluta fuga commodi odio magnam a
+        cum similique cumque esse? Neque deserunt quisquam molestias veritatis
+        recusandae! Error dolor veniam eum, officia at ullam vel ipsum aliquam,
+        fugit placeat nostrum voluptatum nemo, sint reprehenderit cupiditate
+        asperiores culpa perferendis. Eos, perferendis officia aliquid
+        aspernatur exercitationem quam error sint! Libero beatae, sunt sed alias
+        sequi, ad molestias a dolores impedit magnam laborum, eaque qui at ea.
+        Eveniet aut blanditiis libero, tempore pariatur ad fugit dolor ipsum
+        error doloribus nulla.
+      </div>
+      <div>4</div>
+      <div>5</div>
+    </div>
 
+    <ul class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Pictures</a></li>
+      <li><a href="#">Summer 15</a></li>
+      <li>Italy</li>
+    </ul>
+
+    <form name="form1">
+      <div>
+        <label>
+          login<input
+            type="text"
+            class=" "
+            name="login"
+            data-val="\w"
+            data-val-msg="enter login"
+            data-val-msg-id="loginmsg"
+            autocomplete="off"
+          />
+        </label>
+        <span id="loginmsg"></span>
+      </div>
+      <div>
+        <label>
+          password
+          <input
+            type="text"
+            name="password"
+            data-val="\d{5}"
+            data-val-msg="enter password"
+            data-val-msg-id="passmsgid"
+            autocomplete="off"
+          />
+        </label>
+        <span id="passmsgid"></span>
+      </div>
+      <div>
+        <label>
+          email<input
+            type="text"
+            name="email"
+            data-val="\b[a-z0-9.]+@[a-z]+\.[a-z]{2,4}\b"
+            data-val-msg="enter email"
+            data-val-msg-id="emailmsg"
+            autocomplete="off"
+          />
+        </label>
+        <span id="emailmsg"></span>
+      </div>
+      <input type="submit" name="submit" value="submit" />
+    </form>
+
+    <div id="newFlex">
+      <div id="header">header</div>
+      <div id="navflex">nav</div>
+      <div id="main">
+        main Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+        itaque, quibusdam recusandae magni earum ratione ut sit quisquam
+        corrupti eaque fuga possimus quo perspiciatis fugiat placeat accusantium
+        dicta cupiditate nulla? Sit, debitis eos mollitia ipsum quidem officia
+        eum facilis. Earum voluptate rerum culpa ratione quia, quas nisi laborum
+        iste vitae laudantium ab sed aspernatur tempore atque praesentium
+        necessitatibus ullam corporis? Praesentium aliquam magni et hic aliquid
+        quod cupiditate non, illum voluptates mollitia dolore perferendis
+        asperiores veniam tempore eius quas cum quo provident aut nobis minima,
+        nesciunt dicta. Laboriosam, eveniet odit. Rem dicta doloribus architecto
+        animi dolores, reprehenderit corporis, temporibus exercitationem, ad
+        maxime dolorum accusantium ex laudantium voluptate reiciendis. Quia, ab
+        error? Exercitationem laudantium dolores beatae nisi officia alias a
+        recusandae? Omnis ullam ducimus a dolore blanditiis suscipit incidunt
+        rem fuga sed voluptates, deserunt amet, sit perspiciatis repellat dicta,
+        nulla natus asperiores consectetur sunt deleniti. Sed non consequatur
+        cupiditate dolorum quae.
+      </div>
+      <div id="footer">footer</div>
+    </div>
+
+    <figure class="side top">1</figure>
+    <figure class="side left">2</figure>
+    <figure class="side right">3</figure>
+
+    <input type="button" id="setcookie" value="setcookie" />
+    <input type="button" id="getcookie" value="getcookie" />
+    <br /><br /><br />
+    <!-- ========================= -->
+    <input type="text" name="" id="forEncode" />
+    <input type="button" id="encodebtn" value="encode" />
+    <p id="encodeOutput"></p>
+    <input type="text" name="" id="decode" />
+    <input type="button" id="decodebtn" value="decode" />
+    <p id="decodeOutput"></p>
+
+    <br /><br /><br />
+    <form>
+      cookie name<input type="text" name="cookieName" /> cookie value<input
+        type="text"
+        name="cookieValue"
+      />
+      cookie age<input type="text" name="cookieAge" />
+      <input type="button" id="savebtn" value="save cookie" />
+      <br /><br /><br />
+      <input id="readAll" type="button" value="read all cookie" />
+      <input type="text" name="nametoread" id="nametoread" />
+      <input id="readspec" type="button" value="read" />
+    </form>
+
+    <input type="radio" name="color" value="#ffd800" /> orange
+    <input type="radio" name="color" value="#5aed54" /> green
+    <input type="button" id="saveColor" value="save color" />
+    <input type="button" id="deleteColor" value="delete color" />
+    <input type="button" id="saveToStorage" value="save to sessionStorage" />
+
+    <div id="chartContainer"></div>
+    <div id="chartContainer2"></div>
+    <canvas width="300" height="300" style=" border: 1px solid red"></canvas>
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M 4,0 4,8 0,8 8,16 16,8 12,8 12,0 4,0 z"></path>
+    </svg>
+    <svg
+      width="200"
+      height="200"
+      fill="red"
+      xmlns="http://www.w3.org/2000/svg"
+      style="border: 1px solid red"
+    >
+      <path d="M 50,0 50,100 0,100 100,200 200,100 150,100 150,0 50,0 " />
+    </svg>
+    <canvas id="canvas2"></canvas>
+    <button id="getajax">get ajax</button>
+    <p id="ajaxanswer"></p>
+
+    <input id="showall" type="button" value="all" />
+    <input id="showcars" type="button" value="cars" />
+    <input id="shownature" type="button" value="nature" />
+
+    <div id="filterCont" itemscope itemtype="https://schema.org/Vehicle">
+      <div
+        class="content cars"
+        itemprop="modelDate"
+        data-model-date="2000"
+        data-warning="error"
+      >
+        cars
+      </div>
+      <div class="content nature">nature</div>
+      <div class="content cars" data-model-date="2020">cars</div>
+      <div class="content nature">nature</div>
+      <div class="content cars" data-model-date="2010">cars</div>
+
+      <div class="content nature">nature</div>
+      <div class="content cars">cars</div>
+      <div class="content nature">nature</div>
+    </div>
+    <template>
+      <p id="template-name"></p>
+      <p id="template-count"></p>
+    </template>
+    <button id="addbutton" value="add template">add template</button>
+    <button is="my-timer" id="timer">0</button>
+    <helloworld-component id="hello"></helloworld-component>
+    <my-timer id="timer2">0</my-timer>
+    <p id="xhroutput"></p>
+    <p id="loader"><img src="/ajax-loader.gif" alt="loader" style="" /></p>
+
+    <!-- ==============shadow DOM======================== -->
+    <div id="host"></div>
+    <template id="template2">
+      <style>
+        h2 {
+          color: green;
+        }
+
+        :host {
+          border: 1px solid red;
+          padding: 4px 15px;
+        }
+      </style>
+      <h2>first shadow ROOT</h2>
+    </template>
+    <!-- ============================= -->
+    <my-div>
+      from my div
+    </my-div>
+    <my-div>
+      <ol type="a">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ol>
+    </my-div>
+    <template id="template3">
+      <h1>
+        <content id="placeholder"></content>
+      </h1>
+    </template>
+    <!--==================insertion point select -->
+
+    <my-form>
+      <h2>my shadow form</h2>
+      <div class="footer">this is footer</div>
+    </my-form>
+
+    <template id="template4">
+      <fieldset>
+        <legend>
+          <content select="h2"></content>
+        </legend>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+          veritatis ipsa neque doloremque voluptates in. Ab reprehenderit
+          tempore ipsa eaque qui vero dolorum reiciendis aperiam? Dignissimos
+          fugit quam voluptates voluptate.
+        </p>
+      </fieldset>
+      <content select=".footer"></content>
+    </template>
+    <!-- ==================================== -->
+    <div id="nameBlock">Vovan</div>
+
+    <template id="nameBlockTemplate">
+      <style>
+        .block {
+          margin: 5px;
+          text-align: center;
+          width: 150px;
+          height: auto;
+          border: 1px double black;
+        }
+
+        .header {
+          background-color: blueviolet;
+          color: white;
+          padding: 6px;
+        }
+
+        .name {
+          padding: 5px;
+          font-size: 44px;
+        }
+      </style>
+      <div class="block">
+        <div class="header">hello my name is</div>
+        <div class="name">
+          <content></content>
+        </div>
+      </div>
+    </template>
+
+    <user-cards>Vasia</user-cards>
+    <user-cards>Roman</user-cards>
+
+    <template id="template5">
+      <style>
+        :host {
+          display: block;
+          padding: 10px;
+          width: 200px;
+          font-size: 34px;
+          text-align: center;
+        }
+
+        :host(.green-theme) {
+          color: white;
+          background: linear-gradient(
+            180deg,
+            rgb(174, 216, 195) 20%,
+            lightgreen,
+            rgba(27, 208, 221, 0.8)
+          );
+        }
+        :host(.purple-theme) {
+          color: white;
+          background: linear-gradient(180deg, blue 20%, rgb(179, 8, 179, 0.5));
+        }
+      </style>
+      inside linear
+    </template>
+    <themed-block class="green-theme"></themed-block>
+    <themed-block class="purple-theme"></themed-block>
+
+    <button id="getMessageFromImport">get message</button>
+    <p id="importOutput"></p>
+
+    <p id="counter"></p>
+    <form action="">
+      <label for="file"
+        >choose file <input type="file" name="file" id="" dropzone="true"
+      /></label>
+
+      <input type="submit" value="submit" />
+    </form>
+    <video src="./Luis Fonsi - Despacito ft. Daddy Yankee .mp4"></video>
+
+    
+    <script src="/gap.js"></script>
+  </body>
 </html>

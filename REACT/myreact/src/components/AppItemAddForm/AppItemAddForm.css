@@ -1,0 +1,11 @@
+.item-add-form{
+    margin-top: 1rem;
+    justify-content: stretch;
+}
+input{
+    align-items: stretch;
+    width: 75%;
+}
+addbutton{    
+    width: 25%;
+}

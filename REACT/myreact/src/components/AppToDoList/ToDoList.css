@@ -1,0 +1,9 @@
+.todo-list .list-group-item {
+    margin:   0 0;
+    line-height: 30px;
+  }
+ 
+  .list-group{
+    margin-top: .4rem;
+    
+  }

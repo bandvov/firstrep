@@ -1,0 +1,49 @@
+<h1>ADD NEW ITEM</h1>
+
+<table>
+    <tr><td>Name</td></tr>
+    <tr><td><input type="text" id="name"></td></tr>
+    <tr><td>Description</td></tr>
+    <tr><td><input type="text" name="" id="description"></td></tr>
+    <tr>
+        <td>Completed</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="" id="completed"></td>
+    </tr>
+</table>
+
+<a href="/edit"><button id="btn">Apply</button></a>
+<p id="errorMsg"></p>
+
+<script>
+window.addEventListener('load',function(){
+    let btn = document.querySelector('#btn');
+    let errorMsg = document.querySelector('#errorMsg');
+
+btn.onclick = function(e){
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST','/add/newitem');
+    let inputs = document.querySelectorAll('input');
+    for(let i=0;i<inputs.length-1;i++) {
+        if (inputs[i].value=='') {
+            errorMsg.innerHTML='Error. Empty field';
+            e.preventDefault();
+            return;
+        }else{
+            errorMsg.innerHTML='';
+            let data = {
+                name:inputs[0].value,
+                description:inputs[1].value,
+                get completed(){
+                    return inputs[2].checked?1:0;
+                }
+            }
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(JSON.stringify(data));
+        }
+    }
+}
+})
+</script>

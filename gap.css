@@ -95,10 +95,6 @@ div#tabdiv > div#Rome {
   display: none;
 }
 
-.show {
-  display: block;
-}
-
 .topnav {
   background-color: #838383;
   position: fixed;
@@ -184,4 +180,228 @@ a.active {
   background-color: lawngreen;
   color: black;
 }
+
+.valid {
+  background-color: lawngreen;
+}
+
+.invalid {
+  background-color: pink;
+}
+
+.sticky {
+  position: fixed;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container div {
+  text-align: center;
+  width: 14%;
+  border: 1px solid red;
+  padding: 1.5rem;
+  height: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.container div:nth-child(odd) {
+  background-color: blue;
+  color: white;
+}
+
+.container div:nth-child(1) {
+  width: 100%;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.container div:nth-child(2) {
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+
+.container div:nth-child(3) {
+  width: 80%;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+}
+
+.container div:nth-child(4) {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+}
+
+.container div:nth-child(5) {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+}
+
+.left {
+  background-color: red;
+}
+
+.right {
+  background-color: red;
+}
+
+#filterCont {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  -ms-grid-rows: minmax(200px, 1fr);
+      grid-template-rows: minmax(200px, 1fr);
+  grid-gap: 10px;
+}
+
+.content {
+  border: 1px double black;
+  font-size: 44px;
+  text-align: center;
+  line-height: 200px;
+  display: none;
+  border-radius: 4px;
+  background-color: blueviolet;
+}
+
+.content:nth-child(odd) {
+  background-color: peru;
+}
+
+.show {
+  display: block;
+}
+
+#loader {
+  display: none;
+}
+
+#newFlex {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#header,
+#navflex,
+#main,
+#footer {
+  margin: 5px;
+  font-size: 44px;
+  text-align: center;
+}
+
+#header {
+  vertical-align: auto;
+  width: 100%;
+  background-color: orange;
+  border: 1px solid #070303;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  line-height: 160px;
+}
+
+#navflex {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 20%;
+          flex: 1 1 20%;
+  height: auto;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  background-color: orange;
+  border: 1px solid #0a0606;
+}
+
+#main {
+  border: 1px solid #214cd8;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 6 70%;
+          flex: 1 6 70%;
+  width: 100%;
+}
+
+#footer {
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  border: 1px solid #214cd8;
+  width: 100%;
+  height: auto;
+}
+
+@media all and (max-width: 640px) {
+  #newFlex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #header, #footer {
+    min-height: 15vh;
+  }
+}
+
+#counter {
+  font-size: 55px;
+  position: absolute;
+  top: 0px;
+  left: 300px;
+}
 /*# sourceMappingURL=gap.css.map */
+/* ******* STAR MENU ******** */
+.star-menu{
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  
+}
+
+.star-menu li a {
+  margin: 0;
+  padding: 0.5rem;
+display: block;  
+  border:1px solid red;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        display: inline;
+    }
+    #main{
+        border:1px solid red;
+        display: flex;
+        padding: 1vh;
+        flex: 1 1 100%;
+        justify-content: stretch;
+    }
+    #users{
+        min-width: 15vw;
+        border-right:1px solid green;
+
+    }
+    #messages{
+        padding: 3vh;
+        width: 100%;
+    }
+    .msg{
+        border-bottom: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <h1>demo chat</h1>
+<div id="main">
+    <div id="users">
+        <h4>Users online</h4>
+        <ul id="userContainer"></ul>
+    </div>
+    <div id="messages"></div>
+</div>
+
+    <div>
+        <input type="text" name="" id="inp" placeholder="enter message">
+        <input type="button" value="send message!" id="btn">
+    </div>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>

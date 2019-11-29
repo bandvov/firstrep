@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Load file!</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="recfile" id="" multiple>
+        <input type="submit" value="send file">
+    </form>
+
+    <input type="button" value="show loaded files" id="btn">
+    <p></p>
+    <script>
+        window.onload = function () {
+            let btn = document.querySelector('#btn');
+            btn.onclick = function () {
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', 'showall');
+                xhr.send();
+                xhr.onload = function () {
+                    document.querySelectorAll('p')[0].innerHTML='';
+                    let data = JSON.parse(this.responseText);
+                    console.log(data);
+
+                    for (let i = 0; i < data.length; i++) {
+
+                        document.querySelectorAll('p')[0].innerHTML += data[i];
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

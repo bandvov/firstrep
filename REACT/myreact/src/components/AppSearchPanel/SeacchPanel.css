@@ -1,0 +1,9 @@
+
+.search-main{
+    margin:  .2rem .2rem 0 0 ;
+    flex: 1 1 60%;
+}
+.search-main input{
+flex: 1 1 100%;
+}
+

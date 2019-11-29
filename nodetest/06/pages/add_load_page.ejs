@@ -1,0 +1,55 @@
+<h1>ADD new item</h1>
+<table>
+    <tr>
+        <td><label for="name">Name</label></td>
+    </tr>
+    <tr>
+        <td><input type="text" name="name" id="name"></td>
+    </tr>
+    <tr>
+        <td><label for="desc">Description</label></td>
+    </tr>
+    <tr>
+        <td><input type="text" name="desc" id="desc"></td>
+    </tr>
+    <td><label for="compl"><input type="checkbox" name="" id="compl"></label></td>
+    </tr>
+</table>
+
+<a href="/"><button id="btn">apply</button></a>
+<p id="errorMsg"></p>
+<script>
+    window.onload = function () {
+        let btn = document.querySelector('#btn');
+        let errorMsg = document.querySelector('#errorMsg');
+
+        btn.onclick = function (e) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/add/newitem');
+
+            let inputs = document.querySelectorAll('input');
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value == '') {
+                    errorMsg.innerHTML = 'Error. Field is empty';
+                    e.preventDefault();
+             return;
+                }
+            }
+            errorMsg.innerHTML='';
+            let items = {
+                name: inputs[0].value,
+                description: inputs[1].value,
+                get completed() {
+                    return inputs[2].checked ? 1 : 0
+                }
+            }
+            
+            let data = JSON.stringify(items);
+            
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(data);
+        }
+
+    }
+
+</script>

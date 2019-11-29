@@ -1,0 +1,16 @@
+.person-details{
+    flex: 1 1 70%;
+    padding: 1rem;
+    border:1px solid #444;
+    margin: 0.5rem 0.5rem;
+    flex-wrap: wrap;
+}
+.person-details img{
+    width:40%;
+}
+.person-details ul{
+    margin: 0 0 0 1rem;
+} 
+ .details-placeholder{
+    margin: auto;
+}

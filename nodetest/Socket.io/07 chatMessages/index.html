@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        #messages {
+            background-color: antiquewhite;
+            min-height: 100px;
+        }
+
+        div {
+            padding: 3vh;
+        }
+
+        input[type=text] {
+            width: 50%;
+        }
+
+        #inputgroup {
+            display: flex;
+            padding: 2vh;
+            justify-content: center;
+        }
+
+        input {
+            margin: 1vh;
+        }
+
+        .chatmsg {
+            border-bottom: 1px solid black;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Messages</h1>
+    <div id="main">
+        <div id="messages">
+        </div>
+        <div id="inputgroup">
+            <input type="text" name="" id="input" placeholder="message here...">
+            <input type="button" value="send!" id="btn">
+        </div>
+
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let btn = document.querySelector('#btn');
+        console.log(btn);
+        let input = document.querySelector('#input');
+        let messages = document.querySelector('#messages');
+
+        let socket = io.connect('http://localhost:8080');
+        socket.on('chat message', function (message) {
+            let displayMessage = `<div class="chatmsg">
+                <h4>Message</h4>
+                <h5>${message.text}</h5>
+                </div>`
+            messages.innerHTML += displayMessage;
+        })
+        btn.onclick = function (e) {
+
+
+
+            if (input.value === '' || /xxx/.test(input.value) === true) {
+                return false;
+            } else {
+                socket.emit('send message', {
+                    text: input.value
+                });
+            }
+        }
+        document.onkeypress = function (e) {
+
+            if (e.charCode === 13 && e.target.id == 'input') {
+            if (input.value === '' || input.value.indexOf('xxx') !== -1) {
+                return false;
+            } else {
+                    socket.emit('send message', {
+                        text: input.value
+                    });
+                    console.log(input.value);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

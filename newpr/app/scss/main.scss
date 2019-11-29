@@ -1,0 +1,143 @@
+$zero-size: 0px;
+$size-main: 10px;
+$size-width: 100;
+$position: center;
+$color-dark: #333;
+$color-grey: #808080;
+$color-orange: orange;
+$color-green: #56eb1a;
+$color-blue: #308eee;
+$color-red:rgb(238, 49, 49);
+$font-family-main: Verdana;
+$font-family-secondary: sans-serif;
+
+@import "buttons";
+@import "section-about";
+@import "section-form";
+@import "section-photo";
+@import "section-blog";
+
+body {
+    padding: $zero-size;
+    margin: $zero-size;
+    color: $color-dark;
+}
+
+.flex {
+    display: flex;
+}
+
+header.flex {
+    min-height: $size-width+vh;
+    background-size: cover;
+    background-image: url("../img/header.jpg");
+    position: relative;
+    background-position: $position;
+    align-items: $position;
+    justify-content: $position;
+
+    &::before {
+        content: "";
+        background-color: $color-grey;
+        position: absolute;
+        top: $zero-size;
+        left: $zero-size;
+        bottom: $zero-size;
+        right: $zero-size;
+        opacity: 0.5;
+    }
+
+    .header-container {
+        flex-wrap: wrap;
+        flex: auto;
+        color: white;
+        text-align: $position;
+        padding: $size-main*6 $size-main*2;
+        justify-content: $position;
+
+        h1 {
+            z-index: 1;
+            color: white;
+            flex: 3 1 100%;
+            font-size: $size-main*6;
+        }
+    }
+}
+
+.main-footer {
+    justify-content: center;
+    padding: $size-main*6 $size-main*2;
+    background-color: darken($color-grey, 4%);
+    font-size: $size-main*2;
+    color: white;
+    flex: 3 1 70%;
+    flex-wrap: wrap;
+    border: 2px solid #308eee;
+}
+
+.footer {
+    &-text {
+        text-align: $position;
+        font-size: $size-main*3;
+        padding: $size-main $size-main;
+
+    }
+
+    &-img {
+        justify-items: center;
+        justify-content: center;
+        flex: 3 1 100%;
+
+        a {
+            margin: $size-main $size-main;
+
+        }
+    }
+}
+
+@media all and (max-width:992px) {
+    header.flex {
+        .header-container h1 {
+            font-size: $size-main*12;
+            transition: all 0.4s ease;
+        }
+
+        .header-btn {
+            .btn {
+                text-align: center;
+                display: block;
+                margin: $size-main*5;
+                font-size: $size-main*4;
+                width: $size-main*22;
+            }
+        }
+    }
+
+    .section-about {
+        .about-left {
+            border-right: none;
+            font-size: $size-main*3;
+            text-align: $position;
+        }
+    }
+
+    .form-section {
+        form {
+            justify-content: center;
+            flex: auto;
+
+            div {
+                display: flex;
+                justify-content: $position;
+                justify-content: center;
+                flex: auto;
+
+                input {
+                    width: 100%;
+                    margin: $size-main;
+                    flex: 3 1 100%;
+                }
+            }
+        }
+    }
+}

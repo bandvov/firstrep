@@ -1,0 +1,16 @@
+﻿<p id="messageText">text from import</p>
+<ul>
+    <li>Item 01</li>
+    <li>Item 02</li>
+    <li>Item 03</li>
+</ul>
+<script>
+let importDoc = document.currentScript.ownerDocument;
+window.addEventListener('load',function(){
+let text = importDoc.querySelector('#messageText').innerText;
+let button = document.querySelector('#getMessageFromImport');
+button.onclick = function() {
+    document.querySelector('#importOutput').innerText= text;
+}
+},false);
+</script>

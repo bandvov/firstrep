@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div:not(:nth-of-type(3)) {
+        border: 1px solid black;
+        display: inline-block;
+        padding: 1vh;
+    }
+</style>
+
+<body>
+    <div id="main">
+        <div>
+            <div>
+                <input type="button" value="get data from first connection" id="btn1">
+            </div>
+
+            <div>
+                <input type="button" value="get data from first connection" id="btn2">
+
+            </div>
+            <h3></h3>
+        </div>
+        <div>
+            <div>
+                <input type="button" value="get data!" id="btn3">
+            </div>
+            <h3></h3>
+        </div>
+    </div>
+
+
+
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        window.onload = function () {
+            let btns = document.querySelectorAll('input[type="button"]');
+            let containers = document.querySelectorAll('h3');
+            console.log(containers);
+            let currentNamespace = null;
+            console.log(btns);            
+
+            btns[0].onclick = function () {
+                let namespace = io('/namespace');
+                namespace.on('connect', function () {
+                    console.log('connected');
+                    namespace.emit('btn_click', {
+                        btn: 1
+                    });
+                    namespace.on('join_room', function (data) {
+                        containers[0].innerHTML = `room ${data.roomname} joined!`;
+                        currentNamespace = namespace;
+                    })
+                })
+            }
+            btns[1].onclick = function () {
+                let namespace = io('/namespace');
+                namespace.on('connect', function () {
+                    console.log('connected');
+                    namespace.emit('btn_click', {
+                        btn: 2
+                    });
+                    namespace.on('join_room', function (data) {
+                        containers[0].innerHTML = `room ${data.roomname} joined!`;
+                        currentNamespace = namespace;
+                    })
+                })
+            }
+
+            btns[2].onclick = function () {
+                if (currentNamespace) {
+                    currentNamespace.emit('get_greeting');
+                    currentNamespace.on('greet', function (data) {
+                        containers[1].innerHTML = data.message;
+                        currentNamespace.disconnect();
+                        currentNamespace = null;
+                    })
+                } else {
+                    alert('join a room to get data');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,12 +1,6 @@
 'use strict';
 
 
-// var nicknames = ['di', 'boo', 'punkeye'];
-// nicknames.size=3;
-// for (var nickname of nicknames) {
-//     alert(nickname);
-// }
-
 
 // var calculator = {
 //     sum: function() {
@@ -238,7 +232,7 @@
 //   alert('Lososni');
 //   } else{
 //   alert(pow(x,n));
-// //   }
+//   }
 
 // //----F------------------------------------
 
@@ -262,17 +256,6 @@
 
 // --------------------------------------------------
 
-// неявно оголошена переменная message
-// function showMessage() {
-
-//    message = 'Привет'; // без var!
-// }
-
-// showMessage();
-
-// alert( message );
-// }
-// ----------------------------------------
 // var hello = ('hello');
 // var num = 244.444 ;
 // alert ( hello.toUpperCase().concat(' vsim'));
@@ -699,8 +682,6 @@ console.log(aa);
 
 
 
-
-
 var collection = {
   "2548": {
     "album": "Slippery When Wet",
@@ -778,7 +759,6 @@ var contacts = [{
 function lookUpProfile(name, prop) {
   // Only change code below this line
   for (var i = 0; i < contacts.length; i++) {
-
     if (contacts[i].firstName === name) {
       if (contacts[i].hasOwnProperty(prop)) {
         return contacts[i][prop];
@@ -928,20 +908,6 @@ function fizzBuzz(data) {
   }
 }
 
-
-
-
-const getMousePosition = (x, y) => ({
-  x,
-  y
-});
-
-console.log(getMousePosition(11, 33));
-
-
-
-
-
 let field = document.getElementById('field');
 let ball = document.getElementById('ball');
 field.addEventListener('click', moveBall);
@@ -1004,10 +970,6 @@ function correctSentence(text) {
 console.log(correctSentence('hello'));
 
 
-
-
-
-
 // function evenLast(data) {
 //   var sum = 0;
 //   var totalSum = 0;
@@ -1037,12 +999,6 @@ console.log(correctSentence('hello'));
 // console.log(evenLast(0,1,2,3,4,5));
 
 var ar = Array.of(1, 2, 3, 4, 5);
-
-// import  stra2 from './formulas';
-
-// console.log(stra2);
-// console.log(stra);
-// console.log(evenLast(ar));
 
 
 
@@ -1180,6 +1136,7 @@ var text = '{ "employees" : [' +
   '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
 
 var plo = JSON.parse(text);
+
 
 function findLongestWordLength(str) {
   var arr = str.split(' ');
@@ -1345,7 +1302,7 @@ document.querySelector('#myIndex').addEventListener('input', function () {
     if (textValue.toLowerCase().search(val) == -1) {
       li[i].style.display = "none";
     } else {
-      li[i].style.display = "block";
+      li[i].style.display = "";
       li[i].innerHTML = insertMark(textValue, textValue.toLowerCase().search(val), val.length);
     }
   }

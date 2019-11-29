@@ -1,0 +1,11 @@
+.star-db{
+    padding: 0.5rem;
+    border: 1px solid beige;
+    flex:100% ;
+}
+.x{
+    flex-wrap: wrap;
+}
+.toggle-and-error{
+    margin: 0 0.5rem 0 0.5rem;
+}

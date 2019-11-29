@@ -1,0 +1,19 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "webpack-dev-server -hot -inline",
+    "start": "webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "save-dev": "^2.0.0",
+    "webpack-dev-server": "^3.8.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.40.2"
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>login page!</h2>
+    <div>
+
+        <table>
+
+            <tr>
+                <td>Name</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+        </table>
+        <input type="button" value="Log in!" id="btn">
+        <input type="button" value="Log out!" id="btn1">
+        <hr>
+        <button data-page="admin">Admin page</button>
+        <button data-page="user">User page</button>
+    </div>
+    <p id="errorMsg"></p>
+    <p></p>
+    <script>
+    window.onload = function() {
+        let inputs = document.querySelectorAll('input');
+        let btn = document.querySelector('#btn');
+        let errorMsg = document.querySelector('#errorMsg');
+        btn.onclick = function () {
+            for (let i = 0;i<inputs.length;i++) {
+                if (inputs[i].value=='') {
+                    errorMsg.innerHTML = 'Error! empty field';
+                    return false;
+                }
+            }
+            errorMsg.innerHTML = '';
+            let userData = {
+                username:inputs[0].value,
+                password:inputs[1].value
+            }
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/login');
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(JSON.stringify(userData));
+            xhr.onload = function() {
+                document.querySelectorAll('p')[1].innerHTML = this.responseText;
+            }
+        }
+        // log out button ================================
+        let btn1 = document.querySelector('#btn1');
+        btn1.onclick = function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET','/logout');
+            xhr.send();
+            xhr.onload= function() {
+                document.querySelectorAll('p')[1].innerHTML = this.responseText;
+            }
+        }
+        // ================== admin & user pages
+        let buttons = document.querySelectorAll('button');
+        buttons.forEach((elem)=>{
+            elem.onclick = function(e) {
+                if (!e.target.dataset.page) return false;
+                let target = e.target.dataset.page;
+                console.log(target);
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET','/'+ target);
+                xhr.send();
+                xhr.onload = function() {
+                    location.href = '/'+ target;
+                }                
+            }
+        })
+    }
+    </script>
+</body>
+
+</html>
