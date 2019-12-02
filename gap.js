@@ -1053,5 +1053,65 @@ for (let i = 1; i <= 10; i++) {
   }
   document.write("<br>");
 }
-// console.log(cykl);
+console.log(cykl);
+// ====================================
+
+const add = n => n + 10;
+
+console.log(add(5));
+
+const memoize = fn => {
+  const cache = {};
+  return (...args) => {
+    const n = args[0];
+    if (n in cache) {
+      console.log('take \'n\' from cashe');
+      
+      return cache[n];
+    } else {
+      const result = fn(n);
+      cache[n] = result;
+      console.log('calculated result');      
+      return result;
+    }
+  };
+};
+const memoizeAdd = memoize(add);
+
+console.time('one');
+console.log(memoizeAdd(3));
+console.timeLog('one');
+console.time('two');
+console.log(memoizeAdd(3));
+console.timeLog('two');
+console.time('three');
+console.log(memoizeAdd(3));
+console.timeLog('three');
+
+// =============== composite function ==============
+
+
+const add2 = n => n + 10;
+
+const memoized = fn =>  (...args) => {
+    const cache = {};
+    const n = args[0];
+    if (n in cache) {
+      console.log('take \'n\' from cashe');
+      
+      return cache[n];
+    } else {
+      const result = fn(n);
+      cache[n] = result;
+      console.log('calculated result');      
+      return result;
+    }  
+  };  
+
+  console.log(memoized(add2)(3));
+  console.log(memoized(add2)(33));
+  console.log(memoized(add2)(888));
+  
+
+console.log(eval('4+4+4'.toString()))
 
