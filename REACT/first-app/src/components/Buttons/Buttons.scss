@@ -1,0 +1,13 @@
+.app-buttons {
+  display: flex;
+  justify-content: space-between;
+  min-width: 40%;
+  z-index: 1;
+}
+.app-buttons input {
+  margin-left: 1rem;
+  min-width: 10vw;
+  font-size: 2rem;
+  border-radius:2rem 2rem ;
+  box-shadow: 13px 15px 8px rgb(39, 36, 36);
+}

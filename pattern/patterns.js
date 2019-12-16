@@ -1,5 +1,4 @@
-"use script"
-
+"use script";
 
 // ========================== namespace ====================
 // let App;
@@ -16,7 +15,7 @@
 //         if (typeof parent[parts[i]] == 'undefined') {
 
 //             parent[parts[i]] = {};
-//         } 
+//         }
 //         parent = parent[parts[i]];
 
 //     }
@@ -30,8 +29,6 @@
 
 // console.log(module == App.utils.dom);
 // console.log(App);
-
-
 
 // ======================== pattern module ===============
 // let App;
@@ -79,68 +76,62 @@
 //     }
 // }())
 
-
 //     var calc = App.util.calc;
 //     console.log(calc);
 
 //     calc.setX(3);
 //     calc.setY(3);
 
-
 //     document.write(calc.add());
 
 // =========================== isolated namespace =============
 
 function App() {
-    let args = Array.prototype.slice.call(arguments),
-        callback = args.pop(),
-        key;
+  let args = Array.prototype.slice.call(arguments),
+    callback = args.pop(),
+    key;
 
+  let modules = args[0] && typeof args[0] == "string" ? args : args[0];
 
-    let modules = (args[0] && typeof args[0] == 'string') ? args : args[0];
+  if (!(this instanceof App)) {
+    return new App(modules, callback);
+  }
+  this.productName = "isolated namespace sample";
+  this.version = "1.0.0.0";
 
-    if (!(this instanceof App)) {
-        return new App(modules, callback);
+  if (!modules || modules == "*") {
+    modules = [];
+    for (key in App.modules) {
+      if (App.modules.hasOwnProperty(key)) {
+        modules.push(key);
+      }
     }
-    this.productName = 'isolated namespace sample';
-    this.version = '1.0.0.0';
-
-    if (!modules || modules == "*") {
-        modules = [];
-        for (key in App.modules) {
-            if (App.modules.hasOwnProperty(key)) {
-                modules.push(key);
-            }
-        }
-    }
-    for (let i = 0; i < modules.length; i++) {
-        App.modules[modules[i]](this);
-    }
-    callback(this);
-
+  }
+  for (let i = 0; i < modules.length; i++) {
+    App.modules[modules[i]](this);
+  }
+  callback(this);
 }
 App.modules = {};
 
-App.modules.dom = function (box) {
-    box.getElem = function (e) {
-        document.write('call from getElem ' + e + '<br>')
-    }
-    box.create = function (e) {
-        document.write('call from create ' + e + '<br>')
-    }
-}
+App.modules.dom = function(box) {
+  box.getElem = function(e) {
+    document.write("call from getElem " + e + "<br>");
+  };
+  box.create = function(e) {
+    document.write("call from create " + e + "<br>");
+  };
+};
 
-App('dom', function (box) {
-    box.getElem('diiv');
-})
-App(function (box) {
-    let e = box.getElem('dwa');
-    box.create('try');
-    document.write(box.productName, ' <br>');
-    document.write(box.version, '<br>');
-
-})
-
+App("dom", function(box) {
+  box.getElem("diiv");
+});
+App(function(box) {
+  let e = box.getElem("dwa");
+  box.create("try");
+  document.write(box.productName, " <br>");
+  document.write(box.version, "<br>");
+});
 
 // ======================================inheritance through Proto ==============
 // let base = {
@@ -156,7 +147,6 @@ App(function (box) {
 // let derived = createObj(base);
 // console.log(derived.name);
 
-
 // ===============================inheritance ECMA5==============
 // let base = {
 //     name: 'John'
@@ -169,7 +159,6 @@ App(function (box) {
 
 // console.log(derived.name);
 // console.log(derived.surname);
-
 
 // ==============================extend inheritance======================
 // innerArray в parent і child спільний
@@ -198,41 +187,38 @@ App(function (box) {
 // console.log(base.innerArray);
 // console.log(newObj.innerArray);
 
-
-
 // ============================== extend deep =============================
 
 let base = {
-    name: 'John',
-    say: function () {
-        console.log(this.name);
-    },
-    innerArray: [1, 2, 3]
-}
+  name: "John",
+  say: function() {
+    console.log(this.name);
+  },
+  innerArray: [1, 2, 3]
+};
 
 function extendDeep(parent, child) {
-    let toString = Object.prototype.toString;
-    let asStr = '[object Array]';
+  let toString = Object.prototype.toString;
+  let asStr = "[object Array]";
 
-    child = child || {};
+  child = child || {};
 
-    for (let i in parent) {
-        if (parent.hasOwnProperty(i)) {
-            if (typeof parent[i] == 'object') {
-                child[i] = (toString(parent[i] == asStr)) ? [] : {};
-                extendDeep(parent[i], child[i]);
-            } else {
-                child[i] = parent[i];
-            }
-        }
+  for (let i in parent) {
+    if (parent.hasOwnProperty(i)) {
+      if (typeof parent[i] == "object") {
+        child[i] = toString(parent[i] == asStr) ? [] : {};
+        extendDeep(parent[i], child[i]);
+      } else {
+        child[i] = parent[i];
+      }
     }
-    return child;
+  }
+  return child;
 }
-
 
 let newObj = {};
 extendDeep(base, newObj);
-newObj.name = 'araq'
+newObj.name = "araq";
 newObj.say();
 newObj.innerArray.push(4);
 console.log(base.innerArray);
@@ -241,328 +227,349 @@ console.log(newObj.innerArray);
 // ============================== mixed inheritance ================
 
 function mix() {
-    let args, i, child = {};
-    for (args = 0; args < arguments.length; args++) {
-        console.log(`arguments[args] : ${arguments[args]}`);
+  let args,
+    i,
+    child = {};
+  for (args = 0; args < arguments.length; args++) {
+    console.log(`arguments[args] : ${arguments[args]}`);
 
-        for (i in arguments[args]) {
-            if (arguments[args].hasOwnProperty(i)) {
-                child[i] = arguments[args][i];
-                console.log(`child[i] : ${arguments[args][i]}`);
-
-            }
-        }
+    for (i in arguments[args]) {
+      if (arguments[args].hasOwnProperty(i)) {
+        child[i] = arguments[args][i];
+        console.log(`child[i] : ${arguments[args][i]}`);
+      }
     }
-    return child;
+  }
+  return child;
 }
 let ingredient1 = {
-    egg: 5
+  egg: 5
 };
 let ingredient2 = {
-    sugar: 'spoon'
+  sugar: "spoon"
 };
 let ingredient3 = {
-    flour: 'cup'
+  flour: "cup"
 };
 let ingredient4 = {
-    milk: 'bottle',
-    wine: 200
+  milk: "bottle",
+  wine: 200
 };
 
 console.log(mix(ingredient1, ingredient2, ingredient3, ingredient4));
 // ======================================== pattern factory =====================
-function Control() {};
-Control.prototype.render = function () {
-    document.write(`Control : ${this.name}<br>${this.control}`);
-}
-Control.create = function (type) {
-    let newControl;
-    if (typeof Control[type] !== 'function') {
-        throw {
-            name: 'error',
-            message: `constructor ${type} not found`
-        }
-    }
-    if (typeof Control[type].prototype.render !== 'function') {
-        Control[type].prototype = new Control();
-    }
-    newControl = new Control[type]();
-    return newControl;
-}
-Control.button = function () {
-    this.name = 'button';
-    this.control = `<input type="button" value="test button">`;
-}
-Control.text = function () {
-    this.name = 'text';
-    this.control = `<input type="text">`;
-}
-let btn = Control.create('button');
+function Control() {}
+Control.prototype.render = function() {
+  document.write(`Control : ${this.name}<br>${this.control}`);
+};
+Control.create = function(type) {
+  let newControl;
+  if (typeof Control[type] !== "function") {
+    throw {
+      name: "error",
+      message: `constructor ${type} not found`
+    };
+  }
+  if (typeof Control[type].prototype.render !== "function") {
+    Control[type].prototype = new Control();
+  }
+  newControl = new Control[type]();
+  return newControl;
+};
+Control.button = function() {
+  this.name = "button";
+  this.control = `<input type="button" value="test button">`;
+};
+Control.text = function() {
+  this.name = "text";
+  this.control = `<input type="text">`;
+};
+let btn = Control.create("button");
 btn.render();
-let txt = Control.create('text');
+let txt = Control.create("text");
 txt.render();
 
 // ================================ pattern factory #2 =================
 
 class Car {
-    constructor(options) {
-
-        this.doors = options.doors || 4;
-        this.state = options.state || "brand new";
-        this.color = options.color || "silver";
-    }
+  constructor(options) {
+    this.doors = options.doors || 4;
+    this.state = options.state || "brand new";
+    this.color = options.color || "silver";
+  }
 }
 
-
 class Truck {
-    constructor(options) {
-        this.state = options.state || 'used';
-        this.wheelSize = options.wheelSize || 'Big';
-        this.color = options.color || 'green';
-    }
+  constructor(options) {
+    this.state = options.state || "used";
+    this.wheelSize = options.wheelSize || "Big";
+    this.color = options.color || "green";
+  }
 }
 
 class VehicleFactory extends Car {
-    constructor(options) {
-        super(options);
-    }
+  constructor(options) {
+    super(options);
+  }
 
-    createVechicle(options) {
-
-        switch (options.vechicleType) {
-            case 'car':
-                this.vechicleClass = Car;
-                break;
-            case 'truck':
-                this.vechicleClass = Truck;
-                break;
-        }
-        return new this.vechicleClass(options);
+  createVechicle(options) {
+    switch (options.vechicleType) {
+      case "car":
+        this.vechicleClass = Car;
+        break;
+      case "truck":
+        this.vechicleClass = Truck;
+        break;
     }
+    return new this.vechicleClass(options);
+  }
 }
-
-
-
-
 
 let carFactory = new VehicleFactory({});
 
 let car = carFactory.createVechicle({
-    vechicleType: 'car'
+  vechicleType: "car"
 });
 console.log(car);
 
 console.log(carFactory instanceof Car);
 
-
-
 // =============================== pattern iterator ====================
-
 
 // =========================== pattern strategy ========================
 
 let validator = {
-    types: {},
-    config: {},
-    messages: [],
-    validate: function (data) {
-        let i, type, msg, invalid, checker;
-        for (i in data) {
-            if (data.hasOwnProperty(i)) {
-                type = this.config[i];
-                checker = this.types[type];
-                if (!type) {
-                    continue;
-                }
-                if (!checker) {
-                    throw {
-                        name: 'validator error',
-                        message: `validator ${type} not found`
-                    }
-                }
-                invalid = checker.validate(data[i]);
-                if (invalid) {
-                    msg = `value not correct for ${i}  ${checker.message}`;
-                    this.messages.push(msg);
-                }
-            }
+  types: {},
+  config: {},
+  messages: [],
+  validate: function(data) {
+    let i, type, msg, invalid, checker;
+    for (i in data) {
+      if (data.hasOwnProperty(i)) {
+        type = this.config[i];
+        checker = this.types[type];
+        if (!type) {
+          continue;
         }
-        return this.showError();
-    },
-    showError: function () {
-        return this.messages.length !== 0;
+        if (!checker) {
+          throw {
+            name: "validator error",
+            message: `validator ${type} not found`
+          };
+        }
+        invalid = checker.validate(data[i]);
+        if (invalid) {
+          msg = `value not correct for ${i}  ${checker.message}`;
+          this.messages.push(msg);
+        }
+      }
     }
+    return this.showError();
+  },
+  showError: function() {
+    return this.messages.length !== 0;
+  }
 };
 
 validator.types.required = {
-    validate: function (value) {
-        return value === '';
-    },
-    message: 'should be filled'
-}
+  validate: function(value) {
+    return value === "";
+  },
+  message: "should be filled"
+};
 validator.types.number = {
-    validate: function (value) {
-        return !/\d+/.test(value);
-    },
-    message: 'should be a number'
-}
+  validate: function(value) {
+    return !/\d+/.test(value);
+  },
+  message: "should be a number"
+};
 
 validator.config = {
-    firstName: 'required',
-    lastName: 'required',
-    age: 'number'
-}
+  firstName: "required",
+  lastName: "required",
+  age: "number"
+};
 
 let data1 = {
-    firstName: 'adas',
-    lastName: 'sada',
-    age: 22
-}
+  firstName: "adas",
+  lastName: "sada",
+  age: 22
+};
 if (!validator.validate(data1)) {
-    console.log(validator.messages);
-
+  console.log(validator.messages);
 }
 // ===================================== pattern proxy ===========================
 let http = {
-    makeRequest: function (id, callback) {
-        setTimeout(function () {
-            callback(`data from server ${new Date().getTime()}<br>`);
-        }, 3000);
+  makeRequest: function(id, callback) {
+    setTimeout(function() {
+      callback(`data from server ${new Date().getTime()}<br>`);
+    }, 3000);
+  }
+};
+let proxy = (function() {
+  let cache = {};
+  return {
+    makeRequest: function(id, callback) {
+      if (cache[id]) {
+        callback(cache[id]);
+      } else {
+        http.makeRequest(id, function(data) {
+          cache[id] = data;
+          callback(data);
+        });
+      }
     }
-}
-let proxy = (function () {
-    let cache = {};
-    return {
-        makeRequest: function (id, callback) {
-            if (cache[id]) {
-                callback(cache[id]);
-
-            } else {
-                http.makeRequest(id, function (data) {
-                    cache[id] = data;
-                    callback(data);
-                })
-            }
-        }
-    }
-})()
+  };
+})();
 
 function get(id) {
-    return document.getElementById(id);
+  return document.getElementById(id);
 }
 
 function callback(data) {
-    get('loader').style.display = 'none';
-    get('output').innerHTML += data + '<br>';
+  get("loader").style.display = "none";
+  get("output").innerHTML += data + "<br>";
 }
 
-get('requestBtn1').addEventListener('click', function () {
-    get('loader').style.display = 'block';
-    let id = get('forRequest').value;
-    http.makeRequest(id, callback);
-})
-get('requestBtn2').addEventListener('click', function () {
-    get('loader').style.display = 'block';
-    let id = get('forRequest').value;
+get("requestBtn1").addEventListener("click", function() {
+  get("loader").style.display = "block";
+  let id = get("forRequest").value;
+  http.makeRequest(id, callback);
+});
+get("requestBtn2").addEventListener(
+  "click",
+  function() {
+    get("loader").style.display = "block";
+    let id = get("forRequest").value;
     proxy.makeRequest(id, callback);
-}, false)
+  },
+  false
+);
 // ===================================== pattern mediator =====================
-let mediator = {
-    players: {},
-    setup: function () {
-        this.players.player1 = new Player('player1');
-        this.players.player2 = new Player('player2');
-        this.players.player3 = new Player('player3');
-    },
-    updateMediator: function () {
-        let score = {
-            player1: this.players.player1.points,
-            player2: this.players.player2.points,
-            player3: this.players.player3.points
-        }
-        scoreboard.update(score);
-    },
-    keypress: function (e) {
-        e = e || window.event;
-        if (e.keyCode == 49) {
-            mediator.players.player1.updatePlayer();
-            return;
-        }
-        if (e.keyCode == 50) {
-            mediator.players.player2.updatePlayer();
-        }
-        if (e.keyCode == 51) {
-            mediator.players.player3.updatePlayer();
-        }
-    }
+// let mediator = {
+//   players: {},
+//   setup: function() {
+//     this.players.player1 = new Player("player1");
+//     this.players.player2 = new Player("player2");
+//     this.players.player3 = new Player("player3");
+//   },
+//   updateMediator: function() {
+//     let score = {
+//       player1: this.players.player1.points,
+//       player2: this.players.player2.points,
+//       player3: this.players.player3.points
+//     };
+//     scoreboard.update(score);
+//   },
+//   keypress: function(e) {
+//     e = e || window.event;
+//     if (e.keyCode == 49) {
+//       mediator.players.player1.updatePlayer();
+//       return;
+//     }
+//     if (e.keyCode == 50) {
+//       mediator.players.player2.updatePlayer();
+//     }
+//     if (e.keyCode == 51) {
+//       mediator.players.player3.updatePlayer();
+//     }
+//   }
+// };
+
+// let scoreboard = {
+//   element: null,
+//   update: function(score) {
+//     let i,
+//       msg = "";
+//     for (i in score) {
+//       if (score.hasOwnProperty(i)) {
+//         msg += `<p>${i} : ${score[i]}</p>`;
+//       }
+//     }
+//     this.element.innerHTML = msg;
+//   }
+// };
+
+// class Player {
+//   constructor(name) {
+//     this.name = name;
+//     this.points = 0;
+//   }
+//   updatePlayer() {
+//     this.points++;
+//     mediator.updateMediator();
+//   }
+// }
+// mediator.setup();
+// scoreboard.element = document.querySelector("p");
+
+// window.onkeypress = mediator.keypress;
+
+// ======================================== mediator N2  ==================
+class ChatRoom {
+  showMessage(user, message) {
+    const time = new Date().toLocaleString();
+    const sender = user.getName();
+    console.log(`${time} ${sender} ${message}\n`);
+  }
 }
-
-
-let scoreboard = {
-    element: null,
-    update: function (score) {
-        let i, msg = '';
-        for (i in score) {
-            if (score.hasOwnProperty(i)) {
-                msg += `<p>${i} : ${score[i]}</p>`;
-
-            }
-        }
-        this.element.innerHTML = msg;
-    }
-}
-
-function Player(name) {
+class User {
+  constructor(name, chatMediator) {
     this.name = name;
-    this.points = 0;
+    this.chatMediator = chatMediator;
+  }
+  getName() {
+    return this.name;
+  }
+  send(message) {
+    return this.chatMediator.showMessage(this, message);
+  }
 }
-Player.prototype.updatePlayer = function () {
-    this.points++;
-    mediator.updateMediator();
-}
-mediator.setup();
-scoreboard.element = document.querySelector('p');
+const mediator = new ChatRoom();
+const john = new User('John',mediator);
+const jane = new User('Jane',mediator);
 
-window.onkeypress = mediator.keypress;
+john.send('hello there Im John');
+    jane.send('hey Im Jane! Im from Canada')
+
 
 // ===================================== pattern observer =====================
 
-
 // ====================================================
-// class Observer {
-//     constructor() {
-//         this.observers = [];
-//     }
-//     subscribe(fn) {
-//         this.observers.push(fn);
-//     }
-//     unsubscribe(fn) {
-//         this.observers = this.observers.filter((subscriber) => subscriber !== fn);
-//     }
-//     broadcast(text) {
-//         this.observers.forEach((elem) => elem(text));
-//     }
-// }
+class Observer {
+    constructor() {
+        this.observers = [];
+    }
+    subscribe(fn) {
+        this.observers.push(fn);
+    }
+    unsubscribe(fn) {
+        this.observers = this.observers.filter((subscriber) => subscriber !== fn);
+    }
+    broadcast(text) {
+        this.observers.forEach((elem) => elem(text));
+    }
+}
 
-// let blogObserver = new Observer();
+let blogObserver = new Observer();
 
-// blogObserver.subscribe((text) => console.log('broadcast catched'));
+blogObserver.subscribe((text) => console.log('broadcast catched'));
 
-// let textField = document.querySelector('.textField');
-// let countField = document.querySelector('.countField');
+let textField = document.querySelector('.textField');
+let countField = document.querySelector('.countField');
 
-// function getWordsCount(text) {
-//     return text ? text.trim().split(/\s+/).length : 0;
-// }
-// textField.addEventListener('keyup', function () {
-//     blogObserver.broadcast(textField.value);
-// })
+function getWordsCount(text) {
+    return text ? text.trim().split(/\s+/).length : 0;
+}
+textField.addEventListener('keyup', function () {
+    blogObserver.broadcast(textField.value);
+})
 
-// blogObserver.subscribe(text => {
-//     console.log(text);
+blogObserver.subscribe(text => {
+    console.log(text);
 
-//     countField.innerHTML = getWordsCount(text);
-// })
+    countField.innerHTML = getWordsCount(text);
+})
 
 //  ===================== pattern observer #2 =============
 
@@ -606,157 +613,144 @@ window.onkeypress = mediator.keypress;
 
 // ==================== observer №3 ===============
 
-class ObserverList {
-    constructor() {
-        this.observerList = [];
-        console.log(this.observerList);
+// class ObserverList {
+//   constructor() {
+//     this.observerList = [];
+//     console.log(this.observerList);
+//   }
+//   add(observer) {
+//     this.observerList.push(observer);
+//   }
+//   remove(name) {
+//     this.observerList = this.observerList.filter(observer => observer !== name);
+//   }
+//   count() {
+//     return this.observerList.length;
+//   }
+//   get(index) {
+//     if (index > -1 && index < this.observerList.length) {
+//       return this.observerList[index];
+//     }
+//   }
+// }
+// console.log(ObserverList.prototype);
 
-    }
-    add(observer) {
-        this.observerList.push(observer);
-    }
-    remove(name) {
-        this.observerList = this.observerList.filter((observer) => observer !== name);
-    }
-    count() {
-        return this.observerList.length;
-    }
-    get(index) {
-        if (index > -1 && index < this.observerList.length) {
-            return this.observerList[index];
-        }
-    }
-}
-console.log(ObserverList.prototype);
+// class Subject {
+//   constructor() {
+//     this.observers = new ObserverList();
+//   }
+//   addObserver = function(observer) {
+//     this.observers.add(observer);
+//   };
+//   removeObserver = function(observer) {
+//     this.observers.remove(observer);
+//   };
+//   notify = function(context) {
+//     let observersCount = this.observers.count();
+//     for (let i = 0; i < observersCount; i++) {
+//       this.observers.get(i).update(context);
+//     }
+//   };
+// }
 
-class Subject {
-    constructor() {
-        this.observers = new ObserverList();
+// console.log(Subject.prototype);
 
-    }
-    addObserver = function (observer) {
-        this.observers.add(observer);
-    }
-    removeObserver = function (observer) {
-        this.observers.remove(observer);
-    }
-    notify = function (context) {
-        let observersCount = this.observers.count();
-        for (let i = 0; i < observersCount; i++) {
-            this.observers.get(i).update(context);
-        }
-    }
-}
+// class Observer {
+//   constructor() {
+//     this.update = function() {
+//       //...
+//     };
+//   }
+// }
 
-console.log(Subject.prototype);
+// function extend(obj, extentsion) {
+//   for (let key in extentsion) {
+//     obj[key] = extentsion[key];
+//   }
+// }
 
-class Observer {
-    constructor() {
-        this.update = function () {
-            //...
-        }
-    }
-}
+// var controlCheckbox = document.getElementById("mainCheckbox"),
+//   addBtn = document.getElementById("addNewObserver"),
+//   container = document.getElementById("observersContainer");
 
-function extend(obj, extentsion) {
-    for (let key in extentsion) {
-        obj[key] = extentsion[key];
-    }
-}
+// extend(controlCheckbox, new Subject());
 
-var controlCheckbox = document.getElementById("mainCheckbox"),
-    addBtn = document.getElementById("addNewObserver"),
-    container = document.getElementById("observersContainer");
+// controlCheckbox.onclick = function() {
+//   controlCheckbox.notify(controlCheckbox.checked);
+// };
+// addBtn.onclick = addNewObserver;
 
-extend(controlCheckbox, new Subject());
-
-
-controlCheckbox.onclick = function () {
-    controlCheckbox.notify(controlCheckbox.checked);
-}
-addBtn.onclick = addNewObserver;
-
-function addNewObserver() {
-    let check = document.createElement('input');
-    check.type = 'checkbox';
-    extend(check, new Observer());
-    check.update = function (value) {
-        this.checked = value;
-    }
-    controlCheckbox.addObserver(check);
-    container.appendChild(check);
-}
+// function addNewObserver() {
+//   let check = document.createElement("input");
+//   check.type = "checkbox";
+//   extend(check, new Observer());
+//   check.update = function(value) {
+//     this.checked = value;
+//   };
+//   controlCheckbox.addObserver(check);
+//   container.appendChild(check);
+// }
 
 // ==================== DOM pattern ==============
 class Clock {
-    constructor(template) {
-        this.template = template;
-    }
+  constructor(template) {
+    this.template = template;
+  }
 
-    render() {
-        let date = new Date();
+  render() {
+    let date = new Date();
 
-        let hours = date.getHours();
-        if (hours < 10) hours = '0' + hours;
+    let hours = date.getHours();
+    if (hours < 10) hours = "0" + hours;
 
-        let mins = date.getMinutes();
-        if (mins < 10) mins = '0' + mins;
+    let mins = date.getMinutes();
+    if (mins < 10) mins = "0" + mins;
 
-        let secs = date.getSeconds();
-        if (secs < 10) secs = '0' + secs;
+    let secs = date.getSeconds();
+    if (secs < 10) secs = "0" + secs;
 
-        let output = this.template
-            .replace('h', hours)
-            .replace('m', mins)
-            .replace('s', secs);
+    let output = this.template
+      .replace("h", hours)
+      .replace("m", mins)
+      .replace("s", secs);
 
-        console.log(output);
-    }
+    console.log(output);
+  }
 
-    stop() {
-        clearInterval(this.timer);
-    }
+  stop() {
+    clearInterval(this.timer);
+  }
 
-    start() {
-        this.render();
-        this.timer = setInterval(() => this.render(), 1000);
-    }
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), 1000);
+  }
 }
-let clock = new Clock('hms');
+let clock = new Clock("hms");
 
 // clock.start();
 
-
 function findLetter(word) {
-    let wordObj = {};
-    word.split('').forEach((letter) => {
-
-        if (wordObj.hasOwnProperty(letter)) {
-            wordObj[letter]++;
-        } else {
-            wordObj[letter] = 1;
-        }
+  let wordObj = {};
+  word.split("").forEach(letter => {
+    if (wordObj.hasOwnProperty(letter)) {
+      wordObj[letter]++;
+    } else {
+      wordObj[letter] = 1;
+    }
+  });
+  console.log(wordObj);
+  word = word
+    .toLowerCase()
+    .split("")
+    .map(letter => {
+      if (wordObj[letter] > 1) {
+        return ")";
+      } else {
+        return "(";
+      }
     });
-    console.log(wordObj);
-    word = word.toLowerCase().split('').map((letter) => {
-        if (wordObj[letter] > 1) {
-            return ')';
-        } else {
-            return '(';
-        }
-    });
-    return word.join('');
+  return word.join("");
 }
-console.log(findLetter('sobaka'));
+console.log(findLetter("sobaka"));
 
-
-
-let x = '';
-for (let i = 10; i > 0; i--) {
-
-    for (let k = 0; k < 10; k++) {
-        x += Array(i).join('*') + Array(k).join('0')+'\n';
-
-    }    
-}
-console.log(x);

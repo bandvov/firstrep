@@ -7,6 +7,8 @@ body {
 	margin-left: 400px;
 	float: left;
 }
+
+
 .maink{
 	float: left;
 	display: block;
@@ -15,8 +17,10 @@ body {
 	background-color: white;
 	margin: 1px auto;
 	border: 1px solid #F26798;
+
 	line-height: 30px;
 }
+
 .inp:hover {
 background-color: rgb(238, 243, 245);
 }
@@ -28,7 +32,9 @@ background-color: rgb(238, 243, 245);
 	clear: both;
 	text-align: left;
 	border: none;
+
 }
+
 input[type=button],input[type=reset] {
 
 	width: 24%;
@@ -41,7 +47,9 @@ input[type=button],input[type=reset] {
 	text-decoration-color: rgba(255, 219, 12, 0.925);
 	display: inline-block;
 	font-size: 20px;
+
 }
+
 input[type=button]:hover,input[type=reset]:hover  {
 	width: 24%;
 	background-color: rgb(21, 100, 247);
@@ -53,6 +61,7 @@ input[type=button]:hover,input[type=reset]:hover  {
 	text-decoration-color: rgba(255, 219, 12, 0.925);
 	font-size: 20px;
 }
+
 input[type=text],input[type=number],input[type=date] {
 	float: right;
 	width: 50%;
@@ -65,6 +74,7 @@ input[type=text],input[type=number],input[type=date] {
 	box-shadow: 2px 2px 2px 0 rgb(189, 194, 189);
 	line-height: 25px;
 }
+
 input[type=text]:hover,input[type=number]:hover,input[type=date]:hover {
 	float: right;
 	width: 50%;
@@ -77,6 +87,7 @@ input[type=text]:hover,input[type=number]:hover,input[type=date]:hover {
 	box-shadow: 2px 2px 2px 0 rgb(189, 194, 189);
 	line-height: 25px;
 }
+
 label {
 	float: left;
 	padding-right: 10px;
@@ -85,9 +96,11 @@ label {
 	text-align: center;
 	font-size: 30px;
 }
+
 #result {
 	border: 2px double rgb(59, 250, 65);
 }
+
 .sec{
 	clear: both;
 	float: left;
@@ -111,7 +124,7 @@ label {
 	margin: 11px 11px 0 0;
 	float: left;
 }
-
+/* 
 .social-links ul li a {
 	border: 1px solid #eee; 
 color: #eee;
@@ -129,7 +142,7 @@ width: 30px;
 }
 
 
-
+/* 
 .social-links ul li a i {
 	-webkit-transform: rotate(45deg);
 	-moz-transform: rotate(45deg);

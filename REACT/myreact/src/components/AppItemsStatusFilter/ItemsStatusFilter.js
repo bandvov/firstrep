@@ -11,9 +11,9 @@ buttons = [
   render() {
       let buttons = this.buttons.map(({name,label})=>{
           const isActive = this.props.filter ===name;
-          const glazz = isActive?'btn-info':'btn-outline-secondary';
+          const clazz = isActive?'btn-info':'btn-outline-secondary';
         return(
-            <button type="button" className={`btn ${glazz}`} key="name"  onClick={()=>this.props.onFilterChange(name)}>{label}</button>
+            <button type="button" className={`btn ${clazz}`} key={name}  onClick={()=>this.props.onFilterChange(name)}>{label}</button>
         )
       })
 

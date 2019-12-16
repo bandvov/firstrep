@@ -1,9 +1,10 @@
 import React from "react";
 import "./ItemList.css";
-import PropTupes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const ItemList = (props) => {
   const { data, onItemSelected, children: renderLabel } = props;
+console.log('itemlist props',props);
 
   const items = data.map((item) => {
     console.log('item in itemlist',item);
@@ -24,12 +25,11 @@ const ItemList = (props) => {
     onItemSelected:()=>{}
   }
 
-ItemList.propTupes={
-  onItemSelected:PropTupes.func,
-  data:PropTupes.arrayOf(PropTupes.object).isRequired,
-  children:PropTupes.func.isRequired
+ItemList.propTypes={
+  onItemSelected:PropTypes.func,
+  data:PropTypes.arrayOf(PropTypes.object).isRequired,
+  children:PropTypes.func.isRequired
 }
-
   return (
     <div className="item-list">
       <ul className="list-group list-group-flush">{items}</ul>

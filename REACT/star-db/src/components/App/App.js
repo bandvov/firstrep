@@ -9,7 +9,7 @@ import DummySwapiService from "../../services/DummySwapiService";
 import AppContext from "../SwapiServiceContext";
 import { PeoplePage, PlanetsPage, StarshipPage,LoginPage, SecretPage } from "../Pages";
 import { BrowserRouter, Route } from "react-router-dom";
-import { StarshipDetails, PersonDetails } from "../SwComponents";
+import { StarshipDetails } from "../SwComponents";
 
 export default class App extends React.Component {
   swapiService = new DummySwapiService();
@@ -67,6 +67,7 @@ export default class App extends React.Component {
               />
               <ErrorButton />
             </div>
+
             <Route path="/" render={() => <h1>welcome to stardb</h1>} exact />
             <Route path="/people" render={() => <h2>People</h2>} />
             <Route path="/people/:id?" component={PeoplePage} />
@@ -79,15 +80,18 @@ export default class App extends React.Component {
               render={({ match }) => {
                 const { id } = match.params;
                 console.log("match", match);
-
+                
                 return <StarshipDetails itemId={id} />;
               }}
-            />
+              />
               <Route path="/login" render={()=>{
-                return <LoginPage onLogin={this.onLogin}/>}} />
+                return <LoginPage onLogin={this.onLogin} isLoggedIn={this.state.isLoggedIn}/>}} />
             <Route path="/secret" render={()=>(
               <SecretPage isLoggedIn={this.state.isLoggedIn}/>
-            )} />
+              )} />
+              <Route render={()=>{
+                return <h2>page not found</h2>
+              }}/>
           </div>
         </BrowserRouter>
       </AppContext.Provider>

@@ -1,0 +1,114 @@
+* {
+    font-family: "Roboto Condenced", sans-serif;
+  }
+  body {
+    padding: 1rem 1rem;
+  }
+  nav {
+    align-items: stretch;
+    flex: 100%;
+    flex-direction: row;
+  }
+  
+  .menu {
+    margin: 0;
+    padding: 0;
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .menu li {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  .menu li a {
+    color: black;
+    margin: 0;
+    padding: 1vh;
+    display: flex;
+    align-self: center;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.2s linear;
+  }
+  .menu li a:hover {
+    background-color: #ffcc01;
+    border-radius: 3px;
+  }
+  .menu li a .logo {
+    margin-right: 24vw;
+  }
+  .menu li a .contacts {
+    margin-right: 15vw;
+  }
+  #checkbox-menu,
+  .toggle {
+    display: none;
+  }
+  @media screen and (max-width: 765px) {
+    .menu {
+      flex-direction: column;
+      padding: 0;
+      height: 0;
+      transition: height 0.4s linear;
+      flex-wrap: nowrap;
+    }
+    .menu li {
+      padding: 0;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .menu li a {
+      width: 90%;
+      justify-content: center;
+      text-align: center;
+    }
+    .toggle {
+      display: block;
+      border: 1px solid green;
+      padding: 14px 4px;
+      background-color: #ffcc01;
+    }
+    .toggle:hover{
+      background-color: #e2ff29;
+  
+    }
+    .toggle span,
+    .toggle span::before,
+    .toggle span::after {
+      margin: auto;
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: black;
+    }
+    .toggle span::before {
+      display: block;
+      position: relative;
+      content: "";
+      top: 5px;
+      left: 0;
+    }
+    .toggle span::after {
+      display: block;
+      position: relative;
+      content: "";
+      top: -8px;
+      left: 0;
+    }
+    #checkbox-menu:checked + label .touch li {
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.3s linear;
+    }
+    #checkbox-menu:checked + label .touch {
+      height: 340px;
+    }
+  }
+  

@@ -668,16 +668,18 @@ window.addEventListener(
 //   }
 // }, false);
 // =========================ajax JSON
-// (function () {
-//   let templateCounter = 0;
-//   document.querySelector('#addbutton').onclick = function () {
-//     let template = document.querySelector('template');
-//     let templateClone = document.importNode(template.content, true);
-//     templateClone.querySelector('#template-name').innerHTML = 'my  template';
-//     templateClone.querySelector('#template-count').innerHTML = ++templateCounter;
-//     document.body.appendChild(templateClone);
-//   }
-// })();
+(function() {
+  let templateCounter = 0;
+  document.querySelector("#addbutton").onclick = function() {
+    let template = document.querySelector("template");
+    let templateClone = document.importNode(template.content, true);
+    templateClone.querySelector("#template-name").innerHTML = "my  template";
+    templateClone.querySelector(
+      "#template-count"
+    ).innerHTML = ++templateCounter;
+    document.body.appendChild(templateClone);
+  };
+})();
 
 window.addEventListener(
   "load",
@@ -749,20 +751,7 @@ window.addEventListener(
 //   root.appendChild(templateClone);
 // })();
 // ===============================================
-(function() {
-  class MyDiv extends HTMLElement {
-    constructor() {
-      super();
-      let template = document.querySelector("#template3");
-      let host = this.attachShadow({
-        mode: "open"
-      });
-      host.appendChild(document.importNode(template.content, true));
-      console.log(host.querySelector("#placeholder").getDistributedNodes());
-    }
-  }
-  customElements.define("my-div", MyDiv);
-})();
+
 // ====================================insertion poin select
 (function() {
   class MyForm extends HTMLElement {
@@ -1065,53 +1054,274 @@ const memoize = fn => {
   return (...args) => {
     const n = args[0];
     if (n in cache) {
-      console.log('take \'n\' from cashe');
-      
+      console.log("take 'n' from cashe");
+
       return cache[n];
     } else {
       const result = fn(n);
       cache[n] = result;
-      console.log('calculated result');      
+      console.log("calculated result");
       return result;
     }
   };
 };
 const memoizeAdd = memoize(add);
 
-console.time('one');
+console.time("one");
 console.log(memoizeAdd(3));
-console.timeLog('one');
-console.time('two');
+console.timeLog("one");
+console.time("two");
 console.log(memoizeAdd(3));
-console.timeLog('two');
-console.time('three');
+console.timeLog("two");
+console.time("three");
 console.log(memoizeAdd(3));
-console.timeLog('three');
+console.timeLog("three");
 
 // =============== composite function ==============
 
-
 const add2 = n => n + 10;
 
-const memoized = fn =>  (...args) => {
-    const cache = {};
-    const n = args[0];
-    if (n in cache) {
-      console.log('take \'n\' from cashe');
-      
-      return cache[n];
-    } else {
-      const result = fn(n);
-      cache[n] = result;
-      console.log('calculated result');      
-      return result;
-    }  
-  };  
+const memoized = fn => (...args) => {
+  const cache = {};
+  const n = args[0];
+  if (n in cache) {
+    console.log("take 'n' from cashe");
 
-  console.log(memoized(add2)(3));
-  console.log(memoized(add2)(33));
-  console.log(memoized(add2)(888));
-  
+    return cache[n];
+  } else {
+    const result = fn(n);
+    cache[n] = result;
+    console.log("calculated result");
+    return result;
+  }
+};
 
-console.log(eval('4+4+4'.toString()))
+console.log(memoized(add2)(3));
+console.log(memoized(add2)(33));
+console.log(memoized(add2)(888));
 
+// ============== caching decorator ================
+
+// const slow = x => {
+//   alert(`called with${x}`);
+//   return x;
+// };
+
+// cachingDecorator is "wrapper" and can be used with any function
+// const cachingDecorator = func => {
+//   let cache = new Map();
+//   return x => {
+//     if (cache.has(x)) {
+//       console.log("get x from cache");
+
+//       return cache.get(x);
+//     }
+//     let result = func(x);
+//     cache.set(x, result);
+//     console.log("calculated x");
+
+//     return result;
+//   };
+// };
+// const cachedFunc = cachingDecorftor(slow);
+// cachedFunc(1);
+// cachedFunc(1);
+// cachedFunc(3);
+// cachedFunc(3)(
+// =========================== caching decirator with this ==================
+const worker = {
+  some() {
+    return 2;
+  },
+  slow(x) {
+    alert(`called with${x}`);
+    return x * this.some();
+  }
+};
+
+let cachingDecorator = function(func) {
+  let cache = new Map();
+  return function(x) {
+    if (cache.has(x)) {
+      console.log("cache", cache);
+      return cache.get(x);
+    }
+    console.log(this);
+
+    let result = func.call(this, x);
+    cache.set(x, result);
+    return result;
+  };
+};
+
+worker.slow = cachingDecorator(worker.slow);
+worker.slow(2);
+worker.slow(2);
+worker.slow(112);
+worker.slow(112);
+
+// ===================== call with many arguments ===============
+const worker1 = {
+  slow(min, max) {
+    return min + max;
+  }
+};
+let cachingDecorator1 = (func, hash) => {
+  let cache = new Map();
+  return function() {
+    let key = hash(arguments);
+    console.log("key", key);
+    if (cache.has(key)) {
+      console.log("call key from cache");
+      return cache.get(key);
+    }
+    let result = func.call(this, ...arguments);
+    cache.set(key, result);
+    console.log("calculated key");
+    return result;
+  };
+};
+function hash(args) {
+  args.join = [].join;
+  console.log(args);
+  // =======or the sane ==========
+  return [].join.call(args);
+  return args.join();
+}
+let cached = cachingDecorator1(worker1.slow, hash);
+cached(55, 122, 1, 1, 1, 1);
+cached(55, 122, 1, 1, 1, 1);
+// ========================================================
+function func(...args) {
+  args.map(item => {
+    console.log(item);
+  });
+}
+function delay(f, ms) {
+  console.log(f);
+
+  return function() {
+    setTimeout(() => {
+      // f(...arguments);
+      // ============= or ========
+      f.apply(this, arguments);
+    }, ms);
+  };
+}
+
+let f1000 = delay(func, 1000);
+
+f1000("test", "firs", "secon");
+
+// =================== shadow dom template3 ==============
+(function() {
+  class MyDiv extends HTMLElement {
+    constructor() {
+      super();
+      let template = document.querySelector("#template3");
+      let host = this.attachShadow({
+        mode: "open"
+      });
+      host.appendChild(document.importNode(template.content, true));
+      console.log(host.querySelector("#placeholder").getDistributedNodes());
+    }
+  }
+  customElements.define("my-div", MyDiv);
+})();
+
+// =============== VIDEO CAPTURE NAVIGATOR ================
+
+const video = document.querySelector("video");
+
+function startVideo() {
+  console.log(navigator.getUserMedia);
+
+  // navigator.getUserMedia(
+  //   { video: {width:{min:1920},height:{min:720}} },
+  //   stream => (video.srcObject = stream),
+  //   err => console.log(err)
+  // );
+  // ========= or the same with promise ================
+  navigator.mediaDevices
+    .getUserMedia({ video: { width: { min: 1920 }, height: { min: 1080 } } })
+    .then(stream => {
+      video.srcObject = stream;
+      statusbar.visible;
+    });
+}
+
+startVideo();
+navigator.mediaDevices.enumerateDevices().then(res => console.log(res));
+
+// =========================================  bind ===================
+
+var data = [
+  { name: "Samantha", age: 12 },
+  { name: "Alexis", age: 14 }
+];
+
+const cars = {
+  data: [
+    { name: "Honda Accord", age: 14 },
+    { name: "Tesla Model S", age: 2 }
+  ]
+};
+
+const user = {
+  data: [
+    { name: "T. Woods", age: 37 },
+    { name: "P. Mickelson", age: 43 }
+  ],
+  showData(event) {
+    var randomNum = Math.floor(((Math.random() * 2) | 0) + 1) - 1; // Любое число с 0 до 1
+    console.log(this);
+
+    console.log(this.data[randomNum].name + " " + this.data[randomNum].age);
+  }
+};
+
+let usdata = user.showData;
+usdata.call(user);
+
+const carsShowData = user.showData.bind(cars);
+carsShowData();
+// ============================== =============================
+function greet(gender, age, name) {
+  const salutation = gender === "male" ? "Mr. " : "Ms. ";
+  if (age > 25) {
+    console.log(`Hello ${salutation} ${name}`);
+  } else if (age < 25) {
+    console.log(`Hey ${name}`);
+  }
+}
+
+const greetAdult = greet.bind(null, "male", 11);
+greetAdult("John");
+// ========================================== call ==========================
+// var avgScore = "global avgScore";
+
+// function avg (arrayOfScores) {
+//   var sumOfScores = arrayOfScores.reduce (function (prev, cur, index, array) {
+//       return prev + cur;
+//   });
+//   this.avgScore = sumOfScores / arrayOfScores.length;
+// }
+
+// var gameController = {
+//     scores: [20, 34, 55, 46, 77],
+//     avgScore:null
+// }
+
+// avg (gameController.scores);
+
+// console.log (window.avgScore); // 46.4
+// console.log (gameController.avgScore); // null
+
+// avgScore = "global avgScore";
+
+// avg.call (gameController, gameController.scores);
+
+// console.log (window.avgScore); //global avgScore
+// console.log (gameController.avgScore); // 46.4
+
+// =============================================================

@@ -7,6 +7,8 @@ const withSwapiService =(mapMethodsToProps)=> (Wrapped) => {
       <AppContext.Consumer>
         {swapiService => {
           const serviceProps = mapMethodsToProps(swapiService);
+          console.log('withSwapiService props',props);
+          
           return <Wrapped {...props} {...serviceProps}></Wrapped>;
         }}
       </AppContext.Consumer>

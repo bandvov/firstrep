@@ -100,6 +100,8 @@ export default class App extends React.Component {
     this.setState({filter});
   }
   render() {
+    console.log(this.state);
+    
     const doneCount = this.state.toDoData.filter(el => el.done).length;
     const toDoCount = this.state.toDoData.length - doneCount;
     const visibleItems = this.filter(
@@ -123,7 +125,6 @@ export default class App extends React.Component {
           />
           <AppItemAddForm
             onItemAdded={this.addItem}
-            newItemAdd={this.updateValue}
           />
         </div>
       </div>

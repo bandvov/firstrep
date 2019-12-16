@@ -650,6 +650,27 @@ function count() {
 setInterval(count, 60000);
 
 
+<<<<<<< HEAD
+=======
+
+
+var a = 51;
+
+switch (a) {
+  case 3:
+    alert('Маловато');
+    break;
+  case 4:
+    alert('В точку!');
+    break;
+  case 5:
+    alert('Перебор');
+    break;
+  default:
+    alert('Я таких значений не знаю');
+}
+
+>>>>>>> second
 // var data = [{a : true, b : false}, {a : false, b : true}];
 // var result = false;
 // var sample;
@@ -682,6 +703,11 @@ console.log(aa);
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> second
 var collection = {
   "2548": {
     "album": "Slippery When Wet",
@@ -759,6 +785,10 @@ var contacts = [{
 function lookUpProfile(name, prop) {
   // Only change code below this line
   for (var i = 0; i < contacts.length; i++) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> second
     if (contacts[i].firstName === name) {
       if (contacts[i].hasOwnProperty(prop)) {
         return contacts[i][prop];
@@ -854,6 +884,7 @@ document.querySelector('#in').oninput = function () {
 // }
 // countDown();
 
+<<<<<<< HEAD
 // const keyboard = [49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 122, 120, 99, 118, 98, 110, 109, 44, 46];
 
 // function init() {
@@ -885,6 +916,39 @@ document.querySelector('#in').oninput = function () {
 //     target.classList.add('active');
 //   }
 // }
+=======
+const keyboard = [49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 97, 115, 100, 102, 103, 104, 106, 107, 108, 59, 39, 122, 120, 99, 118, 98, 110, 109, 44, 46];
+
+function init() {
+  var out = '';
+  for (var i = 0; i < keyboard.length; i++) {
+    if (i === 10 || i === 20 || i === 30) {
+      out += '<div class="clearfix"></div>';
+    }
+    out += '<div class="keyb" data="' + keyboard[i] + '">' + String.fromCharCode(keyboard[i]) + '</div>';
+  }
+  document.querySelector('#keyboard').innerHTML = out;
+}
+
+init();
+
+document.onkeypress = function (event) {
+  document.querySelectorAll(".keyb").forEach(function (element) {
+    element.classList.remove('active');
+  });
+  document.querySelector('.keyb[data="' + event.keyCode + '"]').classList.add('active');
+}
+document.onclick = function (event) {
+  document.querySelectorAll(".keyb").forEach(function (element) {
+    element.classList.remove('active');
+  });
+  var target = event.target;
+  console.log(event.target);
+  if (target.className == 'keyb') {
+    target.classList.add('active');
+  }
+}
+>>>>>>> second
 
 
 var arr = [1, 2, 3, 4, 5, 6];
@@ -908,6 +972,23 @@ function fizzBuzz(data) {
   }
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+const getMousePosition = (x, y) => ({
+  x,
+  y
+});
+
+console.log(getMousePosition(11, 33));
+
+
+
+
+
+>>>>>>> second
 let field = document.getElementById('field');
 let ball = document.getElementById('ball');
 field.addEventListener('click', moveBall);
@@ -970,6 +1051,13 @@ function correctSentence(text) {
 console.log(correctSentence('hello'));
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> second
 // function evenLast(data) {
 //   var sum = 0;
 //   var totalSum = 0;
@@ -1000,6 +1088,15 @@ console.log(correctSentence('hello'));
 
 var ar = Array.of(1, 2, 3, 4, 5);
 
+<<<<<<< HEAD
+=======
+// import  stra2 from './formulas';
+
+// console.log(stra2);
+// console.log(stra);
+// console.log(evenLast(ar));
+
+>>>>>>> second
 
 
 
@@ -1014,14 +1111,25 @@ console.log(reslt);
 
 
 var modalMessage = 'THIS IS A NEW ATTEMPT';
+<<<<<<< HEAD
 document.querySelector('.alerting').addEventListener('click', newAttempt, false);
 
 function newAttempt() {
+=======
+document.querySelector('.alerting').onclick = function () {
+>>>>>>> second
   var div = document.createElement('div');
   div.className = 'newalert';
   div.innerHTML = modalMessage;
   document.body.insertAdjacentElement("afterbegin", div);
+<<<<<<< HEAD
 
+=======
+  // var btn = document.createElement('button');
+  // btn.id = "hidbtn";
+  // btn.innerHTML = 'hide';
+  // document.body.insertAdjacentElement("afterbegin", btn);
+>>>>>>> second
   var span = document.createElement('span');
   span.innerHTML = '&times';
   span.id = "spanhide";
@@ -1031,12 +1139,22 @@ function newAttempt() {
     document.querySelector('.newalert').remove();
     document.querySelector('.alert').remove();
     document.querySelector('.alert1').remove();
+<<<<<<< HEAD
     // document.querySelector('.alerting').remove();
 
   };
   document.querySelector('.alerting').removeEventListener('click', newAttempt);
 
 }
+=======
+    document.querySelector('#hidbtn').remove();
+  }
+};
+
+
+
+
+>>>>>>> second
 
 
 
@@ -1130,12 +1248,6 @@ function closeMenu() {
     s[i].style.display = "none";
   }
 }
-var text = '{ "employees" : [' +
-  '{ "name":"John" , "lastName":"Doe" },' +
-  '{ "firstName":"Anna" , "lastName":"Smith" },' +
-  '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
-
-var plo = JSON.parse(text);
 
 
 function findLongestWordLength(str) {
@@ -1144,6 +1256,7 @@ function findLongestWordLength(str) {
   for (var i = 0; i < arr.length; i++) {
     arrs.push(arr[i].length);
     arrs.sort();
+    console.log(arrs);
   }
   var last = arrs[arrs.length - 1];
 

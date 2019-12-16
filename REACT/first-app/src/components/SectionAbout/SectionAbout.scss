@@ -1,0 +1,23 @@
+.section-about {
+    display: flex;
+justify-content: center;
+    padding: 1rem;
+    flex: auto;
+}
+.section-about-left,.section-about-right{
+    flex:50%;
+    border: 1px solid black;
+    padding: 1rem;
+
+}
+.section-about-right{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.section-about-right img{
+    max-width: 100%;
+    height: auto;
+    overflow: auto;
+    margin: 1rem auto;
+}

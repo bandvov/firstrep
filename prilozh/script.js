@@ -8,15 +8,6 @@ var appData = {
   timeData: time,
   optExpenses: {},
 };
-// ===================цей код працює неправильно. дані з форм бкруться тільки один раз============
-
-// var n1 = parseInt(document.getElementById('expAns1').value);
-// var n2 = parseInt(document.getElementById('expAns2').value);
-
-// function res1() {
-//   document.getElementById('result').value = n1 + n2;
-// }
-// =============================================================
 
 // ================== функція працює правильно================================
 function res1() {
@@ -65,7 +56,7 @@ function factorial(x) {
   }
   return x * factorial(x - 1);
 }
-document.write('<br> факторіал ' + x + '=' + factorial(x));
+document.write('<br> факторіал ' + input + '=' + factorial(input));
 
 
 

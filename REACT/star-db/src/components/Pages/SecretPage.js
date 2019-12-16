@@ -1,9 +1,10 @@
 import React from "react";
+import {Redirect} from 'react-router-dom';
 
 const SecretPage = ({ isLoggedIn }) => {
   if (isLoggedIn) {
     return <h2 className="jumbotron">This page is full of secrets</h2>;
   }
-  return <h3>You shouldnt see this</h3>;
+  return <Redirect to="/login"/>
 };
 export default SecretPage;
