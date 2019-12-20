@@ -16,6 +16,7 @@ const booksError = (error)=>{
   }
 }
 // all this action creators are used only in  fetchBooks() function and there is no need to export them
+// fetchBooks() is not action creator
 const fetchBooks=(bookStoreService,dispatch)=> () => {
   dispatch(booksRequested())
   bookStoreService

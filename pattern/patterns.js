@@ -369,29 +369,50 @@ class CommunityExecutive {
   }
 }
 class HiringManager {
-  takeInterview(){
-    const interviewer = this.makeInterviewer()
-    interviewer.askQuestions()
+  takeInterview() {
+    const interviewer = this.makeInterviewer();
+    interviewer.askQuestions();
   }
 }
-class DevelopmentManager extends HiringManager{
-  makeInterviewer(){
-    return new Developer()
+class DevelopmentManager extends HiringManager {
+  makeInterviewer() {
+    return new Developer();
   }
 }
 class CommunityManager extends HiringManager {
-  makeInterviewer(){
+  makeInterviewer() {
     return new CommunityExecutive();
   }
 }
-const devMan = new DevelopmentManager()
+const devMan = new DevelopmentManager();
 devMan.takeInterview();
-const commMan = new CommunityManager()
-commMan.takeInterview()
+const commMan = new CommunityManager();
+commMan.takeInterview();
 
 // ================================== pattern abstarct factory ===============
 // group other factories with logical connections
-
+class PlasticDoor {
+  getDescription() {
+    console.log("I am plastic door");
+  }
+}
+class PlasticDoorInstaller{
+  getDescription(){
+    console.log('I can fit plastic door');    
+  }
+}
+class PlasticDoorFactory{
+  makeDoor(){
+    return new PlasticDoor()
+  }
+  makeDoorInstaller(){
+    return new PlasticDoorInstaller()
+  }
+}
+const door1 = new PlasticDoorFactory().makeDoor();
+const doorInstaller =new PlasticDoorFactory().makeDoorInstaller()
+door1.getDescription()
+doorInstaller.getDescription()
 // =====================================factory 4 =========================
 
 // ================================== pattern adapter ======================
