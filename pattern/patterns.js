@@ -396,24 +396,64 @@ class PlasticDoor {
     console.log("I am plastic door");
   }
 }
-class PlasticDoorInstaller{
-  getDescription(){
-    console.log('I can fit plastic door');    
+class PlasticDoorInstaller {
+  getDescription() {
+    console.log("I can fit plastic door");
   }
 }
-class PlasticDoorFactory{
-  makeDoor(){
-    return new PlasticDoor()
+class PlasticDoorFactory {
+  makeDoor() {
+    return new PlasticDoor();
   }
-  makeDoorInstaller(){
-    return new PlasticDoorInstaller()
+  makeDoorInstaller() {
+    return new PlasticDoorInstaller();
   }
 }
 const door1 = new PlasticDoorFactory().makeDoor();
-const doorInstaller =new PlasticDoorFactory().makeDoorInstaller()
-door1.getDescription()
-doorInstaller.getDescription()
+const doorInstaller = new PlasticDoorFactory().makeDoorInstaller();
+door1.getDescription();
+doorInstaller.getDescription();
 // =====================================factory 4 =========================
+class ReptileTail {
+  constructor(props) {
+    this.tail = props.tail;
+  }
+}
+class ReptileLegs {
+  constructor(props) {
+    this.legs = props.legs;
+  }
+  getLegsNumber() {
+    return this.legs;
+  }
+}
+class ReptileTorso {
+  constructor(props) {
+    this.torso = props.torso;
+  }
+  getTorso(){
+    return this.torso
+  }
+}
+let reptileBodyParts = {};
+reptileBodyParts["tail"] = ReptileTail;
+reptileBodyParts["legs"] = ReptileLegs;
+reptileBodyParts["torso"] = ReptileTorso;
+
+class ReptileBodyFactory {
+  constructor(type, props) {
+    return new reptileBodyParts[type](props);
+  }
+}
+const reptileProps = {
+  legs: 4,
+  tail: "very long",
+  torso: "green"
+};
+const reptileLegs = new ReptileBodyFactory("legs", reptileProps);
+console.log(reptileLegs.getLegsNumber());
+const reptileTorso = new ReptileBodyFactory('torso',reptileProps)
+console.log( reptileTorso.getTorso())
 
 // ================================== pattern adapter ======================
 // patter adapter makes compatible uncompatible object without changing the source code
