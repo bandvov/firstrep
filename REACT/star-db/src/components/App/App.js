@@ -7,7 +7,13 @@ import ErrorIndicator from "../ErrorIndicator";
 import SwapiService from "../../services/SwapiService";
 import DummySwapiService from "../../services/DummySwapiService";
 import AppContext from "../SwapiServiceContext";
-import { PeoplePage, PlanetsPage, StarshipPage,LoginPage, SecretPage } from "../Pages";
+import {
+  PeoplePage,
+  PlanetsPage,
+  StarshipPage,
+  LoginPage,
+  SecretPage
+} from "../Pages";
 import { BrowserRouter, Route } from "react-router-dom";
 import { StarshipDetails } from "../SwComponents";
 
@@ -18,7 +24,7 @@ export default class App extends React.Component {
     showRandomPlanet: true,
     hasError: false,
     swapiService: new DummySwapiService(),
-    isLoggedIn:false
+    isLoggedIn: false
   };
 
   toggleRandomPlanet = () => {
@@ -37,11 +43,11 @@ export default class App extends React.Component {
       };
     });
   };
-  onLogin=()=>{
+  onLogin = () => {
     this.setState({
-      isLoggedIn:true
-    })
-  }
+      isLoggedIn: true
+    });
+  };
   render() {
     console.log(this.state.swapiService);
 
@@ -80,18 +86,25 @@ export default class App extends React.Component {
               render={({ match }) => {
                 const { id } = match.params;
                 console.log("match", match);
-                
+
                 return <StarshipDetails itemId={id} />;
               }}
-              />
-              <Route path="/login" render={()=>{
-                return <LoginPage onLogin={this.onLogin} isLoggedIn={this.state.isLoggedIn}/>}} />
-            <Route path="/secret" render={()=>(
-              <SecretPage isLoggedIn={this.state.isLoggedIn}/>
-              )} />
-              <Route render={()=>{
-                return <h2>page not found</h2>
-              }}/>
+            />
+            <Route
+              path="/login"
+              render={() => {
+                return (
+                  <LoginPage
+                    onLogin={this.onLogin}
+                    isLoggedIn={this.state.isLoggedIn}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/secret"
+              render={() => <SecretPage isLoggedIn={this.state.isLoggedIn} />}
+            />
           </div>
         </BrowserRouter>
       </AppContext.Provider>

@@ -3,26 +3,24 @@ import "./BookList.scss";
 import BookListItem from "../book-list-item";
 import { connect } from "react-redux";
 import withBookService from "../hoc";
-import bookLoaded from "../../actions";
+import {fetchBooks} from "../../actions";
 import compose from "../../utils";
-import {Spinner} from "../spinner";
+import { Spinner } from "../spinner";
+import ErrorIndicator from "../error-indicator";
 
 class BookList extends React.Component {
   componentDidMount() {
-    const { bookstoreService, bookLoaded } = this.props;
-    console.log(bookstoreService);
-
-    bookstoreService.getBook().then(response => {
-      bookLoaded(response);
-    });
+    this.props.fetchBooks()
   }
 
   render() {
-    
-    const { books, loading } = this.props;
+    const { books, loading, error } = this.props;
     console.log(this.props);
     if (loading) {
-      return <Spinner />
+      return <Spinner />;
+    }
+    if (error) {
+      return <ErrorIndicator />;
     }
     return (
       <ul className="book-list">
@@ -40,14 +38,20 @@ class BookList extends React.Component {
 const mapStateToProps = state => {
   return {
     books: state.books,
-    loading: state.loading
+    loading: state.loading,
+    error: state.error
   };
 };
+const mapDispatchToProps = (dispatch,{bookstoreService})=>{
+  return{
+    fetchBooks: fetchBooks(bookstoreService,dispatch)
+  }
+}
 
 // BookList is wrapped two times
 // export default withBookService()(connect(mapStateToProps,{bookLoaded})(BookList));
 // or with compose
 export default compose(
   withBookService(),
-  connect(mapStateToProps, { bookLoaded })
+  connect(mapStateToProps,mapDispatchToProps)
 )(BookList);

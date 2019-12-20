@@ -14,7 +14,9 @@ export default class RandomPlanet extends React.Component {
 static propTypes= {
  updateInterval: PropTypes.number
 }
+
   SwapiService = new SwapiService();
+
   state = {
     planet: {},
     loading: true,

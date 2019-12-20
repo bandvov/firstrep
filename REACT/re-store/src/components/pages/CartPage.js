@@ -1,5 +1,6 @@
 import React from "react";
-import CartTable from '../cart-table';
+import CartTable from "../cart-table";
+
 const CartPage = () => {
   return (
     <div>
@@ -7,4 +8,5 @@ const CartPage = () => {
     </div>
   );
 };
+
 export default CartPage;

@@ -334,9 +334,165 @@ console.log(car);
 
 console.log(carFactory instanceof Car);
 
-// =============================== pattern iterator ====================
+// ================================= patter simple factory ===============
+class WoodenDoor {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+  getWidth() {
+    return this.width;
+  }
+  getHeight() {
+    return this.height;
+  }
+}
+class WoodDoorFactory {
+  makeDoor(width, height) {
+    return new WoodenDoor(width, height);
+  }
+}
+const door = new WoodDoorFactory().makeDoor(100, 220);
+console.log(door.getWidth());
+console.log(door.getHeight());
 
-// =========================== pattern strategy ========================
+// ================================== pattern factory method ==========
+// allows  to delegate the logic of creating the necessary instances to the child classes.
+class Developer {
+  askQuestions() {
+    console.log("asking about developing");
+  }
+}
+class CommunityExecutive {
+  askQuestions() {
+    console.log("asking about community building");
+  }
+}
+class HiringManager {
+  takeInterview(){
+    const interviewer = this.makeInterviewer()
+    interviewer.askQuestions()
+  }
+}
+class DevelopmentManager extends HiringManager{
+  makeInterviewer(){
+    return new Developer()
+  }
+}
+class CommunityManager extends HiringManager {
+  makeInterviewer(){
+    return new CommunityExecutive();
+  }
+}
+const devMan = new DevelopmentManager()
+devMan.takeInterview();
+const commMan = new CommunityManager()
+commMan.takeInterview()
+
+// ================================== pattern abstarct factory ===============
+// group other factories with logical connections
+
+// =====================================factory 4 =========================
+
+// ================================== pattern adapter ======================
+// patter adapter makes compatible uncompatible object without changing the source code
+class AfrikanLion {
+  roar() {
+    console.log("a r r r r");
+  }
+}
+class AsianLion {
+  roar() {
+    console.log("a r r r r");
+  }
+}
+class Hunter {
+  hunt(lion) {
+    lion.roar();
+  }
+}
+
+class WildDog {
+  bark() {
+    console.log("waw-waw-waw");
+  }
+}
+class WildDogAdapter {
+  constructor(dog) {
+    this.dog = dog;
+  }
+  roar() {
+    this.dog.bark();
+  }
+}
+const wildDog = new WildDog();
+const wildDogAdapter = new WildDogAdapter(wildDog);
+
+const hunter = new Hunter();
+hunter.hunt(wildDogAdapter);
+const lion = new AfrikanLion();
+hunter.hunt(lion);
+
+// ================================== pattern composite ====================
+
+class Developer1 {
+  constructor(name, salary) {
+    this.name = name;
+    this.salary = salary;
+  }
+  getName() {
+    return this.name;
+  }
+  getSalary() {
+    return this.salary;
+  }
+  setSalary(salary) {
+    this.salary = salary;
+  }
+}
+
+class Designer1 {
+  constructor(name, salary) {
+    this.name = name;
+    this.salary = salary;
+  }
+  getName() {
+    return this.name;
+  }
+  getSalary() {
+    return this.salary;
+  }
+}
+
+class Organization {
+  constructor() {
+    this.employees = [];
+  }
+  addEmployee(employee) {
+    this.employees.push(employee);
+  }
+  getNetSalary() {
+    let netSalary = 0;
+    this.employees.map(employee => {
+      console.log("employee", employee.salary);
+      netSalary += employee.salary;
+    });
+    return netSalary;
+  }
+}
+
+const adam = new Developer1("John", 11111);
+const mada = new Designer1("Jane", 3333);
+const organization = new Organization();
+
+organization.addEmployee(adam);
+organization.addEmployee(mada);
+
+console.log(organization.getNetSalary());
+
+// ================================== pattern iterator ====================
+
+// ================================== pattern strategy ========================
 
 let validator = {
   types: {},
@@ -508,68 +664,70 @@ get("requestBtn2").addEventListener(
 // ======================================== mediator N2  ==================
 class ChatRoom {
   showMessage(user, message) {
-    const time = new Date().toLocaleString();
+    const date = new Date().toLocaleDateString();
     const sender = user.getName();
-    console.log(`${time} ${sender} ${message}\n`);
+    console.log(`${date}\n user ${sender}\n send : ${message}\n`);
   }
 }
-class User {
-  constructor(name, chatMediator) {
+
+class ChatUser {
+  constructor(name, mediator) {
     this.name = name;
-    this.chatMediator = chatMediator;
+    this.mediator = mediator;
   }
   getName() {
     return this.name;
   }
   send(message) {
-    return this.chatMediator.showMessage(this, message);
+    this.mediator.showMessage(this, message);
   }
 }
-const mediator = new ChatRoom();
-const john = new User('John',mediator);
-const jane = new User('Jane',mediator);
 
-john.send('hello there Im John');
-    jane.send('hey Im Jane! Im from Canada')
+const chatRoom = new ChatRoom();
 
+const chatJane = new ChatUser("Jane", chatRoom);
+const chatUnk = new ChatUser("Unk", chatRoom);
+const chatAnd = new ChatUser("And", chatRoom);
 
+chatJane.send("hey there");
+chatUnk.send("Iam here");
+chatAnd.send("i have heard that");
 // ===================================== pattern observer =====================
 
-// ====================================================
-class Observer {
-    constructor() {
-        this.observers = [];
-    }
-    subscribe(fn) {
-        this.observers.push(fn);
-    }
-    unsubscribe(fn) {
-        this.observers = this.observers.filter((subscriber) => subscriber !== fn);
-    }
-    broadcast(text) {
-        this.observers.forEach((elem) => elem(text));
-    }
-}
+// class Observer {
+//   constructor() {
+//     this.observers = [];
+//   }
+//   subscribe(fn) {
+//     this.observers.push(fn);
+//   }
+//   unsubscribe(fn) {
+//     this.observers = this.observers.filter(subscriber => subscriber !== fn);
+//   }
+//   broadcast(text) {
+//     this.observers.forEach(elem => elem(text));
+//   }
+// }
 
-let blogObserver = new Observer();
+// let blogObserver = new Observer();
 
-blogObserver.subscribe((text) => console.log('broadcast catched'));
+// blogObserver.subscribe(text => console.log("broadcast catched"));
 
-let textField = document.querySelector('.textField');
-let countField = document.querySelector('.countField');
+// let textField = document.querySelector(".textField");
+// let countField = document.querySelector(".countField");
 
-function getWordsCount(text) {
-    return text ? text.trim().split(/\s+/).length : 0;
-}
-textField.addEventListener('keyup', function () {
-    blogObserver.broadcast(textField.value);
-})
+// function getWordsCount(text) {
+//   return text ? text.trim().split(/\s+/).length : 0;
+// }
+// textField.addEventListener("keyup", function() {
+//   blogObserver.broadcast(textField.value);
+// });
 
-blogObserver.subscribe(text => {
-    console.log(text);
+// blogObserver.subscribe(text => {
+//   console.log(text);
 
-    countField.innerHTML = getWordsCount(text);
-})
+//   countField.innerHTML = getWordsCount(text);
+// });
 
 //  ===================== pattern observer #2 =============
 
@@ -613,83 +771,119 @@ blogObserver.subscribe(text => {
 
 // ==================== observer №3 ===============
 
-// class ObserverList {
-//   constructor() {
-//     this.observerList = [];
-//     console.log(this.observerList);
-//   }
-//   add(observer) {
-//     this.observerList.push(observer);
-//   }
-//   remove(name) {
-//     this.observerList = this.observerList.filter(observer => observer !== name);
-//   }
-//   count() {
-//     return this.observerList.length;
-//   }
-//   get(index) {
-//     if (index > -1 && index < this.observerList.length) {
-//       return this.observerList[index];
-//     }
-//   }
-// }
-// console.log(ObserverList.prototype);
+class ObserverList {
+  constructor() {
+    this.observerList = [];
+    console.log(this.observerList);
+  }
+  add(observer) {
+    this.observerList.push(observer);
+  }
+  remove(name) {
+    this.observerList = this.observerList.filter(observer => observer !== name);
+  }
+  count() {
+    return this.observerList.length;
+  }
+  get(index) {
+    if (index > -1 && index < this.observerList.length) {
+      return this.observerList[index];
+    }
+  }
+}
 
-// class Subject {
-//   constructor() {
-//     this.observers = new ObserverList();
-//   }
-//   addObserver = function(observer) {
-//     this.observers.add(observer);
-//   };
-//   removeObserver = function(observer) {
-//     this.observers.remove(observer);
-//   };
-//   notify = function(context) {
-//     let observersCount = this.observers.count();
-//     for (let i = 0; i < observersCount; i++) {
-//       this.observers.get(i).update(context);
-//     }
-//   };
-// }
+class Subject {
+  constructor() {
+    this.observers = new ObserverList();
+  }
+  addObserver = function(observer) {
+    this.observers.add(observer);
+  };
+  removeObserver = function(observer) {
+    this.observers.remove(observer);
+  };
+  notify = function(context) {
+    let observersCount = this.observers.count();
+    for (let i = 0; i < observersCount; i++) {
+      this.observers.get(i).update(context);
+    }
+  };
+}
 
-// console.log(Subject.prototype);
+console.log(Subject.prototype);
 
-// class Observer {
-//   constructor() {
-//     this.update = function() {
-//       //...
-//     };
-//   }
-// }
+class Observer extends Subject {
+  constructor() {
+    super();
+    this.update = function() {
+      //...
+    };
+  }
+}
 
-// function extend(obj, extentsion) {
-//   for (let key in extentsion) {
-//     obj[key] = extentsion[key];
-//   }
-// }
+function extend(obj, extentsion) {
+  for (let key in extentsion) {
+    obj[key] = extentsion[key];
+  }
+}
 
-// var controlCheckbox = document.getElementById("mainCheckbox"),
-//   addBtn = document.getElementById("addNewObserver"),
-//   container = document.getElementById("observersContainer");
+var controlCheckbox = document.getElementById("mainCheckbox"),
+  addBtn = document.getElementById("addNewObserver"),
+  container = document.getElementById("observersContainer");
+extend(controlCheckbox, new Subject());
 
-// extend(controlCheckbox, new Subject());
+controlCheckbox.onclick = function() {
+  controlCheckbox.notify(controlCheckbox.checked);
+};
+addBtn.onclick = addNewObserver;
 
-// controlCheckbox.onclick = function() {
-//   controlCheckbox.notify(controlCheckbox.checked);
-// };
-// addBtn.onclick = addNewObserver;
+function addNewObserver() {
+  let check = document.createElement("input");
+  check.type = "checkbox";
+  extend(check, new Observer());
+  check.update = function(value) {
+    this.checked = value;
+  };
+  controlCheckbox.addObserver(check);
+  container.appendChild(check);
+}
 
-// function addNewObserver() {
-//   let check = document.createElement("input");
-//   check.type = "checkbox";
-//   extend(check, new Observer());
-//   check.update = function(value) {
-//     this.checked = value;
-//   };
-//   controlCheckbox.addObserver(check);
-//   container.appendChild(check);
-// }
+// ============================== pattern observer 4 ========================
+const jobpost = title => {
+  return { title };
+};
+class JobSeeker {
+  constructor(name) {
+    this.name = name;
+  }
+  notify(jobpost) {
+    console.log(`${this.name} have been notified about ${jobpost.title}`);
+  }
+}
+class JopBoard {
+  constructor() {
+    this._subscribers = [];
+  }
+
+  subscribe(jobseeker) {
+    this._subscribers.push(jobseeker);
+  }
+  addJob(message) {
+    this._subscribers.forEach(subscriber => {
+      subscriber.notify(jobpost(message));
+    });
+  }
+}
+const johns = new JobSeeker("John");
+const amss = new JobSeeker("Amss");
+const rohns = new JobSeeker("Rohn");
+
+const jopBoard = new JopBoard();
+jopBoard.subscribe(johns);
+jopBoard.subscribe(amss);
+jopBoard.subscribe(rohns);
+
+jopBoard.addJob("posting new job");
 
 // ==================== DOM pattern ==============
 class Clock {
@@ -753,4 +947,4 @@ function findLetter(word) {
   return word.join("");
 }
 console.log(findLetter("sobaka"));
-
+// ============================================ pattern chain responsebilities ===========

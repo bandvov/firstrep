@@ -16,10 +16,13 @@ export default class BookStoreService {
   }
 ];
   getBook() {
-    return new Promise(resolve => {
+    return new Promise((resolve,reject) => {
       setTimeout(() => {
         resolve(this.data);
+        reject(new Error('something went wrong'))
       }, 600);
     });
   }
+
+
 }

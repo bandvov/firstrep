@@ -7,11 +7,11 @@ import Header from "../Header/Header";
 const App = () => {
   return (
     <main role="main" className="container">
-   <Header numItems={4} total={444} />
-    <Switch>
-      <Route path="/" component={HomePage} exact />
-      <Route path="/cart" component={CartPage} />
-    </Switch>
+      <Header numItems={4} total={444} />
+      <Switch>
+        <Route path="/" component={HomePage} exact />
+        <Route path="/cart" component={CartPage} />
+      </Switch>
     </main>
   );
 };

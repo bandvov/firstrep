@@ -808,16 +808,7 @@ window.addEventListener(
   },
   false
 );
-// ===========================================
-window.addEventListener(
-  "load",
-  function() {
-    let content = document.querySelector("#import-list").import;
-    let list = content.querySelector("ul");
-    document.body.appendChild(list);
-  },
-  false
-);
+
 // ========================================================
 window.addEventListener(
   "load",
@@ -1032,15 +1023,14 @@ var x;
 let cykl = "";
 let cnum = 10;
 
-document.write("<br>");
 for (let i = 1; i <= 10; i++) {
   for (let k = 1; k <= cnum - i; k++) {
-    document.write("&nbsp;");
+    cykl += "0";
   }
   for (let j = 1; j <= i; j++) {
-    document.write("*");
+    cykl += "*";
   }
-  document.write("<br>");
+  cykl += "\n";
 }
 console.log(cykl);
 // ====================================
@@ -1134,7 +1124,7 @@ const worker = {
     return 2;
   },
   slow(x) {
-    alert(`called with${x}`);
+    console.log(`called with${x}`);
     return x * this.some();
   }
 };
@@ -1246,7 +1236,6 @@ function startVideo() {
     .getUserMedia({ video: { width: { min: 1920 }, height: { min: 1080 } } })
     .then(stream => {
       video.srcObject = stream;
-      statusbar.visible;
     });
 }
 
@@ -1325,3 +1314,13 @@ greetAdult("John");
 // console.log (gameController.avgScore); // 46.4
 
 // =============================================================
+
+let newWindow = window.open(
+  "",
+  "hfghfg",
+  "location=1,statusbar=1,width=500,height=500"
+);
+
+// setTimeout(newWindows[0].close(), 4444);
+// ============================ closures ==========================
+
