@@ -1,13 +1,28 @@
 .app-buttons {
   display: flex;
   justify-content: space-between;
-  min-width: 40%;
+  min-width: 50%;
   z-index: 1;
+  transition: 1s;
 }
 .app-buttons input {
-  margin-left: 1rem;
   min-width: 10vw;
+  padding: 0 1rem;
   font-size: 2rem;
-  border-radius:2rem 2rem ;
+  border-radius: 2rem 2rem;
   box-shadow: 13px 15px 8px rgb(39, 36, 36);
+}
+@media screen and (max-width: 765px) {
+  .app-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    padding-left: 0;
+    transition: 1s ;
+  }
+  .app-buttons input {
+    transition: 1s ;
+    width: 100%;    
+    margin: 1rem 0;
+  }
 }

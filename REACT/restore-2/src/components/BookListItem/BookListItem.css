@@ -1,0 +1,31 @@
+.book-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 2rem;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+}
+
+.book-list-item h2 {
+  list-style: none;
+}
+
+.book-list-item li {
+  list-style: none;
+}
+
+.book-list-item li img {
+  width: 25vw;
+  border: 1px solid black;
+}
+
+.book-list-item li input[type="button"] {
+  padding: 1rem;
+  margin-left: 10%;
+}
+/*# sourceMappingURL=BookListItem.css.map */

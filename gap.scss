@@ -156,6 +156,7 @@ a.icon {
 
 .icon span::after {
     top: 10px;
+    
 }
 
 @media screen and (max-width:700px) {
@@ -359,3 +360,22 @@ height: auto;
     left: 300px;
 
 }
+// =============================== file ==================
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  
+  /* Separate rule for compatibility, :focus-within is required on modern Firefox and Chrome */
+  input.visually-hidden:focus + label {
+    outline: thin dotted;
+  }
+  input.visually-hidden:focus-within + label {
+    outline: thin dotted;
+  }
+  #canvas600{
+      border: 1px groove black;
+  }

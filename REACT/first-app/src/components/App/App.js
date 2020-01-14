@@ -3,6 +3,7 @@ import "./App.scss";
 import AppHeader from "../AppHeader";
 import SectionAbout from "../SectionAbout";
 import SectionGallery from "../SectionGallery";
+import SectionFooter from "../SectionFooter";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <AppHeader />
       <SectionAbout />
       <SectionGallery />
+      <SectionFooter />
     </div>
   );
 };

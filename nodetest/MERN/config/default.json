@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "jwtSecret": "some secret string",
+  "mongoUrl": "mongodb+srv://bandvov:<fg4S7@d8>@cluster0-jqunr.azure.mongodb.net/test?retryWrites=true&w=majority"
+}

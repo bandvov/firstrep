@@ -1,7 +1,15 @@
 import React from "react";
 import "./CartTable.scss";
+import { connect } from "react-redux";
+import {
+  allBooksRemovedFromCart,
+  bookAddedToCart,
+  bookRemovedFromCart
+} from "../../actions";
 
-const CartTable = ({ items, total, onIcrease, onDecrease, onDelete }) => {
+const CartTable = ({ items, total, onIncrease, onDecrease, onDelete }) => {
+  console.log("carttable", items);
+
   return (
     <div className="cart-table">
       <h2>Your Order</h2>
@@ -17,17 +25,17 @@ const CartTable = ({ items, total, onIcrease, onDecrease, onDelete }) => {
         </thead>
         <tbody>
           {items.map(item => {
-            const { id, idx, name, count, total } = item;
+            const { id, idx, title, count, total } = item;
             return (
               <tr key={id}>
                 <td>{idx}</td>
-                <td>{name}</td>
+                <td>{title}</td>
                 <td>{count}</td>
                 <td>${total}</td>
                 <td width="25%">
                   <button
                     className="btn btn-outline-success"
-                    onClick={() => onIcrease(id)}
+                    onClick={() => onIncrease(id)}
                   >
                     <i className="fa fa-plus-circle"></i>
                   </button>
@@ -41,19 +49,45 @@ const CartTable = ({ items, total, onIcrease, onDecrease, onDelete }) => {
                     className="btn btn-outline-danger"
                     onClick={() => onDelete(id)}
                   >
-                    <i className="fa fa-train"></i>
+                    <i className="fa fa-trash-o"></i>
                   </button>
                 </td>
-                <tr className="total">
-                  <td>${total}</td>
-                </tr>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <p className="total">${total}</p>
     </div>
   );
 };
+const mapStateToProps = state => {
+  return {
+    items: state.shoppingCart.cartItems,
+    total: state.shoppingCart.orderTotal
+  };
+};
+// if you send to connect simple object, connect will dispatch values itself
 
-export default CartTable;
+const mapDispatchToProps = {
+  onIncrease: bookAddedToCart,
+  onDecrease: bookRemovedFromCart,
+  onDelete: allBooksRemovedFromCart
+};
+// or you may send a function
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onIncrease: id => {
+//       dispatch(bookPlus(id));
+//     },
+//     onDecrease: () => {
+//       console.log("decrease");
+//     },
+//     onDelete: id => {
+//       dispatch(allBooksRemovedFromCart(id));
+//     }
+//   };
+// };
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartTable);

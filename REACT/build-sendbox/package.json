@@ -1,0 +1,21 @@
+{
+  "name": "build-sendbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bandvov",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-block-scoping": "^7.8.3",
+    "@babel/plugin-transform-classes": "^7.8.3"
+  }
+}

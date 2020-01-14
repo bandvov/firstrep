@@ -1,57 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
+<head> 
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+<title>App</title> 
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <body>  
 
-<body>
-    <h1>TO DO list</h1>
- 
+      <h1>TO DO list</h1>
+      
+      <table>
+        <thead>
+          <tr>
+            <td>NAME</td>
+            <td>DESCRIPTION</td>
+            <td>COMPLETED</td>
+          </tr>
+        </thead>
+        <tbody>
+          <%- data %>
+        </tbody>
+      </table>
+    
+<%- buttons ? '	<a href="add" class="">Add item!</a><a href="/" class="">Done!</a>' 
+			    : ' <a href="edit" class="">Edit items!</a>' %>
 
-       <table>
-           <thead>
-               <td>NAME</td>
-               <td>DESCRIPTION</td>
-               <td>COMPLETED</td>
-            </thead>
-            <tbody>
-                <%- data %>
-            </tbody>
-        </table>
-        <%- buttons ? '<a href="add"><button>add</button></a><a href="/"><button>Done!</button></a>'
-        :'<a href="edit"><button>edit!</button></a>' %>  
- 
-        
-<script>
-window.onload = function(){
-    let tbody = document.querySelector('tbody');
-    tbody.onclick = function (e) {
-        if (e.target.hasAttribute('id')&& e.target.classList.contains('edit')){
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET',e.target.id);
-            xhr.send()
-            xhr.onload =function(){
-                location.href= 'http://localhost:8080/edit/'+e.target.id;
-            }
-        } else if (e.target.classList.contains('delete')) {
-            let xhr = new XMLHttpRequest();
-            xhr.open('DELETE','edit/'+e.target.id);
-            xhr.send();
-            xhr.onload = function() {
-                location.href= 'http://localhost:8080';
-            }
-            console.log('item deleted');
-            
-        }
-    }
-}
+
+  <script>
+	window.onload = function() { 
+
+		var tbody = document.querySelector('tbody')
+		console.log(tbody);
+		
+
+		tbody.addEventListener('click', function(e) {
+
+
+			if (e.target.hasAttribute('id')) { 
+
+				if (e.target.classList.contains('edit')) {
+
+					var xhr = new XMLHttpRequest(); 
+					xhr.open('GET',e.target.id); 
+					xhr.send(); 
+
+					xhr.onload = function() {
+						location.href = 'http://localhost:8080/edit/' + e.target.id; 
+					}
+				
+				} else if (e.target.classList.contains('delete')) {
+					var xhr = new XMLHttpRequest(); 
+					
+					xhr.open('DELETE', '/edit/' + e.target.id); 
+					xhr.send(); 
+					xhr.onload = function() {
+						location.href = 'http://localhost:8080/';  
+						console.log('item deleted'); 
+					}					
+				}
+			}
+		})
+	}
 </script>
-
-</body>
-
+  </body>
 </html>

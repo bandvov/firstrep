@@ -6,7 +6,6 @@ $position: center;
   justify-content: $position;
   align-items: $position;
   min-height: 100vh;
-  min-width: auto;
   background-image: url("./header.jpg");
   background-size: cover;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -16,14 +15,16 @@ $position: center;
   position: absolute;
   top: 1rem;
   left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
   content: "";
   background-color: rgba($color: #aaa, $alpha: 0.4);
   min-height: 100vh;
-  min-width: 100%;
+  max-width: 100vw;
 }
 .app-header h1{
     z-index: 1;
     color: white;
     margin-bottom: 5rem;
     font-size: 5rem;
-}
+  }

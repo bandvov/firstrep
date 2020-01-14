@@ -1,5 +1,5 @@
-div{
-    text-align: center;
+div {
+  text-align: center;
 }
 .section-gallery {
   display: flex;
@@ -10,19 +10,37 @@ div{
   margin: 0 0;
   text-align: center;
 }
+.image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  background-color: rgba($color: #ffe0e0, $alpha: 0.4);
+}
 
 .section-gallery img {
-  opacity: 0.8;
-  flex: 3 1 30%;
+  flex: 30%;
 }
 
-.image{
-text-align: center;
-    border:3px solid red;
-    padding: 8rem 11rem;
-    font-size: 2rem;
+.image {
+  text-align: center;
+  border: 1px solid black;
+  padding: 8rem 11rem;
+  font-size: 2rem;
+margin: 0.5rem 0.5rem;
+position: relative;
 }
 
-.section-gallery img:hover {
-  opacity: 1;
+@media screen and (max-width: 765px) {
+  .section-gallery {
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 0;
+    .image {
+      margin: 1rem 0;
+    }
+  }
 }

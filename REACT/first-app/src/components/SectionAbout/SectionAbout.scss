@@ -1,23 +1,41 @@
 .section-about {
     display: flex;
-justify-content: center;
+    justify-content: center;
     padding: 1rem;
     flex: auto;
+    transition: 1s ;
 }
 .section-about-left,.section-about-right{
     flex:50%;
     border: 1px solid black;
     padding: 1rem;
+    transition: 1s ;
 
 }
 .section-about-right{
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-left: 1rem;
 }
 .section-about-right img{
     max-width: 100%;
     height: auto;
     overflow: auto;
     margin: 1rem auto;
+}
+@media screen and(max-width:765px){
+    .section-about{
+        padding:1rem 0;
+        flex-direction: column;
+        align-items: center;
+        transition: 1s ;
+    }
+    .section-about-right{
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    .section-about-right,.section-about-left{
+    margin: 0 0;
+}
 }

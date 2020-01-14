@@ -1,0 +1,48 @@
+.error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60vh;
+  margin: 5vw;
+  width: auto;
+}
+
+.error-sign {
+  width: 10rem;
+  height: 10rem;
+  background-color: #f14242;
+  border-radius: 50%;
+}
+
+.error-sign::before, .error-sign::after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 4.5rem;
+  left: 2.5rem;
+  background-color: #ffffff;
+  width: 5rem;
+  height: 1rem;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.error-sign::after {
+  top: 3.5rem;
+  width: 5rem;
+  height: 1rem;
+  background-color: #ffffff;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+/*# sourceMappingURL=ErrorIndicator.css.map */

@@ -1,5 +1,7 @@
 "use strict";
 
+import logMessage from "./logMessage.js";
+
 document.querySelector("#sort-asc").addEventListener(
   "click",
   function() {
@@ -22,14 +24,14 @@ document.querySelector("#sort-rating").addEventListener(
   false
 );
 
-function sortAsc(sortType) {
-  let goods = document.querySelector(".goods_card");
-  for (let i = 0; i < goods.children.length; i++) {
-    if (+goods[i].dataset[sortType] > +goods[i + 1].dataset[sortType]) {
-      goods[i].parentNode.insertBefore(goods[i + 1], goods[i]);
-    }
-  }
-}
+// function sortAsc(sortType) {
+//   let goods = document.querySelector(".goods_card");
+//   for (let i = 0; i < goods.children.length; i++) {
+//     if (+goods[i].dataset[sortType] > +goods[i + 1].dataset[sortType]) {
+//       goods[i].parentNode.insertBefore(goods[i + 1], goods[i]);
+//     }
+//   }
+// }
 
 function sortAsc(sortType) {
   let item = document.querySelector(".goods_wrap");
@@ -736,9 +738,9 @@ window.addEventListener(
   console.assert(customElements);
 
   let div = new DivExtend();
-  div.innerHTML = "created callback works" + "<br>";
+  div.innerHTML = "customElements custom-div" + "<br>";
   let div1 = new DivExtend();
-  div1.innerHTML = "created second callback";
+  div1.innerHTML = "second custom-div";
   document.body.appendChild(div);
   document.body.appendChild(div1);
 })();
@@ -1240,40 +1242,22 @@ function startVideo() {
 }
 
 startVideo();
-navigator.mediaDevices.enumerateDevices().then(res => console.log(res));
 
-// =========================================  bind ===================
+// ========================================= apply ===================
+let data = [{ 1: "tesla", age: 1 }, { 2: "ford" }, { 3: "toyota", age: 3 }];
 
-var data = [
-  { name: "Samantha", age: 12 },
-  { name: "Alexis", age: 14 }
-];
-
-const cars = {
-  data: [
-    { name: "Honda Accord", age: 14 },
-    { name: "Tesla Model S", age: 2 }
-  ]
-};
-
-const user = {
-  data: [
-    { name: "T. Woods", age: 37 },
-    { name: "P. Mickelson", age: 43 }
-  ],
-  showData(event) {
-    var randomNum = Math.floor(((Math.random() * 2) | 0) + 1) - 1; // Любое число с 0 до 1
+let user = {
+  data: [{ car: "tesla" }, { car: "ford" }, { car: "toyota" }],
+  showData() {
     console.log(this);
-
-    console.log(this.data[randomNum].name + " " + this.data[randomNum].age);
+    let random = Math.floor(Math.random() * 3) - 1 + 1;
+    console.log(this.data[random]);
   }
 };
+user.showData();
+let bewus = user.showData;
+bewus.apply(user);
 
-let usdata = user.showData;
-usdata.call(user);
-
-const carsShowData = user.showData.bind(cars);
-carsShowData();
 // ============================== =============================
 function greet(gender, age, name) {
   const salutation = gender === "male" ? "Mr. " : "Ms. ";
@@ -1308,7 +1292,7 @@ greetAdult("John");
 
 // avgScore = "global avgScore";
 
-// avg.call (gameController, gameController.scores);
+// avg.call(gameController, gameController.scores);
 
 // console.log (window.avgScore); //global avgScore
 // console.log (gameController.avgScore); // 46.4
@@ -1322,5 +1306,193 @@ let newWindow = window.open(
 );
 
 // setTimeout(newWindows[0].close(), 4444);
-// ============================ closures ==========================
 
+class EventDispatcher {
+  constructor() {
+    this.list = {};
+  }
+
+  addEvent(type, listener) {
+    if (!this.list[type]) {
+      this.list[type] = [];
+    }
+    if (this.list[type].indexOf(listener) === -1) {
+      this.list[type].push(listener);
+    }
+  }
+  dispatchEvent(e) {
+    let a = this.list[e.type];
+    console.log(a);
+
+    if (a) {
+      if (!e.target) e.target = this;
+      for (let key in a) {
+        a[key](e);
+      }
+    }
+  }
+}
+let o = new EventDispatcher();
+
+o.addEvent("tick", e => {
+  console.log("a tick just happened", e.target, e.type, "\n");
+  console.log(e.target === o);
+});
+o.dispatchEvent({ type: "tick", target: o });
+
+// ====================================
+// ===================================
+
+class EventDispatcherNew {
+  constructor() {
+    this.list = {};
+  }
+  addEvent(type, listener) {
+    if (!this.list[type]) {
+      this.list[type] = [];
+      if (this.list[type].indexOf(listener) === -1) {
+        this.list[type].push(listener);
+      }
+    }
+  }
+  dispatchEvent(e) {
+    let x = this.list[e.type];
+    if (x) {
+      console.log(x);
+      if (!e.target) e.target = this;
+      for (let key in x) {
+        console.log(key);
+        x[key](e);
+      }
+    }
+  }
+}
+let eventOb = new EventDispatcherNew();
+eventOb.addEvent("ticktock", e => {
+  console.log("event ticktock just happened");
+});
+eventOb.dispatchEvent({ type: "ticktock" });
+
+// ============================= SOLID  liskov substitution ========================
+// In object-oriented programming, inheritance provides a mechanism for reusing code in similar classes. This is achieved by encapsulating
+// general behavior in the base class and overriding / expanding behavior among the heirs.
+//   According to the principle of substituting Barbara Liskov, the behavior of the heir should be equivalent to the
+// behavior of the base class.
+class Shape {
+  area() {
+    return this.width * this.height;
+  }
+}
+
+class Rectangle extends Shape {
+  constructor(height, width) {
+    super();
+
+    this.height = height;
+    this.width = width;
+  }
+  setHeight(height) {
+    this.height = height;
+  }
+  setWidth(width) {
+    this.width = width;
+  }
+  area() {
+    return this.height * this.width;
+  }
+}
+
+class Square extends Shape {
+  constructor(width, height) {
+    super();
+    this.width = width;
+    this.height = height;
+  }
+  setWidth(width) {
+    this.height = width;
+    this.width = width;
+  }
+  setHeight(height) {
+    this.height = height;
+    this.width = height;
+  }
+  area() {
+    return this.width * this.height;
+  }
+}
+
+const updateRectangle = rectangle => {
+  rectangle.setWidth(rectangle.width + 1);
+};
+
+let rect = new Rectangle(10, 20);
+let square = new Square(6, 6);
+square.setWidth(7);
+
+updateRectangle(rect);
+updateRectangle(square);
+console.log(rect.area());
+console.log(square.area());
+
+// ============================= SOLID Single responsibility ==================
+
+class CaloriesTracker {
+  constructor(maxCalories) {
+    this.maxCalories = maxCalories;
+    this.currentCalories = 0;
+  }
+  trackCalories(calories) {
+    this.currentCalories += calories;
+    if (this.currentCalories > this.maxCalories) {
+      // logMessage is not a CaloriesTracker method
+      logMessage("max calories exceeded");
+    }
+  }
+}
+let tracker = new CaloriesTracker(3333);
+
+tracker.trackCalories(1000);
+tracker.trackCalories(1000);
+tracker.trackCalories(1000);
+tracker.trackCalories(1000);
+// ============================== SOLID open/closed =======================
+
+class BooleanQuestion {
+  constructor(description) {
+    this.description = description;
+  }
+  printQuestionChoises() {
+    console.log(`1.true`);
+    console.log(`2.false`);
+  }
+}
+class MultipleQuestion {
+  constructor(description, options) {
+    this.description = description;
+    this.options = options;
+  }
+  printQuestionChoises() {
+    this.options.forEach((option, i) => {
+      console.log(`${i + 1} : ${option}`);
+    });
+  }
+}
+const questions = [
+  new BooleanQuestion("do you like icecream?"),
+  new MultipleQuestion("What languages do you know?", [
+    "HTML",
+    "SQL",
+    "ABRA",
+    "C#"
+  ])
+];
+
+function printQuiz(questions) {
+  questions.forEach(question => {
+    console.log(question.description);
+    question.printQuestionChoises();
+  });
+}
+
+printQuiz(questions);
+// =========================================

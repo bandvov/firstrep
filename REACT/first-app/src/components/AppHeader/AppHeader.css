@@ -1,0 +1,38 @@
+.app-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  min-width: auto;
+  background-image: url("./header.jpg");
+  background-size: cover;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.app-header::before {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  content: "";
+  background-color: rgba(170, 170, 170, 0.4);
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+.app-header h1 {
+  z-index: 1;
+  color: white;
+  margin-bottom: 5rem;
+  font-size: 5rem;
+}
+/*# sourceMappingURL=AppHeader.css.map */

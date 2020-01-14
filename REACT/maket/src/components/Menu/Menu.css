@@ -1,0 +1,179 @@
+* {
+  font-family: "Roboto Condenced", sans-serif;
+}
+
+body {
+  margin: auto;
+  padding: 0 1rem;
+}
+
+nav {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.menu {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0;
+  padding: 0;
+  border: 1px double coral;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  list-style: none;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.menu li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 0;
+  margin: 0 0;
+}
+
+.menu li a {
+  color: black;
+  margin: 0 0;
+  padding: 1vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  text-decoration: none;
+  font-size: 16px;
+  -webkit-transition: background 0.2s linear;
+  transition: background 0.2s linear;
+}
+
+.menu li a:hover {
+  background-color: #ffcc01;
+  border-radius: 3px;
+}
+
+.menu li a.logo {
+  font-weight: 700;
+  font-size: 24px;
+  margin-right: 24vw;
+}
+
+.menu li a.contacts {
+  margin-left: 15vw;
+}
+
+#checkbox-menu,
+.toggle {
+  display: none;
+}
+
+@media screen and (max-width: 765px) {
+  .menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0 0;
+    height: 0;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  .menu li {
+    padding: 0 0;
+    margin: 0 auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    -webkit-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+  }
+  .menu li a {
+    width: 90vw;
+    opacity: 0;
+    margin: 0 .3rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+    border: 1px solid red;
+    -webkit-transition: height .4s linear;
+    transition: height .4s linear;
+  }
+  .menu li a.contacts {
+    width: 90vw;
+    margin: 0 .3rem;
+  }
+  .menu li a.logo {
+    font-weight: 700;
+    margin: 0 .3rem;
+  }
+  .toggle {
+    display: block;
+    border: 1px solid green;
+    padding: 14px 4px;
+    background-color: #ffcc01;
+  }
+  .toggle:hover {
+    background-color: #e2ff29;
+  }
+  .toggle span,
+  .toggle span::before,
+  .toggle span::after {
+    margin: auto;
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: black;
+  }
+  .toggle span::before {
+    display: block;
+    position: relative;
+    content: "";
+    top: 5px;
+    left: 0;
+  }
+  .toggle span::after {
+    display: block;
+    position: relative;
+    content: "";
+    top: -8px;
+    left: 0;
+  }
+  #checkbox-menu:checked + label .touch li {
+    opacity: 1;
+    visibility: visible;
+    margin: 0 0;
+  }
+  #checkbox-menu:checked + label .touch {
+    -webkit-transition: all 0.4 ease;
+    transition: all 0.4 ease;
+    height: 340px;
+  }
+  #checkbox-menu:checked + label .touch li a {
+    height: 16px;
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=Menu.css.map */

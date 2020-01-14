@@ -1,0 +1,41 @@
+.intro-img {
+  background-image: url("./pexelsphoto1571460.jpeg");
+  background-size: cover;
+  width: 100vw;
+  height: 80vh;
+}
+
+.intro-text {
+  position: relative;
+  top: 0;
+  left: 5vw;
+  font-size: 44px;
+}
+
+.intro-contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  bottom: 12vh;
+  right: 1rem;
+  padding: 1rem 1rem;
+  background-color: #ffcc01;
+}
+
+.intro-contacts p {
+  margin: 0 1rem;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+/*# sourceMappingURL=Intro.css.map */

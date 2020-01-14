@@ -390,18 +390,25 @@ a.active {
   top: 0px;
   left: 300px;
 }
-/*# sourceMappingURL=gap.css.map */
-/* ******* STAR MENU ******** */
-.star-menu{
-  display: flex;
-  border: 1px solid black;
-  align-items: center;
-  
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
-.star-menu li a {
-  margin: 0;
-  padding: 0.5rem;
-display: block;  
-  border:1px solid red;
+/* Separate rule for compatibility, :focus-within is required on modern Firefox and Chrome */
+input.visually-hidden:focus + label {
+  outline: thin dotted;
 }
+
+input.visually-hidden:focus-within + label {
+  outline: thin dotted;
+}
+
+#canvas600 {
+  border: 1px groove black;
+}
+/*# sourceMappingURL=gap.css.map */

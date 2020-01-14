@@ -88,10 +88,3 @@ console.log(t);
 var arr = [6, 89, 3, 45];
 var maximus = Math.max(...arr);
 console.log(maximus);
-
-// =============================
-document.onkeydown = function (e) {
-  if (e.keyCode == 9) {
-    alert('pressed TAB');
-  }
-}

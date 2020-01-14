@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAA;EACP,MAAM,EAAE,eAAe;EACvB,OAAO,EAAE,SAAS;EAClB,MAAM,EAAE,IAAK;EACb,UAAU,EAAE,CAAC;EACb,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACzB;;AACD,AAAA,EAAE,CAAA;EACE,WAAW,EAAE,eAAe;EAC5B,UAAU,EAAE,MAAM;CAErB;;AACD,AAAA,MAAM,CAAA;EACF,UAAU,EAAE,KAAK;CACpB",
+    "sources": [
+        "CartTable.scss"
+    ],
+    "names": [],
+    "file": "CartTable.css"
+}

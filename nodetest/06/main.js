@@ -103,23 +103,23 @@ let port = 8080;
 // });
 // =====================================
 
-let url = 'mongodb://localhost:27017';
-let dbName = 'collectionDB';
+// let url = 'mongodb://localhost:27017';
+// let dbName = 'collectionDB';
 
-function findUsers(db, prop, callback) {
-    db.collection('users').find(prop).toArray(function (err, result) {
-        if (err) throw err;
-        console.log('*********found the folowing*********');
-        console.log(result);
-        callback(result);
-    });
-}
-mongoClient.connect(url,{useNewUrlParser:true,useUnifiedTopology:true},function(err,client){
-    let db = client.db(dbName);
-    findUsers(db,{},function(){
-client.close();
-    });
-});
+// function findUsers(db, prop, callback) {
+//     db.collection('users').find(prop).toArray(function (err, result) {
+//         if (err) throw err;
+//         console.log('*********found the folowing*********');
+//         console.log(result);
+//         callback(result);
+//     });
+// }
+// mongoClient.connect(url,{useNewUrlParser:true,useUnifiedTopology:true},function(err,client){
+//     let db = client.db(dbName);
+//     findUsers(db,{},function(){
+// client.close();
+//     });
+// });
 
 // ==================================
 
@@ -219,10 +219,10 @@ client.close();
 // =========================================== SQL Stream =======================
 
 // let config = {
-//     user: 'test',
-//     password: '12345',
-//     server: 'localhost',
-//     database: 'testdb',
+//         user: 'test',
+//         password: '12345',
+//         server: 'localhost',
+//         database: 'testdb',
 //     port: 1433,
 //     pool: {
 //         max: 10,

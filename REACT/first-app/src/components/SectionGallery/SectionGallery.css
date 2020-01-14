@@ -1,0 +1,40 @@
+div {
+  text-align: center;
+}
+
+.section-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0 0;
+  margin: 0 0;
+  text-align: center;
+}
+
+.section-gallery img {
+  opacity: 0.8;
+  -webkit-box-flex: 3;
+      -ms-flex: 3 1 30%;
+          flex: 3 1 30%;
+}
+
+.image {
+  text-align: center;
+  border: 3px solid red;
+  padding: 8rem 11rem;
+  font-size: 2rem;
+}
+
+.section-gallery img:hover {
+  opacity: 1;
+}
+/*# sourceMappingURL=SectionGallery.css.map */

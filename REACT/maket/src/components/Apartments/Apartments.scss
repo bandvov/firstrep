@@ -1,0 +1,105 @@
+.apartments {
+  background-color: #f6f5f4;
+}
+.apart {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  align-items: center;
+  h2 {
+    font-size: 40px;
+  }
+}
+.cards {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card {
+  margin: 1rem 1rem;
+  max-width: 348px;
+  height: auto;
+  box-shadow: 0 0 12px rgba($color: #000, $alpha: 0.8);
+  &-container {
+    padding: 1rem 1rem;
+  }
+  img {
+    max-width: 100%;
+  }
+  &-info {
+    margin: 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &:hover {
+    box-shadow: 0 0 12px rgba($color: #000000, $alpha: 1);
+  }
+}
+
+.card-info {
+  margin: 0;
+  .price {
+    font-size: 16px;
+    color: #ffcc01;
+  }
+
+  .info span {
+    margin-left: 1rem;
+  }
+}
+.buttons-search {
+  margin: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  input {
+    border: none;
+    border: none;
+    padding: 1rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  input[type="text"] {
+    width: 300px;
+    padding-left: 4rem;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/0/0b/Search_Icon.svg");
+
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  input[type="submit"] {
+    background-color: #ffcc01;
+  }
+  input[type="submit"]:hover,
+  input[type="button"]:hover {
+    background-color: #e4c033;
+  }
+  input[type="button"] {
+    margin-left: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+}
+@media screen and(max-width:765px) {
+  .buttons-search {
+    border: 1px solid red;
+    flex-direction: column;
+    align-items: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    input[type="button"] {
+      width: 100%;
+      margin-top: 1rem;
+      margin-left: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

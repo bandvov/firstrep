@@ -1,0 +1,20 @@
+.app-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-width: 40%;
+  z-index: 1;
+}
+
+.app-buttons input {
+  margin-left: 1rem;
+  min-width: 10vw;
+  font-size: 2rem;
+  border-radius: 2rem 2rem;
+  -webkit-box-shadow: 13px 15px 8px #272424;
+          box-shadow: 13px 15px 8px #272424;
+}
+/*# sourceMappingURL=Buttons.css.map */

@@ -11,18 +11,21 @@ const Menu = ({ menuLinks }) => {
   });
   return (
     <header>
-      <nav className="d-flex">
+      <nav >
         <input type="checkbox" id="checkbox-menu" />
         <label htmlFor="checkbox-menu">
           <ul className="menu touch">
             <li>
-              <h2>
-                <a href="#" className="logo">
-                  Luxestate
-                </a>
-              </h2>
+              <a href="#" className="logo">
+                Luxestate
+              </a>
             </li>
             {renderedLinks}
+            <li>
+              <a href="#" className="contacts">
+                Contacts
+              </a>
+            </li>
           </ul>
           <div>
             <span className="toggle">

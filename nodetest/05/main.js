@@ -188,36 +188,36 @@ let port = 8080;
 // })
 // ==========================
 
-app.use(express.static(__dirname));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// app.use(express.static(__dirname));
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
 
-app.route('/')
-    .all(function (req, res) {
-        res.writeHead(301, {
-            'Location': 'test.html'
-        });
-        res.end();
-    });
-app.route('/test')
-    .get(function (req, res) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html'
-        });
-        let data = url.parse(req.url, true).query;
-        console.log(`${data.text}`);
-        res.end(data.text);
-    })
-    .post(function (req, res) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html'
-        });
-        let data = req.body.text;
-        res.end(data);
-        console.log(data);
+// app.route('/')
+//     .all(function (req, res) {
+//         res.writeHead(301, {
+//             'Location': 'test.html'
+//         });
+//         res.end();
+//     });
+// app.route('/test')
+//     .get(function (req, res) {
+//         res.writeHead(200, {
+//             'Content-Type': 'text/html'
+//         });
+//         let data = url.parse(req.url, true).query;
+//         console.log(`${data.text}`);
+//         res.end(data.text);
+//     })
+//     .post(function (req, res) {
+//         res.writeHead(200, {
+//             'Content-Type': 'text/html'
+//         });
+//         let data = req.body.text;
+//         res.end(data);
+//         console.log(data);
         
-    });
-    app.listen(port, function () {
-    console.log('listen...', port);
-});
+//     });
+//     app.listen(port, function () {
+//     console.log('listen...', port);
+// });
